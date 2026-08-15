@@ -1,0 +1,76 @@
+// QQ 9.3 Light Theme
+.is-tgqq {
+  // Surface colors
+  --tq-surface-page: #f3f2f7;           // Page background (QQ9 gray rgb(243,242,247))
+  --tq-surface-primary: #ffffff;         // Cards, panels
+  --tq-surface-secondary: #f0f0f0;       // Subtle backgrounds
+  --tq-surface-tertiary: #e8e8e8;        // Dividers, borders
+  --tq-surface-overlay: #ffffff;         // Modals, popups
+  --tq-surface-elevated: #ffffff;        // Raised elements
+
+  // Text colors
+  --tq-text-primary: #000000;            // Main text
+  --tq-text-secondary: #5a5a5a;          // Secondary text
+  --tq-text-tertiary: #999999;           // Hints, placeholders
+  --tq-text-quaternary: #cccccc;          // Disabled text
+  --tq-icon-primary: #1f1f1f;            // Topbar icons (QQ9 dark gray)
+  --tq-text-inverse: #ffffff;            // Text on dark backgrounds
+  --tq-text-accent: #1296db;             // QQ blue links
+
+  // Accent colors - QQ brand colors
+  --tq-accent-dynamics: #bb6bff;          // QQ9 dynamics hub purple
+  --tq-accent-primary: #1296db;          // QQ blue
+  --tq-accent-primary-hover: #0d7ab8;
+  --tq-accent-primary-active: #0a5f94;
+  --tq-accent-secondary: #12b7f5;        // Lighter blue
+
+  // Semantic colors
+  --tq-accent-danger: #fa5151;           // Red for errors/delete
+  --tq-accent-warning: #ff9500;          // Orange for warnings
+  --tq-accent-orange: #fe4735;           // Dynamics tab notification dot (QQ9 red)
+  --tq-accent-success: #07c160;          // Green for success
+  --tq-accent-online: #00d66c;           // Online status
+
+  // Chat bubble colors
+  --tq-bubble-incoming-bg: #ffffff;
+  --tq-bubble-incoming-text: #000000;
+  --tq-bubble-incoming-border: #e5e5e5;
+  --tq-bubble-outgoing-bg: #95ecff;      // QQ blue bubble (sender side)
+  --tq-bubble-outgoing-text: #000000;
+  --tq-bubble-outgoing-border: transparent;
+  --tq-bubble-incoming-meta: rgba(0, 0, 0, 0.45);
+  --tq-bubble-outgoing-meta: rgba(0, 0, 0, 0.45);
+
+  // Chat page background (QQ flat chat)
+  --tq-chat-page: #f0f4f8;
+
+  // Chat list active row (QQ9: light-blue tint + left accent bar)
+  --tq-chatlist-active-bg: #e8f4ff;
+
+  // Interactive states
+  --tq-interactive-hover: rgba(0, 0, 0, 0.05);
+  --tq-interactive-active: rgba(0, 0, 0, 0.1);
+  --tq-interactive-disabled: rgba(0, 0, 0, 0.3);
+
+  // Borders & dividers
+  --tq-border-light: #ebebeb;
+  --tq-border-medium: #d8d8d8;
+  --tq-border-heavy: #c0c0c0;
+  --tq-divider: #e5e5e5;
+
+  // Overlay & mask
+  --tq-overlay-light: rgba(0, 0, 0, 0.2);
+  --tq-overlay-medium: rgba(0, 0, 0, 0.4);
+  --tq-overlay-heavy: rgba(0, 0, 0, 0.6);
+
+  // Badge & notifications
+  --tq-badge-bg: #fe4735;
+  --tq-badge-text: #ffffff;
+  --tq-unread-bg: #1296db;
+
+  // QQ9 default avatar + search capsule
+  --tq-avatar-bg: #f3f2f7;               // Default avatar circle (light gray)
+  --tq-avatar-fg: #909092;               // Default avatar person (dark gray)
+  --tq-search-bg: #ffffff;               // Search capsule (lighter than page)
+  --tq-header-bg: #f0f4ff;               // Blue-tinted header strip
+}

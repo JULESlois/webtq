@@ -1,0 +1,2259 @@
+{
+  "mobile_deep": {
+    "page_bg_samples": {
+      "top_header_(195,28)": [
+        245,
+        245,
+        245
+      ],
+      "between_rows_(195,180)": [
+        229,
+        241,
+        253
+      ],
+      "between_rows_(195,275)": [
+        255,
+        255,
+        255
+      ]
+    },
+    "my_avatar_edge_samples": {
+      "left_edge_(30,46)": [
+        19,
+        173,
+        233
+      ],
+      "right_edge_(65,46)": [
+        21,
+        156,
+        220
+      ],
+      "top_edge_(47,28)": [
+        12,
+        170,
+        235
+      ],
+      "bot_edge_(47,64)": [
+        24,
+        161,
+        229
+      ],
+      "dom": [
+        30,
+        166,
+        228
+      ]
+    },
+    "my_avatar_classified": "teal",
+    "search_pill_actual_bbox": [
+      0,
+      100,
+      389,
+      169
+    ],
+    "search_pill_height": 70,
+    "search_pill_width": null,
+    "search_pill_sample": [
+      232,
+      244,
+      255
+    ],
+    "non_white_row_bands": [
+      [
+        180,
+        194
+      ]
+    ],
+    "row_bg_samples": [
+      {
+        "y_range": [
+          180,
+          194
+        ],
+        "bg": [
+          232,
+          244,
+          255
+        ]
+      }
+    ],
+    "light_blue_tinted_rows": [],
+    "left_border_bbox": null,
+    "green_dot_under_my": {
+      "n": 7,
+      "x0": 79,
+      "y0": 60,
+      "x1": 84,
+      "y1": 61,
+      "w": 6,
+      "h": 2,
+      "cx": 81,
+      "cy": 60,
+      "sample_rgb": [
+        65,
+        183,
+        125
+      ]
+    },
+    "green_dot_left_of_my": null,
+    "green_dot_header": {
+      "n": 7,
+      "x0": 79,
+      "y0": 60,
+      "x1": 84,
+      "y1": 61,
+      "w": 6,
+      "h": 2,
+      "cx": 81,
+      "cy": 60,
+      "sample_rgb": [
+        65,
+        183,
+        125
+      ]
+    },
+    "row_avatars": [
+      {
+        "name": "林晚晴",
+        "y_center": 215,
+        "dominant_rgb": [
+          252,
+          146,
+          92
+        ],
+        "classified": "orange",
+        "sample_left_edge": [
+          255,
+          254,
+          255
+        ],
+        "sample_center": [
+          255,
+          141,
+          70
+        ],
+        "sample_right_edge": [
+          249,
+          134,
+          67
+        ]
+      },
+      {
+        "name": "陈默",
+        "y_center": 247,
+        "dominant_rgb": [
+          251,
+          135,
+          85
+        ],
+        "classified": "orange",
+        "sample_left_edge": [
+          254,
+          254,
+          255
+        ],
+        "sample_center": [
+          255,
+          125,
+          67
+        ],
+        "sample_right_edge": [
+          254,
+          119,
+          63
+        ]
+      },
+      {
+        "name": "产品讨论组",
+        "y_center": 289,
+        "dominant_rgb": [
+          114,
+          199,
+          57
+        ],
+        "classified": "green",
+        "sample_left_edge": [
+          255,
+          254,
+          247
+        ],
+        "sample_center": [
+          113,
+          204,
+          41
+        ],
+        "sample_right_edge": [
+          106,
+          196,
+          46
+        ]
+      },
+      {
+        "name": "周子昂",
+        "y_center": 319,
+        "dominant_rgb": [
+          107,
+          194,
+          68
+        ],
+        "classified": "green",
+        "sample_left_edge": [
+          255,
+          253,
+          255
+        ],
+        "sample_center": [
+          100,
+          189,
+          59
+        ],
+        "sample_right_edge": [
+          90,
+          185,
+          67
+        ]
+      },
+      {
+        "name": "前端交流群",
+        "y_center": 363,
+        "dominant_rgb": [
+          163,
+          103,
+          188
+        ],
+        "classified": "purple",
+        "sample_left_edge": [
+          254,
+          254,
+          254
+        ],
+        "sample_center": [
+          149,
+          84,
+          186
+        ],
+        "sample_right_edge": [
+          147,
+          72,
+          175
+        ]
+      },
+      {
+        "name": "苏小满",
+        "y_center": 395,
+        "dominant_rgb": [
+          151,
+          89,
+          177
+        ],
+        "classified": "purple",
+        "sample_left_edge": [
+          255,
+          255,
+          253
+        ],
+        "sample_center": [
+          146,
+          79,
+          176
+        ],
+        "sample_right_edge": [
+          144,
+          73,
+          177
+        ]
+      },
+      {
+        "name": "沈亦舟",
+        "y_center": 454,
+        "dominant_rgb": [
+          11,
+          173,
+          193
+        ],
+        "classified": "teal",
+        "sample_left_edge": [
+          35,
+          172,
+          178
+        ],
+        "sample_center": [
+          209,
+          255,
+          255
+        ],
+        "sample_right_edge": [
+          2,
+          164,
+          189
+        ]
+      },
+      {
+        "name": "唐雪",
+        "y_center": 691,
+        "dominant_rgb": [
+          136,
+          183,
+          89
+        ],
+        "classified": "green",
+        "sample_left_edge": [
+          255,
+          255,
+          250
+        ],
+        "sample_center": [
+          121,
+          174,
+          68
+        ],
+        "sample_right_edge": [
+          112,
+          168,
+          57
+        ]
+      }
+    ],
+    "red_badge_clusters": [
+      {
+        "bbox": [
+          342,
+          390,
+          343,
+          397
+        ],
+        "n": 11
+      },
+      {
+        "bbox": [
+          344,
+          248,
+          344,
+          248
+        ],
+        "n": 1
+      },
+      {
+        "bbox": [
+          344,
+          388,
+          344,
+          399
+        ],
+        "n": 12
+      },
+      {
+        "bbox": [
+          345,
+          387,
+          345,
+          400
+        ],
+        "n": 14
+      },
+      {
+        "bbox": [
+          346,
+          387,
+          346,
+          400
+        ],
+        "n": 12
+      },
+      {
+        "bbox": [
+          347,
+          386,
+          347,
+          400
+        ],
+        "n": 11
+      },
+      {
+        "bbox": [
+          348,
+          386,
+          348,
+          389
+        ],
+        "n": 4
+      },
+      {
+        "bbox": [
+          348,
+          398,
+          348,
+          401
+        ],
+        "n": 4
+      },
+      {
+        "bbox": [
+          349,
+          243,
+          349,
+          243
+        ],
+        "n": 1
+      },
+      {
+        "bbox": [
+          349,
+          386,
+          349,
+          389
+        ],
+        "n": 4
+      },
+      {
+        "bbox": [
+          349,
+          398,
+          349,
+          401
+        ],
+        "n": 4
+      },
+      {
+        "bbox": [
+          350,
+          236,
+          350,
+          244
+        ],
+        "n": 2
+      },
+      {
+        "bbox": [
+          350,
+          385,
+          350,
+          401
+        ],
+        "n": 15
+      },
+      {
+        "bbox": [
+          351,
+          243,
+          351,
+          245
+        ],
+        "n": 2
+      },
+      {
+        "bbox": [
+          351,
+          386,
+          351,
+          402
+        ],
+        "n": 15
+      },
+      {
+        "bbox": [
+          352,
+          244,
+          352,
+          245
+        ],
+        "n": 2
+      },
+      {
+        "bbox": [
+          352,
+          386,
+          352,
+          402
+        ],
+        "n": 14
+      },
+      {
+        "bbox": [
+          353,
+          385,
+          353,
+          401
+        ],
+        "n": 12
+      },
+      {
+        "bbox": [
+          354,
+          246,
+          354,
+          246
+        ],
+        "n": 1
+      },
+      {
+        "bbox": [
+          354,
+          386,
+          354,
+          401
+        ],
+        "n": 10
+      },
+      {
+        "bbox": [
+          355,
+          247,
+          355,
+          247
+        ],
+        "n": 1
+      },
+      {
+        "bbox": [
+          355,
+          386,
+          355,
+          401
+        ],
+        "n": 9
+      },
+      {
+        "bbox": [
+          356,
+          249,
+          356,
+          249
+        ],
+        "n": 1
+      },
+      {
+        "bbox": [
+          356,
+          386,
+          356,
+          400
+        ],
+        "n": 9
+      },
+      {
+        "bbox": [
+          357,
+          387,
+          357,
+          400
+        ],
+        "n": 11
+      },
+      {
+        "bbox": [
+          358,
+          387,
+          358,
+          400
+        ],
+        "n": 14
+      },
+      {
+        "bbox": [
+          359,
+          388,
+          359,
+          399
+        ],
+        "n": 12
+      },
+      {
+        "bbox": [
+          360,
+          390,
+          361,
+          397
+        ],
+        "n": 11
+      }
+    ],
+    "bottom_blue_label_clusters": [],
+    "bottom_tab_icons": {
+      "消息": {
+        "icon_at_(49,805)": [
+          8,
+          151,
+          217
+        ],
+        "label_at_(49,830)": [
+          242,
+          253,
+          255
+        ]
+      },
+      "频道": {
+        "icon_at_(147,805)": [
+          249,
+          249,
+          249
+        ],
+        "label_at_(147,830)": [
+          230,
+          230,
+          230
+        ]
+      },
+      "联系人": {
+        "icon_at_(245,805)": [
+          93,
+          93,
+          93
+        ],
+        "label_at_(245,830)": [
+          243,
+          243,
+          243
+        ]
+      },
+      "动态": {
+        "icon_at_(343,805)": [
+          255,
+          255,
+          255
+        ],
+        "label_at_(343,830)": [
+          251,
+          251,
+          251
+        ]
+      }
+    },
+    "dynamics_red_dot_bbox": {
+      "n": 15,
+      "x0": 355,
+      "y0": 796,
+      "x1": 358,
+      "y1": 799,
+      "w": 4,
+      "h": 4,
+      "cx": 356,
+      "cy": 797,
+      "sample_rgb": [
+        249,
+        108,
+        55
+      ]
+    },
+    "header_text_midgray_px": 18,
+    "header_text_dark_px": 5
+  },
+  "channels_deep": {
+    "page_bg_samples": {
+      "(450,28)": [
+        245,
+        245,
+        245
+      ],
+      "(450,400)": [
+        245,
+        245,
+        245
+      ],
+      "(700,400)": [
+        245,
+        245,
+        245
+      ]
+    },
+    "my_avatar_search_box": null,
+    "my_avatar_alt_sample_(845,35)": [
+      245,
+      245,
+      245
+    ],
+    "search_pill_bbox": {
+      "n": 21882,
+      "x0": 10,
+      "y0": 80,
+      "x1": 459,
+      "y1": 129,
+      "w": 450,
+      "h": 50,
+      "cx": 234,
+      "cy": 104,
+      "sample_rgb": [
+        245,
+        245,
+        245
+      ]
+    },
+    "section_text_pixels": 2,
+    "section_text_sample_(40,165)": [
+      255,
+      115,
+      90
+    ],
+    "card1_red_bbox": {
+      "n": 5800,
+      "x0": 26,
+      "y0": 165,
+      "x1": 123,
+      "y1": 229,
+      "w": 98,
+      "h": 65,
+      "cx": 74,
+      "cy": 197,
+      "sample_rgb": [
+        255,
+        225,
+        231
+      ]
+    },
+    "card1_red_sample": [
+      255,
+      240,
+      243
+    ],
+    "card1_text_px_count": 36,
+    "card1_follow_text_px": 5,
+    "card2_blue_bbox": {
+      "n": 3234,
+      "x0": 175,
+      "y0": 165,
+      "x1": 318,
+      "y1": 230,
+      "w": 144,
+      "h": 66,
+      "cx": 246,
+      "cy": 197,
+      "sample_rgb": [
+        14,
+        115,
+        171
+      ]
+    },
+    "card2_blue_sample": [
+      12,
+      113,
+      169
+    ],
+    "card3_purple_bbox": {
+      "n": 649,
+      "x0": 325,
+      "y0": 165,
+      "x1": 347,
+      "y1": 230,
+      "w": 23,
+      "h": 66,
+      "cx": 336,
+      "cy": 197,
+      "sample_rgb": [
+        120,
+        79,
+        137
+      ]
+    },
+    "card3_purple_sample": [
+      245,
+      245,
+      245
+    ],
+    "row_科技资讯_avatar": {
+      "y": 425,
+      "dom": [
+        61,
+        140,
+        208
+      ],
+      "classified": "qq_blue",
+      "edge_samples": [
+        [
+          45,
+          142,
+          219
+        ],
+        [
+          40,
+          120,
+          205
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ]
+    },
+    "row_财经观察_avatar": {
+      "y": 490,
+      "dom": [
+        235,
+        117,
+        33
+      ],
+      "classified": "other(235,117,33)",
+      "edge_samples": [
+        [
+          249,
+          136,
+          44
+        ],
+        [
+          241,
+          113,
+          24
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ]
+    },
+    "row_职场成长_avatar": {
+      "y": 555,
+      "dom": [
+        85,
+        149,
+        89
+      ],
+      "classified": "green",
+      "edge_samples": [
+        [
+          88,
+          161,
+          90
+        ],
+        [
+          71,
+          144,
+          73
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ]
+    },
+    "follow_button_blue_px": 0,
+    "follow_button_text_px": 0,
+    "tab_频道_y680_blue": false,
+    "tab_频道_y650_blue": false,
+    "tab_频道_icon_sample": [
+      255,
+      255,
+      255
+    ],
+    "tab_频道_label_sample": [
+      255,
+      255,
+      253
+    ],
+    "tab_blue_clusters_y680": [],
+    "dynamics_red_dot_bbox": null
+  },
+  "contacts_deep": {
+    "page_bg_samples": {
+      "(450,28)": [
+        245,
+        245,
+        245
+      ],
+      "(450,400)": [
+        245,
+        245,
+        245
+      ],
+      "(700,400)": [
+        245,
+        245,
+        245
+      ]
+    },
+    "my_avatar_search_box": null,
+    "my_avatar_alt_sample": [
+      245,
+      245,
+      245
+    ],
+    "search_pill_bbox": {
+      "n": 22526,
+      "x0": 10,
+      "y0": 80,
+      "x1": 469,
+      "y1": 129,
+      "w": 460,
+      "h": 50,
+      "cx": 239,
+      "cy": 104,
+      "sample_rgb": [
+        245,
+        245,
+        245
+      ]
+    },
+    "az_samples_by_y": {
+      "y180_(?)": [
+        245,
+        245,
+        245
+      ],
+      "y200_(?)": [
+        245,
+        245,
+        245
+      ],
+      "y250_(?)": [
+        245,
+        245,
+        245
+      ],
+      "y300_(?)": [
+        245,
+        245,
+        245
+      ],
+      "y400_(?)": [
+        245,
+        245,
+        245
+      ],
+      "y500_(?)": [
+        245,
+        245,
+        245
+      ],
+      "y570_(?)": [
+        245,
+        245,
+        245
+      ]
+    },
+    "az_letter_y_count": 0,
+    "right_edge_scan": {
+      "420": [
+        245,
+        245,
+        245
+      ],
+      "425": [
+        245,
+        245,
+        245
+      ],
+      "430": [
+        245,
+        245,
+        245
+      ],
+      "435": [
+        245,
+        245,
+        245
+      ],
+      "440": [
+        245,
+        245,
+        245
+      ],
+      "445": [
+        245,
+        245,
+        245
+      ],
+      "450": [
+        245,
+        245,
+        245
+      ],
+      "455": [
+        245,
+        245,
+        245
+      ],
+      "460": [
+        245,
+        245,
+        245
+      ],
+      "465": [
+        245,
+        245,
+        245
+      ],
+      "470": [
+        245,
+        245,
+        245
+      ],
+      "475": [
+        245,
+        245,
+        245
+      ],
+      "480": [
+        245,
+        245,
+        245
+      ],
+      "485": [
+        245,
+        245,
+        245
+      ],
+      "490": [
+        245,
+        245,
+        245
+      ],
+      "495": [
+        245,
+        245,
+        245
+      ],
+      "500": [
+        245,
+        245,
+        245
+      ],
+      "505": [
+        245,
+        245,
+        245
+      ]
+    },
+    "section_新朋友_header_text_px": 2,
+    "section_我的群聊_header_text_px": 2,
+    "section_我的好友_header_text_px": 129,
+    "row_新朋友_新_avatar": {
+      "y": 220,
+      "dom": [
+        175,
+        175,
+        175
+      ],
+      "classified": "other(175,175,175)",
+      "edge_samples": [
+        [
+          245,
+          245,
+          245
+        ],
+        [
+          245,
+          245,
+          245
+        ],
+        [
+          245,
+          245,
+          245
+        ]
+      ]
+    },
+    "row_产品讨论组_产_avatar": {
+      "y": 343,
+      "dom": [
+        16,
+        168,
+        186
+      ],
+      "classified": "teal",
+      "edge_samples": [
+        [
+          0,
+          178,
+          199
+        ],
+        [
+          10,
+          166,
+          188
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ]
+    },
+    "row_前端交流群_前_avatar": {
+      "y": 413,
+      "dom": [
+        210,
+        59,
+        116
+      ],
+      "classified": "pink",
+      "edge_samples": [
+        [
+          221,
+          27,
+          98
+        ],
+        [
+          218,
+          35,
+          102
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ]
+    },
+    "row_周末爬山小队_周_avatar": {
+      "y": 483,
+      "dom": [
+        36,
+        173,
+        235
+      ],
+      "classified": "teal",
+      "edge_samples": [
+        [
+          255,
+          254,
+          251
+        ],
+        [
+          249,
+          253,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ]
+    },
+    "row_林晚晴_林_avatar": {
+      "y": 615,
+      "dom": [
+        156,
+        97,
+        179
+      ],
+      "classified": "purple",
+      "edge_samples": [
+        [
+          183,
+          149,
+          199
+        ],
+        [
+          173,
+          129,
+          188
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ]
+    },
+    "row_陈默_陈_avatar": {
+      "y": 678,
+      "dom": [
+        98,
+        98,
+        98
+      ],
+      "classified": "other(98,98,98)",
+      "edge_samples": [
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          251,
+          251,
+          251
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ]
+    },
+    "lin_green_dot": null,
+    "chen_green_dot": null,
+    "new_friend_red_badge": null,
+    "tab_contacts_y680_blue": false,
+    "tab_contacts_y650_blue": false,
+    "tab_blue_clusters_y680": []
+  },
+  "dynamics_tablet_deep": {
+    "file": "dynamics-tab.jpg",
+    "size": [
+      900,
+      700
+    ],
+    "page_bg_samples": {
+      "(200,28)": [
+        245,
+        245,
+        245
+      ],
+      "(200,400)": [
+        238,
+        232,
+        234
+      ],
+      "(W-100,400)": [
+        245,
+        245,
+        245
+      ]
+    },
+    "my_avatar_search": null,
+    "camera_icon": null,
+    "search_pill_bbox": {
+      "n": 39066,
+      "x0": 10,
+      "y0": 80,
+      "x1": 879,
+      "y1": 129,
+      "w": 870,
+      "h": 50,
+      "cx": 444,
+      "cy": 104,
+      "sample_rgb": [
+        245,
+        245,
+        245
+      ]
+    },
+    "shen_avatar_samples": [
+      [
+        -20,
+        -20,
+        [
+          251,
+          255,
+          248
+        ]
+      ],
+      [
+        -20,
+        -10,
+        [
+          248,
+          255,
+          255
+        ]
+      ],
+      [
+        -20,
+        0,
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      [
+        -20,
+        10,
+        [
+          255,
+          255,
+          253
+        ]
+      ],
+      [
+        -20,
+        20,
+        [
+          255,
+          253,
+          248
+        ]
+      ],
+      [
+        -10,
+        -20,
+        [
+          240,
+          139,
+          5
+        ]
+      ],
+      [
+        -10,
+        -10,
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      [
+        -10,
+        0,
+        [
+          228,
+          228,
+          228
+        ]
+      ],
+      [
+        -10,
+        10,
+        [
+          213,
+          217,
+          220
+        ]
+      ],
+      [
+        -10,
+        20,
+        [
+          255,
+          251,
+          232
+        ]
+      ],
+      [
+        0,
+        -20,
+        [
+          247,
+          134,
+          0
+        ]
+      ],
+      [
+        0,
+        -10,
+        [
+          255,
+          254,
+          255
+        ]
+      ],
+      [
+        0,
+        0,
+        [
+          110,
+          110,
+          110
+        ]
+      ],
+      [
+        0,
+        10,
+        [
+          255,
+          250,
+          245
+        ]
+      ],
+      [
+        0,
+        20,
+        [
+          255,
+          254,
+          251
+        ]
+      ]
+    ],
+    "shen_avatar_dom": [
+      155,
+      132,
+      109
+    ],
+    "shen_avatar_classified": "other(155,132,109)",
+    "nine_grid_tiles": [
+      {
+        "r": 0,
+        "c": 0,
+        "center_rgb": [
+          140,
+          153,
+          188
+        ],
+        "avg_luma": 171.9,
+        "variance": 3697.2,
+        "is_image": true
+      },
+      {
+        "r": 0,
+        "c": 1,
+        "center_rgb": [
+          207,
+          150,
+          107
+        ],
+        "avg_luma": 195.4,
+        "variance": 3304.8,
+        "is_image": true
+      },
+      {
+        "r": 0,
+        "c": 2,
+        "center_rgb": [
+          137,
+          121,
+          98
+        ],
+        "avg_luma": 141.3,
+        "variance": 7036.3,
+        "is_image": true
+      },
+      {
+        "r": 1,
+        "c": 0,
+        "center_rgb": [
+          160,
+          30,
+          68
+        ],
+        "avg_luma": 98.1,
+        "variance": 3804.0,
+        "is_image": true
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "center_rgb": [
+          167,
+          147,
+          158
+        ],
+        "avg_luma": 136.2,
+        "variance": 2089.6,
+        "is_image": true
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "center_rgb": [
+          45,
+          39,
+          39
+        ],
+        "avg_luma": 88.2,
+        "variance": 4458.4,
+        "is_image": true
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "center_rgb": [
+          40,
+          104,
+          139
+        ],
+        "avg_luma": 151.1,
+        "variance": 6330.1,
+        "is_image": true
+      },
+      {
+        "r": 2,
+        "c": 1,
+        "center_rgb": [
+          100,
+          91,
+          94
+        ],
+        "avg_luma": 156.9,
+        "variance": 5923.7,
+        "is_image": true
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "center_rgb": [
+          118,
+          97,
+          94
+        ],
+        "avg_luma": 140.4,
+        "variance": 7315.0,
+        "is_image": true
+      }
+    ],
+    "nine_grid_image_count": 9,
+    "card1_white_bbox": {
+      "n": 80197,
+      "x0": 0,
+      "y0": 140,
+      "x1": 359,
+      "y1": 689,
+      "w": 360,
+      "h": 550,
+      "cx": 179,
+      "cy": 414,
+      "sample_rgb": [
+        142,
+        120,
+        123
+      ]
+    },
+    "like_count_text_px": 83,
+    "comment_count_text_px": 63,
+    "share_count_text_px": 40,
+    "tab_dynamics_label_blue": false,
+    "tab_dynamics_label_sample": [
+      255,
+      255,
+      255
+    ],
+    "tab_dynamics_icon_sample": [
+      255,
+      255,
+      255
+    ],
+    "dynamics_red_dot_bbox": null
+  },
+  "dynamics_mobile_deep": {
+    "file": "dynamics-tab-mobile.jpg",
+    "size": [
+      390,
+      844
+    ],
+    "page_bg_samples": {
+      "(200,28)": [
+        245,
+        245,
+        245
+      ],
+      "(200,400)": [
+        215,
+        194,
+        189
+      ],
+      "(W-100,400)": [
+        178,
+        164,
+        137
+      ]
+    },
+    "my_avatar_search": {
+      "n": 721,
+      "x0": 339,
+      "y0": 13,
+      "x1": 372,
+      "y1": 46,
+      "w": 34,
+      "h": 34,
+      "cx": 355,
+      "cy": 29,
+      "sample_rgb": [
+        140,
+        208,
+        231
+      ]
+    },
+    "camera_icon": null,
+    "search_pill_bbox": {
+      "n": 13228,
+      "x0": 10,
+      "y0": 80,
+      "x1": 369,
+      "y1": 129,
+      "w": 360,
+      "h": 50,
+      "cx": 189,
+      "cy": 104,
+      "sample_rgb": [
+        245,
+        245,
+        245
+      ]
+    },
+    "shen_avatar_samples": [
+      [
+        -20,
+        -20,
+        [
+          251,
+          255,
+          248
+        ]
+      ],
+      [
+        -20,
+        -10,
+        [
+          248,
+          255,
+          255
+        ]
+      ],
+      [
+        -20,
+        0,
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      [
+        -20,
+        10,
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      [
+        -20,
+        20,
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      [
+        -10,
+        -20,
+        [
+          240,
+          139,
+          5
+        ]
+      ],
+      [
+        -10,
+        -10,
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      [
+        -10,
+        0,
+        [
+          228,
+          228,
+          228
+        ]
+      ],
+      [
+        -10,
+        10,
+        [
+          216,
+          216,
+          216
+        ]
+      ],
+      [
+        -10,
+        20,
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      [
+        0,
+        -20,
+        [
+          247,
+          134,
+          0
+        ]
+      ],
+      [
+        0,
+        -10,
+        [
+          255,
+          254,
+          255
+        ]
+      ],
+      [
+        0,
+        0,
+        [
+          110,
+          110,
+          110
+        ]
+      ],
+      [
+        0,
+        10,
+        [
+          252,
+          252,
+          252
+        ]
+      ],
+      [
+        0,
+        20,
+        [
+          255,
+          255,
+          255
+        ]
+      ]
+    ],
+    "shen_avatar_dom": [
+      155,
+      132,
+      109
+    ],
+    "shen_avatar_classified": "other(155,132,109)",
+    "nine_grid_tiles": [
+      {
+        "r": 0,
+        "c": 0,
+        "center_rgb": [
+          45,
+          36,
+          37
+        ],
+        "avg_luma": 109.1,
+        "variance": 1648.6,
+        "is_image": true
+      },
+      {
+        "r": 0,
+        "c": 1,
+        "center_rgb": [
+          109,
+          104,
+          100
+        ],
+        "avg_luma": 115.6,
+        "variance": 285.3,
+        "is_image": true
+      },
+      {
+        "r": 0,
+        "c": 2,
+        "center_rgb": [
+          26,
+          28,
+          25
+        ],
+        "avg_luma": 46.0,
+        "variance": 162.3,
+        "is_image": true
+      },
+      {
+        "r": 1,
+        "c": 0,
+        "center_rgb": [
+          46,
+          47,
+          39
+        ],
+        "avg_luma": 105.3,
+        "variance": 3049.9,
+        "is_image": true
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "center_rgb": [
+          161,
+          149,
+          171
+        ],
+        "avg_luma": 99.4,
+        "variance": 1549.5,
+        "is_image": true
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "center_rgb": [
+          100,
+          89,
+          71
+        ],
+        "avg_luma": 136.1,
+        "variance": 4994.8,
+        "is_image": true
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "center_rgb": [
+          6,
+          88,
+          126
+        ],
+        "avg_luma": 132.0,
+        "variance": 904.4,
+        "is_image": true
+      },
+      {
+        "r": 2,
+        "c": 1,
+        "center_rgb": [
+          184,
+          182,
+          169
+        ],
+        "avg_luma": 164.7,
+        "variance": 2330.4,
+        "is_image": true
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "center_rgb": [
+          29,
+          79,
+          86
+        ],
+        "avg_luma": 63.1,
+        "variance": 759.9,
+        "is_image": true
+      }
+    ],
+    "nine_grid_image_count": 9,
+    "card1_white_bbox": {
+      "n": 74957,
+      "x0": 13,
+      "y0": 140,
+      "x1": 380,
+      "y1": 689,
+      "w": 368,
+      "h": 550,
+      "cx": 196,
+      "cy": 414,
+      "sample_rgb": [
+        161,
+        135,
+        136
+      ]
+    },
+    "like_count_text_px": 1,
+    "comment_count_text_px": 12,
+    "share_count_text_px": 4,
+    "tab_dynamics_label_blue": false,
+    "tab_dynamics_label_sample": [
+      158,
+      196,
+      207
+    ],
+    "tab_dynamics_icon_sample": [
+      227,
+      255,
+      255
+    ],
+    "dynamics_red_dot_bbox": {
+      "n": 16,
+      "x0": 355,
+      "y0": 796,
+      "x1": 358,
+      "y1": 799,
+      "w": 4,
+      "h": 4,
+      "cx": 356,
+      "cy": 797,
+      "sample_rgb": [
+        246,
+        109,
+        54
+      ]
+    }
+  },
+  "tablet_mid_deep": {
+    "full_avg_luma": 53.4,
+    "left_pane_luma_at_(250,400)": 255.0,
+    "right_pane_luma_at_(600,400)": 242.67299999999997,
+    "pane_divider_samples": {
+      "418": [
+        240,
+        243,
+        248
+      ],
+      "420": [
+        240,
+        243,
+        248
+      ],
+      "422": [
+        240,
+        243,
+        248
+      ],
+      "425": [
+        240,
+        243,
+        248
+      ],
+      "430": [
+        240,
+        243,
+        248
+      ],
+      "435": [
+        240,
+        243,
+        248
+      ]
+    },
+    "chat_top_avatar": {
+      "n": 277,
+      "x0": 440,
+      "y0": 9,
+      "x1": 450,
+      "y1": 42,
+      "w": 11,
+      "h": 34,
+      "cx": 445,
+      "cy": 25,
+      "sample_rgb": [
+        32,
+        164,
+        229
+      ]
+    },
+    "chat_top_avatar_dom": [
+      130,
+      199,
+      166
+    ],
+    "chat_top_avatar_classified": "green",
+    "chat_name_text_px": 171,
+    "chat_status_text_px": 0,
+    "chat_name_green_dot": null,
+    "chat_top_right_icon_clusters": [
+      [
+        758,
+        766
+      ],
+      [
+        772,
+        786
+      ],
+      [
+        794,
+        795
+      ],
+      [
+        807,
+        814
+      ],
+      [
+        821,
+        843
+      ],
+      [
+        853,
+        878
+      ]
+    ],
+    "chat_top_right_icon_count": 6,
+    "outbound_bubble_bbox": {
+      "n": 45827,
+      "x0": 444,
+      "y0": 60,
+      "x1": 887,
+      "y1": 599,
+      "w": 444,
+      "h": 540,
+      "cx": 665,
+      "cy": 329,
+      "sample_rgb": [
+        240,
+        243,
+        248
+      ]
+    },
+    "outbound_bubble_samples": {
+      "bubble1_(650,100)": [
+        240,
+        243,
+        248
+      ],
+      "bubble2_(700,160)": [
+        240,
+        243,
+        248
+      ],
+      "bubble3_(720,470)": [
+        243,
+        242,
+        250
+      ],
+      "bubble4_(700,560)": [
+        240,
+        243,
+        248
+      ]
+    },
+    "blue_text_pixel_count": 935,
+    "blue_text_bbox": [
+      446,
+      237,
+      864,
+      673
+    ],
+    "blue_text_y_range": [
+      237,
+      673
+    ],
+    "composer_bg": [
+      247,
+      248,
+      250
+    ],
+    "composer_send_btn_rgb": [
+      26,
+      150,
+      201
+    ],
+    "composer_send_btn_blue": true,
+    "composer_input_field_bbox": {
+      "n": 2407,
+      "x0": 440,
+      "y0": 640,
+      "x1": 869,
+      "y1": 681,
+      "w": 430,
+      "h": 42,
+      "cx": 654,
+      "cy": 660,
+      "sample_rgb": [
+        247,
+        248,
+        250
+      ]
+    },
+    "left_pane_row1_bg_at_x200_y220": [
+      255,
+      255,
+      255
+    ],
+    "left_pane_row1_left_border_at_x4_y220": [
+      254,
+      255,
+      255
+    ],
+    "left_pane_row1_left_border_blue": false,
+    "left_pane_row1_tint_check": [
+      [
+        254,
+        124,
+        66
+      ],
+      [
+        255,
+        255,
+        255
+      ],
+      [
+        255,
+        255,
+        255
+      ],
+      [
+        255,
+        255,
+        255
+      ],
+      [
+        255,
+        255,
+        255
+      ],
+      [
+        255,
+        255,
+        255
+      ],
+      [
+        255,
+        253,
+        255
+      ],
+      [
+        240,
+        243,
+        248
+      ]
+    ],
+    "left_pane_tab_message_label_blue": false,
+    "left_pane_tab_message_icon_sample": [
+      255,
+      255,
+      255
+    ],
+    "mask_check_left_pane_top": [
+      255,
+      255,
+      255
+    ],
+    "mask_check_left_pane_bot": [
+      255,
+      255,
+      255
+    ],
+    "mask_check_right_pane_top": [
+      240,
+      243,
+      248
+    ],
+    "mask_check_right_pane_bot": [
+      240,
+      243,
+      248
+    ]
+  },
+  "group_chat_deep": {
+    "full_avg_luma": 232.8,
+    "back_arrow_bbox": {
+      "n": 35,
+      "x0": 28,
+      "y0": 20,
+      "x1": 34,
+      "y1": 32,
+      "w": 7,
+      "h": 13,
+      "cx": 31,
+      "cy": 26,
+      "sample_rgb": [
+        251,
+        251,
+        251
+      ]
+    },
+    "back_arrow_sample": [
+      254,
+      254,
+      255
+    ],
+    "top_avatar_bbox": {
+      "n": 169,
+      "x0": 61,
+      "y0": 15,
+      "x1": 102,
+      "y1": 46,
+      "w": 42,
+      "h": 32,
+      "cx": 81,
+      "cy": 30,
+      "sample_rgb": [
+        16,
+        167,
+        224
+      ]
+    },
+    "top_avatar_sample": [
+      13,
+      167,
+      217
+    ],
+    "title_text_px": 136,
+    "subtitle_text_px": 175,
+    "more_icon_bbox": {
+      "n": 12,
+      "x0": 355,
+      "y0": 25,
+      "x1": 368,
+      "y1": 26,
+      "w": 14,
+      "h": 2,
+      "cx": 361,
+      "cy": 25,
+      "sample_rgb": [
+        27,
+        27,
+        27
+      ]
+    },
+    "inbound_bubble_white_at_(200,200)": true,
+    "inbound_bubble_white_at_(230,300)": false,
+    "outbound_blue_bbox": {
+      "n": 35151,
+      "x0": 152,
+      "y0": 245,
+      "x1": 379,
+      "y1": 799,
+      "w": 228,
+      "h": 555,
+      "cx": 265,
+      "cy": 522,
+      "sample_rgb": [
+        240,
+        243,
+        248
+      ]
+    },
+    "self_avatar_samples": [
+      [
+        251,
+        127,
+        63
+      ],
+      [
+        236,
+        245,
+        250
+      ],
+      [
+        240,
+        243,
+        248
+      ],
+      [
+        240,
+        243,
+        248
+      ],
+      [
+        255,
+        122,
+        65
+      ]
+    ],
+    "self_avatar_orange_count": 2,
+    "inbound_avatar_orange_count": 39,
+    "blue_read_text_count": 199,
+    "blue_read_text_bbox": [
+      339,
+      790,
+      367,
+      799
+    ],
+    "composer_bg": [
+      247,
+      248,
+      250
+    ],
+    "composer_emoji_at_(22,808)": [
+      247,
+      249,
+      244
+    ],
+    "composer_send_btn_rgb": [
+      158,
+      219,
+      255
+    ],
+    "composer_send_btn_blue": false,
+    "mask_check_top_bg_at_(195,90)": [
+      250,
+      250,
+      250
+    ],
+    "mask_check_mid_bg_at_(195,500)": [
+      255,
+      255,
+      255
+    ],
+    "mask_check_btm_bg_at_(195,790)": [
+      247,
+      248,
+      250
+    ]
+  }
+}

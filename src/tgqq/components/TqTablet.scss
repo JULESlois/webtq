@@ -1,0 +1,105 @@
+// QQ 9 tablet structure: left phone-like home column + independent right chat.
+// Active on body.is-tgqq.tq-tablet (viewport >= 600px, i.e. not mediaSizes.isMobile).
+//
+// Layout goal (QQ 9 Android tablet mode):
+//   [ home column (chatlist + bottom nav) ][ chat pane (topbar / bubbles / input) ]
+// The left column keeps tweb's own chat list; the shell (bottom nav + tab
+// pages) is pinned over the column's footprint; #column-center becomes the
+// independent QQ-styled chat pane.
+
+// ---- Flat tablet chrome ----------------------------------------------------
+// Replace the per-peer wallpaper with the QQ page surface so the two panes
+// sit on a clean light/dark page background.
+body.is-tgqq.tq-tablet {
+  background: var(--tq-surface-page);
+}
+
+// Folders sidebar has no QQ-tablet equivalent — hide it and zero the offset
+// the left column / chat use to reserve its space.
+body.is-tgqq.tq-tablet #page-chats {
+  --folders-sidebar-offset: 0px;
+}
+
+body.is-tgqq.tq-tablet .folders-sidebar {
+  display: none !important;
+}
+
+// ---- Left home column footprint --------------------------------------------
+// Pin the mobile shell (bottom nav + tab pages) exactly over #column-left:
+// it shares the column's page padding and visual width, so on tablet the nav
+// reads as part of the left home column instead of a full-screen bar.
+body.is-tgqq.tq-tablet .tq-shell {
+  position: fixed;
+  inset: 0;
+  inset-inline-end: auto;
+  width: var(--left-column-visual-width);
+}
+
+// ---- 600-925px: drawer -> side-by-side -------------------------------------
+// tweb floats #column-left over the chat in this range. QQ tablet keeps both
+// visible side-by-side, so pull the drawer back into flow and sit the chat
+// directly to its right (inset reposition replaces the translateX slide).
+body.is-tgqq.tq-tablet #column-left {
+  position: relative;
+  transform: none !important;
+  opacity: 1 !important;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border-inline-end: 1px solid var(--tq-border-light);
+}
+
+body.is-tgqq.tq-tablet #column-center {
+  --page-chats-padding: 0px;
+  --chat-bubbles-padding: 1rem;
+  --chat-width: min(100%, 53rem);
+  inset: 0;
+  inset-inline-start: var(--left-column-visual-width);
+  transform: none !important;
+}
+
+body.is-tgqq.tq-tablet .bubbles {
+  // tweb's #column-center .bubbles rule (ID specificity) sets symmetric
+  // counter-insets for its docked layout; force the full-middle-zone span.
+  inset-inline: 0 !important;
+}
+
+// ---- Tablet chat topbar ----------------------------------------------------
+// With the home column always visible there is no back-navigation; hide the
+// close button and reclaim its padding (QQ tablet chat has no back arrow).
+body.is-tgqq.tq-tablet .topbar .sidebar-close-button {
+  display: none !important;
+}
+
+body.is-tgqq.tq-tablet .topbar .chat-info {
+  padding-inline-start: 0 !important;
+}
+
+// ---- Tablet right-pane empty state -----------------------------------------
+// QQ 9 tablet shows a penguin + chat-bubble glyph when no conversation is
+// open (see ref qq9-tablet/001.png). Pure-CSS placeholder: visible only
+// while #column-center contains no active chat.
+body.is-tgqq.tq-tablet #column-center:not(:has(.chat.active))::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22250%22%20height%3D%22120%22%20viewBox%3D%220%200%20250%20120%22%20fill%3D%22none%22%3E%0A%3Crect%20x%3D%228%22%20y%3D%2212%22%20width%3D%2294%22%20height%3D%2260%22%20rx%3D%2218%22%20stroke%3D%22%23B9C2D0%22%20stroke-width%3D%222.5%22%2F%3E%0A%3Cpath%20d%3D%22M36%2070l-13%2018%2029-16z%22%20fill%3D%22%23f5f5f5%22%20stroke%3D%22%23B9C2D0%22%20stroke-width%3D%222.5%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Ccircle%20cx%3D%2239%22%20cy%3D%2242%22%20r%3D%224.5%22%20fill%3D%22%23B9C2D0%22%2F%3E%0A%3Ccircle%20cx%3D%2259%22%20cy%3D%2242%22%20r%3D%224.5%22%20fill%3D%22%23B9C2D0%22%2F%3E%0A%3Ccircle%20cx%3D%2279%22%20cy%3D%2242%22%20r%3D%224.5%22%20fill%3D%22%23B9C2D0%22%2F%3E%0A%3Crect%20x%3D%22148%22%20y%3D%2212%22%20width%3D%2294%22%20height%3D%2260%22%20rx%3D%2218%22%20stroke%3D%22%23B9C2D0%22%20stroke-width%3D%222.5%22%2F%3E%0A%3Cpath%20d%3D%22M176%2070l-13%2018%2029-16z%22%20fill%3D%22%23f5f5f5%22%20stroke%3D%22%23B9C2D0%22%20stroke-width%3D%222.5%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M165%2032h60M165%2046h40%22%20stroke%3D%22%23B9C2D0%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M125%2072c-15%200-24%2010-24%2024%200%2017%209%2026%2024%2026s24-9%2024-26c0-14-9-24-24-24z%22%20fill%3D%22%238E99AF%22%2F%3E%0A%3Cellipse%20cx%3D%22125%22%20cy%3D%22106%22%20rx%3D%2211%22%20ry%3D%2212%22%20fill%3D%22%23f5f5f5%22%2F%3E%0A%3Ccircle%20cx%3D%22114%22%20cy%3D%2287%22%20r%3D%224%22%20fill%3D%22%23f5f5f5%22%2F%3E%0A%3Ccircle%20cx%3D%22136%22%20cy%3D%2287%22%20r%3D%224%22%20fill%3D%22%23f5f5f5%22%2F%3E%0A%3Ccircle%20cx%3D%22115%22%20cy%3D%2286.5%22%20r%3D%221.8%22%20fill%3D%22%234A5263%22%2F%3E%0A%3Ccircle%20cx%3D%22135%22%20cy%3D%2286.5%22%20r%3D%221.8%22%20fill%3D%22%234A5263%22%2F%3E%0A%3Cpath%20d%3D%22M120%2094h10l-5%205.5z%22%20fill%3D%22%23F5A623%22%2F%3E%0A%3Cpath%20d%3D%22M112%20116l-3%205h7l-1.5-5z%22%20fill%3D%22%23F5A623%22%2F%3E%0A%3Cpath%20d%3D%22M138%20116l-3%205h7l-1.5-5z%22%20fill%3D%22%23F5A623%22%2F%3E%0A%3Cpath%20d%3D%22M101%2098c-5%202-7%207-4.5%2011%201.5%202.5%204%203%204%203%22%20stroke%3D%22%238E99AF%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M149%2098c5%202%207%207%204.5%2011-1.5%202.5-4%203-4%203%22%20stroke%3D%22%238E99AF%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E") center 42% / 250px auto no-repeat;
+  pointer-events: none;
+}
+
+body.is-tgqq.tq-tablet #column-center:not(:has(.chat.active))::after {
+  content: '选择会话开始聊天';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin-top: 96px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--tq-text-tertiary);
+  pointer-events: none;
+}
+
+html.night body.is-tgqq.tq-tablet #column-center:not(:has(.chat.active))::before {
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22250%22%20height%3D%22120%22%20viewBox%3D%220%200%20250%20120%22%20fill%3D%22none%22%3E%0A%3Crect%20x%3D%228%22%20y%3D%2212%22%20width%3D%2294%22%20height%3D%2260%22%20rx%3D%2218%22%20stroke%3D%22%235C6678%22%20stroke-width%3D%222.5%22%2F%3E%0A%3Cpath%20d%3D%22M36%2070l-13%2018%2029-16z%22%20fill%3D%22%231a1a1a%22%20stroke%3D%22%235C6678%22%20stroke-width%3D%222.5%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Ccircle%20cx%3D%2239%22%20cy%3D%2242%22%20r%3D%224.5%22%20fill%3D%22%235C6678%22%2F%3E%0A%3Ccircle%20cx%3D%2259%22%20cy%3D%2242%22%20r%3D%224.5%22%20fill%3D%22%235C6678%22%2F%3E%0A%3Ccircle%20cx%3D%2279%22%20cy%3D%2242%22%20r%3D%224.5%22%20fill%3D%22%235C6678%22%2F%3E%0A%3Crect%20x%3D%22148%22%20y%3D%2212%22%20width%3D%2294%22%20height%3D%2260%22%20rx%3D%2218%22%20stroke%3D%22%235C6678%22%20stroke-width%3D%222.5%22%2F%3E%0A%3Cpath%20d%3D%22M176%2070l-13%2018%2029-16z%22%20fill%3D%22%231a1a1a%22%20stroke%3D%22%235C6678%22%20stroke-width%3D%222.5%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M165%2032h60M165%2046h40%22%20stroke%3D%22%235C6678%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M125%2072c-15%200-24%2010-24%2024%200%2017%209%2026%2024%2026s24-9%2024-26c0-14-9-24-24-24z%22%20fill%3D%22%236E7A91%22%2F%3E%0A%3Cellipse%20cx%3D%22125%22%20cy%3D%22106%22%20rx%3D%2211%22%20ry%3D%2212%22%20fill%3D%22%231a1a1a%22%2F%3E%0A%3Ccircle%20cx%3D%22114%22%20cy%3D%2287%22%20r%3D%224%22%20fill%3D%22%231a1a1a%22%2F%3E%0A%3Ccircle%20cx%3D%22136%22%20cy%3D%2287%22%20r%3D%224%22%20fill%3D%22%231a1a1a%22%2F%3E%0A%3Ccircle%20cx%3D%22115%22%20cy%3D%2286.5%22%20r%3D%221.8%22%20fill%3D%22%23C9D2E0%22%2F%3E%0A%3Ccircle%20cx%3D%22135%22%20cy%3D%2286.5%22%20r%3D%221.8%22%20fill%3D%22%23C9D2E0%22%2F%3E%0A%3Cpath%20d%3D%22M120%2094h10l-5%205.5z%22%20fill%3D%22%23FFB84D%22%2F%3E%0A%3Cpath%20d%3D%22M112%20116l-3%205h7l-1.5-5z%22%20fill%3D%22%23FFB84D%22%2F%3E%0A%3Cpath%20d%3D%22M138%20116l-3%205h7l-1.5-5z%22%20fill%3D%22%23FFB84D%22%2F%3E%0A%3Cpath%20d%3D%22M101%2098c-5%202-7%207-4.5%2011%201.5%202.5%204%203%204%203%22%20stroke%3D%22%236E7A91%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M149%2098c5%202%207%207%204.5%2011-1.5%202.5-4%203-4%203%22%20stroke%3D%22%236E7A91%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E") center 42% / 250px auto no-repeat;
+}

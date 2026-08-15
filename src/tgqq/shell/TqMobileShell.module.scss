@@ -1,0 +1,24 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  pointer-events: none;
+}
+
+.root:global(.tq-shell-active) {
+  display: flex;
+  flex-direction: column;
+}
+
+.pages {
+  position: absolute;
+  inset: 0 0 calc(var(--tq-nav-height) + var(--tq-nav-safe-bottom)) 0;
+  overflow-y: auto;
+  pointer-events: auto;
+  background: var(--tq-surface-page);
+}
+
+:global(body.is-tgqq.tq-shell-on #chatlist-container .folders-scrollable) {
+  padding-bottom: calc(var(--tq-nav-height) + var(--tq-nav-safe-bottom));
+}

@@ -247,7 +247,7 @@ export default class Chat extends EventListenerBase<{
 
     if(!this.excludeParts.elements) {
       this.container = document.createElement('div');
-      this.container.classList.add('chat', 'tabs-tab');
+      this.container.classList.add('chat', 'tabs-tab', 'is-tgqq-chat');
     }
 
     this.peerIdSignal = createSignal(this.peerId = NULL_PEER_ID);
@@ -942,6 +942,8 @@ export default class Chat extends EventListenerBase<{
 
     this.noForwards = noForwards;
     this.isLikeGroup = isLikeGroup;
+    // QQ skin: expose group-ness so CSS can show the own avatar only in group chats.
+    this.container.classList.toggle('is-tgqq-group', isLikeGroup);
     this.isAnyGroup = isRealGroup;
     this.isMegagroup = isMegagroup;
     this.isBroadcast = isBroadcast;

@@ -1,0 +1,365 @@
+// QQ 9.3 Chat List Styles
+// This overrides tweb's default chatlist styles when .is-tgqq is active
+
+// Apply QQ-style chat list globally
+body.is-tgqq.tq-dialog-skin {
+
+  // Chat list container adjustments
+  .chatlist-container {
+    // tweb's `#column-left #chatlist-container` (higher specificity) paints
+    // the container with --surface-color (white); QQ9 shows the gray page
+    // behind white row cards, so force the QQ surface here.
+    background: var(--tq-surface-page) !important;
+  }
+
+  ul.chatlist {
+    padding: 0;
+    gap: 0;
+  }
+
+  // Individual chat item - QQ style with more height
+  .chatlist-chat {
+    position: relative;
+    min-height: var(--tq-chatlist-item-height);
+    // tweb's .row-with-padding pushes the avatar to 72px in (desktop
+    // layout leftover); QQ9 pins the avatar to the left edge.
+    padding-inline-start: var(--tq-chatlist-padding) !important;
+    padding: var(--tq-chatlist-padding);
+    margin: 0;
+    border-radius: 0;
+    // tweb paints rows via `background: var(--background) !important`;
+    // drive that custom property so the QQ surfaces actually win.
+    --background: var(--tq-surface-primary);
+    background: var(--tq-surface-primary);
+    border-bottom: 1px solid var(--tq-divider);
+
+    // Remove default hover background, use QQ style
+    &:hover {
+      --background: var(--tq-interactive-hover) !important;
+    }
+
+    // Active state - QQ9 light-blue tint + left accent bar (dark text stays readable)
+    &.active {
+      --background: var(--tq-chatlist-active-bg) !important;
+      box-shadow: inset 3px 0 0 var(--tq-accent-primary);
+
+      // tweb paints active-row text white; restore QQ9 dark-on-light text
+      .row-title,
+      .row-subtitle,
+      .dialog-subtitle,
+      .dialog-subtitle-badge,
+      .dialog-subtitle-badge-pinned,
+      .dialog-subtitle-ico,
+      .row-title-right,
+      .user-title,
+      .user-last-message,
+      .message-status,
+      .text-highlight,
+      .premium-icon,
+      .verified-icon,
+      .sending-status-icon {
+        color: var(--tq-text-primary) !important;
+      }
+
+      .dialog-subtitle-badge,
+      .row-title-right {
+        color: var(--tq-text-tertiary) !important;
+      }
+
+      .badge.unread {
+        background-color: var(--tq-badge-bg) !important;
+        color: var(--tq-badge-text) !important;
+      }
+    }
+  }
+
+  // Avatar - larger size like QQ
+  .dialog-avatar {
+    position: relative;
+    width: var(--tq-chatlist-avatar-size);
+    height: var(--tq-chatlist-avatar-size);
+    flex-shrink: 0;
+
+    // QQ9 default avatar: flat gray circle + person silhouette
+    // (fixture avatars are plain .dialog-avatar with inline gradients)
+    background: var(--tq-avatar-bg) !important;
+    color: transparent !important;
+    border: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 8%;
+      left: 21%;
+      width: 58%;
+      height: 72%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Ccircle cx='32' cy='27' r='15' fill='%23909092'/%3E%3Cpath d='M32 46C25 46 14 55 8 70l48 0C74 55 63 46 56 46 45 46 39 46 32 46z' fill='%23909092'/%3E%3C/svg%3E") center / contain no-repeat;
+      pointer-events: none;
+    }
+
+    .avatar {
+      width: var(--tq-chatlist-avatar-size);
+      height: var(--tq-chatlist-avatar-size);
+    }
+
+    // Real app avatars use .avatar-gradient inside .dialog-avatar
+    .avatar-gradient {
+      position: relative;
+      background: var(--tq-avatar-bg) !important;
+      color: transparent !important;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 8%;
+        left: 21%;
+        width: 58%;
+        height: 72%;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Ccircle cx='32' cy='27' r='15' fill='%23909092'/%3E%3Cpath d='M32 46C25 46 14 55 8 70l48 0C74 55 63 46 56 46 45 46 39 46 32 46z' fill='%23909092'/%3E%3C/svg%3E") center / contain no-repeat;
+        pointer-events: none;
+      }
+    }
+  }
+
+  html.night & {
+    .dialog-avatar {
+      background: var(--tq-avatar-bg) !important;
+
+      &::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Ccircle cx='32' cy='27' r='15' fill='%23ffffff'/%3E%3Cpath d='M32 46C25 46 14 55 8 70l48 0C74 55 63 46 56 46 45 46 39 46 32 46z' fill='%23ffffff'/%3E%3C/svg%3E");
+      }
+
+      .avatar-gradient {
+        background: var(--tq-avatar-bg) !important;
+
+        &::before {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Ccircle cx='32' cy='27' r='15' fill='%23ffffff'/%3E%3Cpath d='M32 46C25 46 14 55 8 70l48 0C74 55 63 46 56 46 45 46 39 46 32 46z' fill='%23ffffff'/%3E%3C/svg%3E");
+        }
+      }
+    }
+  }
+
+  // Row structure adjustments
+  // tweb locks .row-row to 1.375rem and squeezes title/subtitle as grid items
+  // (they end up 2-4px tall + overflow:hidden, clipping all text/badges);
+  // QQ rows are 68px tall with both lines visible.
+  .row-row {
+    height: auto !important;
+    display: block !important;
+    gap: var(--tq-space-md);
+    // tweb sets position:relative on .row-row/.row-subtitle; reset so the
+    // unread badge (absolute) anchors to the row, not the text columns.
+    position: static !important;
+  }
+
+  .row-subtitle {
+    position: static !important;
+  }
+
+  .row-title,
+  .row-subtitle {
+    height: auto !important;
+  }
+
+  // Title section
+  .user-title {
+    font-size: var(--tq-font-size-lg);
+    font-weight: 500;
+    color: var(--tq-text-primary);
+    line-height: var(--tq-line-height-tight);
+  }
+
+  // Last message / subtitle
+  .user-last-message,
+  .row-subtitle {
+    font-size: var(--tq-font-size-sm);
+    color: var(--tq-text-secondary);
+    line-height: var(--tq-line-height-normal);
+    margin-top: var(--tq-space-xs);
+  }
+
+  // Time badge
+  .row-title-right,
+  .dialog-subtitle-badge {
+    font-size: var(--tq-font-size-xs);
+    color: var(--tq-text-tertiary);
+    // tweb animates the badge to scale(0) until JS adds .is-visible;
+    // QQ9 keeps timestamps permanently visible.
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  // Unread badge - QQ9 compact red pill on the avatar top-right corner
+  .badge.unread {
+    position: absolute;
+    top: 8px;
+    left: calc(var(--tq-chatlist-padding) + var(--tq-chatlist-avatar-size) - 10px);
+    z-index: 2;
+    background-color: var(--tq-badge-bg);
+    color: var(--tq-badge-text);
+    min-width: 16px;
+    height: 16px;
+    border-radius: var(--tq-radius-full);
+    font-size: 10px;
+    font-weight: 500;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // Mention badge - QQ @ style
+  .mention {
+    background-color: var(--tq-accent-warning) !important;
+    color: #fff;
+    min-width: 18px;
+    height: 18px;
+    border-radius: var(--tq-radius-full);
+    font-size: var(--tq-font-size-xs);
+    font-weight: 600;
+  }
+
+  // Pinned icon - QQ style
+  .dialog-subtitle-badge-pinned {
+    color: var(--tq-text-tertiary);
+    font-size: var(--tq-font-size-md);
+  }
+
+  // Muted icon
+  .dialog-muted-icon {
+    color: var(--tq-text-tertiary);
+    font-size: var(--tq-font-size-md);
+  }
+
+  // Message status icons (read/unread checks)
+  .message-status {
+    color: var(--tq-text-tertiary);
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+  }
+
+  // Draft label
+  .dialog-subtitle-draft {
+    color: var(--tq-accent-danger);
+    font-weight: 500;
+  }
+
+  // Typing indicator
+  .peer-typing-container {
+    color: var(--tq-accent-primary);
+    font-size: var(--tq-font-size-sm);
+  }
+
+  // Online indicator - QQ green dot
+  .dialog-avatar.is-online::after {
+    background-color: var(--tq-accent-online);
+    border: 2px solid var(--tq-surface-primary);
+    width: 12px;
+    height: 12px;
+  }
+
+  // Group call icon
+  .dialog-group-call-icon {
+    background-color: var(--tq-accent-success);
+    border-color: var(--tq-surface-primary);
+  }
+
+  // Archive section
+  .archived-dialog {
+    background: var(--tq-surface-secondary);
+    border-radius: var(--tq-radius-sm);
+    margin: var(--tq-space-sm);
+    padding: var(--tq-space-md);
+  }
+
+  // Empty state
+  .empty-placeholder-dialogs {
+    color: var(--tq-text-tertiary);
+
+    .empty-placeholder-title {
+      font-size: var(--tq-font-size-lg);
+      color: var(--tq-text-secondary);
+    }
+
+    .empty-placeholder-subtitle {
+      font-size: var(--tq-font-size-sm);
+      color: var(--tq-text-tertiary);
+    }
+  }
+
+  // Folders tabs - QQ style tabs
+  .folders-tabs {
+    background: var(--tq-surface-primary);
+    border-bottom: 1px solid var(--tq-divider);
+    padding: 0 var(--tq-space-md);
+
+    .folder-tab {
+      color: var(--tq-text-secondary);
+      font-size: var(--tq-font-size-md);
+      padding: var(--tq-space-md) var(--tq-space-lg);
+      border-radius: var(--tq-radius-sm) var(--tq-radius-sm) 0 0;
+      transition: all var(--tq-transition-fast);
+
+      &.active {
+        color: var(--tq-accent-primary);
+        background: var(--tq-surface-page);
+        font-weight: 500;
+      }
+
+      &:hover:not(.active) {
+        background: var(--tq-interactive-hover);
+      }
+    }
+  }
+
+  // Search in chat list - QQ9 light capsule, centered placeholder
+  .input-search {
+    background: var(--tq-search-bg);
+    border-radius: var(--tq-radius-xl);
+    border: none;
+    color: var(--tq-text-tertiary);
+    justify-content: center;
+    box-shadow: none;
+
+    &::placeholder {
+      color: var(--tq-text-tertiary);
+    }
+
+    .input-search-input {
+      text-align: center;
+    }
+  }
+
+  // Sidebar search only: tweb pins icon/placeholder absolutely to the left;
+  // pull them back into flex flow so "magnifier + placeholder" centers as a
+  // group, and let the input overlay the capsule invisibly for typing.
+  .sidebar-header .input-search {
+    .input-search-placeholder {
+      position: static;
+      inset-inline-start: auto;
+      transform: none;
+      z-index: auto;
+    }
+
+    .input-search-icon {
+      position: static;
+      z-index: 2;
+    }
+
+    .input-search-input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100% !important;
+      background: transparent !important;
+      border-color: transparent;
+      z-index: 2;
+
+      &:focus {
+        background-color: transparent;
+        border-color: transparent;
+      }
+    }
+  }
+}

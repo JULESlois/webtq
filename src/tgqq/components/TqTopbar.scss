@@ -1,0 +1,585 @@
+// QQ 9.3 Topbar Styles
+// This overrides tweb's default topbar styles when .is-tgqq is active
+
+body.is-tgqq.tq-chat-header {
+
+  // Keep the bubbles padding in sync with the taller QQ topbar
+  .chat {
+    --chat-topbar-height: var(--tq-topbar-height);
+  }
+
+  // Main topbar container
+  .topbar {
+    background: var(--tq-surface-primary) !important;
+    border-radius: 0;
+    box-shadow: 0 1px 0 var(--tq-border-light);
+    height: var(--tq-topbar-height) !important;
+    min-height: var(--tq-topbar-height) !important;
+    padding-inline: var(--tq-space-sm) !important;
+
+    // Remove default box shadow
+    --topbar-box-shadow: none;
+  }
+
+  // Back button - QQ style
+  .sidebar-close-button {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--tq-radius-full);
+    transition: background-color var(--tq-transition-fast);
+
+    &:hover {
+      background-color: var(--tq-interactive-hover);
+    }
+
+    &:active {
+      background-color: var(--tq-interactive-active);
+    }
+
+    // Icon styling
+    &::before {
+      color: var(--tq-text-primary);
+    }
+  }
+
+  // Chat info section
+  .chat-info {
+    padding-inline-start: 8px !important;
+
+    &-container {
+      height: var(--tq-topbar-height);
+      cursor: pointer;
+      transition: background-color var(--tq-transition-fast);
+      border-radius: var(--tq-radius-sm);
+      padding: var(--tq-space-xs);
+      margin-inline: calc(var(--tq-space-xs) * -1);
+
+      &:hover {
+        background-color: var(--tq-interactive-hover);
+      }
+
+      &:active {
+        background-color: var(--tq-interactive-active);
+      }
+    }
+  }
+
+  // Avatar in topbar
+  .topbar {
+    .person-avatar {
+      .avatar {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+
+  // Title section
+  .user-title {
+    font-size: var(--tq-font-size-lg) !important;
+    font-weight: 500 !important;
+    line-height: var(--tq-line-height-tight) !important;
+    color: var(--tq-text-primary);
+    max-width: 100%;
+  }
+
+  .peer-title {
+    color: var(--tq-text-primary);
+    font-weight: 500;
+  }
+
+  // Subtitle (online status, etc)
+  .topbar {
+    .person {
+      .bottom {
+        font-size: var(--tq-font-size-sm);
+        color: var(--tq-text-secondary);
+        line-height: var(--tq-line-height-tight);
+        margin-top: 2px;
+
+        .online {
+          color: var(--tq-text-secondary);
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  // QQ9 online status: replace the plain "在线" text with a green dot +
+  // "手机在线 · WiFi" status line (tweb only adds .online for online users,
+  // so offline last-seen text and group member counts are untouched).
+  .topbar {
+    .person {
+      .bottom {
+        .online {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 0;
+          line-height: var(--tq-line-height-tight);
+          color: var(--tq-text-secondary);
+
+          &::before {
+            content: '';
+            flex: none;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--tq-accent-online);
+            box-shadow: 0 0 0 2px var(--tq-surface-primary);
+          }
+
+          &::after {
+            content: '手机在线 · WiFi';
+            font-size: var(--tq-font-size-sm);
+            color: var(--tq-text-secondary);
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+
+  // QQ9 online dot on the topbar avatar (bottom-right edge), shown only
+  // while the private peer is online (same .online gate as above).
+  .topbar {
+    &:has(.person .bottom .online) {
+      .person-avatar {
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          inset-inline-end: -2px;
+          bottom: -2px;
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background: var(--tq-accent-online);
+          border: 2px solid var(--tq-surface-primary);
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  // Typing indicator
+  .topbar {
+    .user-typing {
+      color: var(--tq-accent-primary);
+      font-size: var(--tq-font-size-sm);
+    }
+  }
+
+  // Chat utilities (right side buttons)
+  .chat-utils {
+    gap: var(--tq-space-xs);
+
+    .btn-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--tq-radius-full);
+      transition: background-color var(--tq-transition-fast);
+      color: var(--tq-text-primary);
+
+      &:hover {
+        background-color: var(--tq-interactive-hover);
+      }
+
+      &:active {
+        background-color: var(--tq-interactive-active);
+      }
+
+      // Icon size
+      &::before {
+        font-size: 20px;
+        // QQ9 chat-utils icons are heavier line art than tweb's thin tgico
+        // glyphs; a hairline stroke thickens them without swapping icons.
+        -webkit-text-stroke: 0.4px currentColor;
+      }
+    }
+
+    // Menu toggle button
+    .btn-menu-toggle {
+      margin-inline-start: 0;
+    }
+  }
+
+  // Call buttons
+  .btn-call,
+  .btn-group-call {
+    color: var(--tq-text-primary);
+  }
+
+  // Search button
+  .btn-search {
+    color: var(--tq-text-primary);
+  }
+
+  // Join button - QQ style
+  .chat-join {
+    background-color: var(--tq-accent-primary);
+    color: #fff;
+    border-radius: var(--tq-radius-sm);
+    height: 32px;
+    padding: 0 var(--tq-space-lg);
+    font-size: var(--tq-font-size-md);
+    font-weight: 500;
+    transition: background-color var(--tq-transition-fast);
+
+    &:hover {
+      background-color: var(--tq-accent-primary-hover);
+    }
+
+    &:active {
+      background-color: var(--tq-accent-primary-active);
+    }
+  }
+
+  // Mute button
+  .chat-mute-button {
+    color: var(--tq-text-secondary);
+
+    &.is-muted {
+      color: var(--tq-accent-danger);
+    }
+  }
+
+  // Pinned message container
+  .pinned-container {
+    background-color: var(--tq-surface-secondary);
+    border-radius: 0;
+    border-bottom: 1px solid var(--tq-border-light);
+    padding: var(--tq-space-sm) var(--tq-space-md);
+
+    .pinned-message {
+      .pinned-message-border {
+        background-color: var(--tq-accent-primary);
+        width: 3px;
+        border-radius: 2px;
+      }
+
+      .pinned-message-title {
+        color: var(--tq-accent-primary);
+        font-weight: 500;
+        font-size: var(--tq-font-size-sm);
+      }
+
+      .pinned-message-subtitle {
+        color: var(--tq-text-secondary);
+        font-size: var(--tq-font-size-sm);
+      }
+    }
+  }
+
+  // Floating plates (call, audio, etc)
+  .topbar-floating-plates {
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid var(--tq-border-light);
+  }
+
+  // Pinned audio player
+  .pinned-audio {
+    background-color: var(--tq-surface-primary);
+    padding: var(--tq-space-sm) var(--tq-space-md);
+
+    .pinned-audio-title {
+      color: var(--tq-text-primary);
+      font-weight: 500;
+    }
+
+    .pinned-audio-subtitle {
+      color: var(--tq-text-secondary);
+      font-size: var(--tq-font-size-sm);
+    }
+  }
+
+  // Pinned call
+  .pinned-call {
+    background-color: var(--tq-accent-primary);
+    color: #fff;
+    padding: var(--tq-space-sm) var(--tq-space-md);
+    border-radius: 0;
+
+    .pinned-call-title {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .pinned-call-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: var(--tq-font-size-sm);
+    }
+  }
+
+  // Unread badge on back button
+  .back-unread-badge {
+    background-color: var(--tq-badge-bg);
+    color: var(--tq-badge-text);
+    border-radius: var(--tq-radius-full);
+    font-size: var(--tq-font-size-xs);
+    font-weight: 500;
+    padding: 2px 6px;
+    min-width: 18px;
+    height: 18px;
+  }
+
+  // Selector user (forwarding, selecting mode)
+  .selector-user {
+    color: var(--tq-text-primary);
+    font-weight: 500;
+    font-size: var(--tq-font-size-md);
+  }
+
+  // Search mode active
+  .topbar.search-top-active {
+    background: var(--tq-surface-primary) !important;
+  }
+
+  // When avatar is shown
+  .topbar.has-avatar {
+    .chat-info {
+      padding-inline-start: 44px !important;
+    }
+  }
+
+  // Group call bar
+  .topbar-group-call {
+    background-color: var(--tq-accent-primary);
+    color: #fff;
+    border-radius: 0;
+  }
+
+  // Live stream bar
+  .topbar-live {
+    background-color: var(--tq-accent-danger);
+    color: #fff;
+    border-radius: 0;
+  }
+
+  // Verified badge
+  .peer-title {
+    .verified-icon {
+      color: var(--tq-accent-primary);
+      width: 16px;
+      height: 16px;
+      margin-inline-start: 4px;
+    }
+  }
+
+  // Premium badge
+  .peer-title {
+    .premium-icon {
+      width: 16px;
+      height: 16px;
+      margin-inline-start: 4px;
+    }
+  }
+
+  // Scam/fake badge
+  .peer-title {
+    .peer-scam-badge,
+    .peer-fake-badge {
+      background-color: var(--tq-accent-danger);
+      color: #fff;
+      border-radius: var(--tq-radius-xs);
+      padding: 2px 4px;
+      font-size: var(--tq-font-size-xs);
+      font-weight: 500;
+      margin-inline-start: 6px;
+    }
+  }
+
+  // Menu dropdown from topbar
+  .topbar {
+    .btn-menu {
+      .btn-menu-item {
+        padding: var(--tq-space-sm) var(--tq-space-md);
+        font-size: var(--tq-font-size-md);
+        color: var(--tq-text-primary);
+        transition: background-color var(--tq-transition-fast);
+
+        &:hover {
+          background-color: var(--tq-interactive-hover);
+        }
+
+        &.danger {
+          color: var(--tq-accent-danger);
+        }
+
+        &.disabled {
+          opacity: 0.4;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  // Translation badge
+  .topbar {
+    .pinned-translation {
+      background-color: var(--tq-surface-secondary);
+      border-radius: 0;
+      border-bottom: 1px solid var(--tq-border-light);
+    }
+  }
+
+  // Sponsored message indicator
+  .topbar-sponsored {
+    background-color: var(--tq-surface-secondary);
+    color: var(--tq-text-secondary);
+    font-size: var(--tq-font-size-sm);
+    padding: var(--tq-space-xs) var(--tq-space-md);
+    border-bottom: 1px solid var(--tq-border-light);
+  }
+
+  // Forum topic header
+  .topbar {
+    .topic-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--tq-radius-sm);
+      margin-inline-end: var(--tq-space-sm);
+    }
+  }
+
+  // Auto-delete timer icon
+  .topbar {
+    .auto-delete-icon {
+      color: var(--tq-text-secondary);
+      margin-inline-start: var(--tq-space-xs);
+    }
+  }
+
+  // Boost badge
+  .topbar {
+    .boost-badge {
+      background-color: var(--tq-accent-primary);
+      color: #fff;
+      border-radius: var(--tq-radius-full);
+      padding: 2px 8px;
+      font-size: var(--tq-font-size-xs);
+      font-weight: 500;
+      margin-inline-start: var(--tq-space-xs);
+    }
+  }
+
+  // Business badge
+  .topbar {
+    .business-badge {
+      background-color: var(--tq-accent-success);
+      color: #fff;
+      border-radius: var(--tq-radius-xs);
+      padding: 2px 6px;
+      font-size: var(--tq-font-size-xs);
+      font-weight: 500;
+      margin-inline-start: var(--tq-space-xs);
+    }
+  }
+
+  // Mobile specific adjustments: keep the QQ9 phone/video/more trio on
+  // phones too (reference topbar_crop.jpg shows phone + blue video + more).
+  @media (max-width: 896px) {
+    .topbar {
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
+
+  // tweb hides every non-essential chat-utils button below 600px; QQ9 keeps
+  // the phone + video + more trio on phones, so force the call buttons back.
+  @media (max-width: 600px) {
+    .chat-utils > .btn-icon:has(.tgico-phone),
+    .chat-utils > .btn-icon:has(.tgico-videochat) {
+      display: inline-flex;
+    }
+  }
+
+  // When right column is active (desktop)
+  body.is-right-column-shown {
+    .topbar {
+      // Keep same styling
+    }
+  }
+
+  // When left column is hidden (mobile chat view)
+  body:not(.is-left-column-shown) {
+    .topbar {
+      .sidebar-close-button {
+        // Always show back button on mobile
+        display: flex !important;
+      }
+    }
+  }
+}
+
+// Dark mode adjustments
+html.night {
+  body.is-tgqq.tq-chat-header {
+    .topbar {
+      background: var(--tq-surface-primary) !important;
+      box-shadow: 0 1px 0 var(--tq-border-light);
+    }
+
+    .pinned-container {
+      background-color: var(--tq-surface-secondary);
+      border-bottom-color: var(--tq-border-light);
+    }
+  }
+}
+
+  // QQ9 rounded topbar icons: tweb's phone / video-call / more buttons are
+  // tgico font glyphs (Telegram style). Hide the glyph and paint a filled
+  // QQ9-style icon with a CSS mask, so no renderer change is needed.
+  .topbar {
+    .btn-icon .tgico-phone,
+    .btn-icon .tgico-videochat,
+    .btn-menu-toggle .tgico-more {
+      font-size: 0 !important;
+      display: inline-block;
+      width: 1.25rem;
+      height: 1.25rem;
+      background-color: var(--tq-icon-primary);
+    }
+
+    .btn-icon .tgico-phone {
+      background-color: #6c6c6c;
+      -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z'/></svg>") no-repeat center / contain;
+      mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z'/></svg>") no-repeat center / contain;
+    }
+
+    .btn-icon .tgico-videochat {
+      background-color: #28a0de;
+      -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z'/></svg>") no-repeat center / contain;
+      mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z'/></svg>") no-repeat center / contain;
+    }
+
+    .btn-menu-toggle .tgico-more {
+      -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='5' cy='12' r='1.7'/><circle cx='12' cy='12' r='1.7'/><circle cx='19' cy='12' r='1.7'/></svg>") no-repeat center / contain;
+      mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='5' cy='12' r='1.7'/><circle cx='12' cy='12' r='1.7'/><circle cx='19' cy='12' r='1.7'/></svg>") no-repeat center / contain;
+    }
+  }
+
+
+html.night {
+  .topbar .btn-icon .tgico-phone {
+    background-color: var(--tq-text-secondary);
+  }
+
+  .topbar .btn-icon .tgico-videochat {
+    background-color: var(--tq-accent-primary);
+  }
+}
+
+  // Mobile back button: QQ9 chevron-left instead of the tgico glyph (also
+  // survives missing icon fonts in static fixtures).
+  .topbar .sidebar-close-button .tgico-left {
+    font-size: 0 !important;
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: var(--tq-icon-primary);
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M15 5l-7 7 7 7' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center / contain;
+    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M15 5l-7 7 7 7' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center / contain;
+  }

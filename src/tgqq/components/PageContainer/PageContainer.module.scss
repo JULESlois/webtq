@@ -1,0 +1,23 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--tq-surface-page);
+  color: var(--tq-text-primary);
+}
+
+.header {
+  padding: var(--tq-space-md) var(--tq-space-lg);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--tq-space-lg);
+}

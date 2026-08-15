@@ -1,0 +1,988 @@
+{
+  "mobile": {
+    "file": "mobile.jpg",
+    "size": [
+      390,
+      844
+    ],
+    "page_bg": [
+      [
+        245,
+        245,
+        245
+      ],
+      [
+        245,
+        245,
+        245
+      ],
+      [
+        245,
+        245,
+        245
+      ],
+      [
+        219,
+        247,
+        255
+      ],
+      [
+        228,
+        239,
+        245
+      ],
+      [
+        232,
+        244,
+        255
+      ],
+      [
+        255,
+        255,
+        255
+      ],
+      [
+        255,
+        255,
+        255
+      ],
+      [
+        255,
+        255,
+        255
+      ]
+    ],
+    "my_avatar_bbox": {
+      "n": 934,
+      "x0": 29,
+      "y0": 27,
+      "x1": 66,
+      "y1": 65,
+      "w": 38,
+      "h": 39,
+      "cx": 47,
+      "cy": 46
+    },
+    "green_dot_bbox": {
+      "n": 7,
+      "x0": 79,
+      "y0": 60,
+      "x1": 84,
+      "y1": 61,
+      "w": 6,
+      "h": 2,
+      "cx": 81,
+      "cy": 60
+    },
+    "search_pill_bbox": {
+      "n": 24296,
+      "x0": 0,
+      "y0": 100,
+      "x1": 389,
+      "y1": 169,
+      "w": 390,
+      "h": 70,
+      "cx": 194,
+      "cy": 134
+    },
+    "search_pill_sample": [
+      232,
+      244,
+      255
+    ],
+    "selected_row_y_samples": [
+      [
+        193,
+        [
+          230,
+          243,
+          252
+        ]
+      ],
+      [
+        195,
+        [
+          224,
+          229,
+          233
+        ]
+      ],
+      [
+        193,
+        [
+          230,
+          243,
+          252
+        ]
+      ],
+      [
+        195,
+        [
+          224,
+          229,
+          233
+        ]
+      ]
+    ],
+    "selected_left_border": null,
+    "row_avatars": [
+      {
+        "name": "林晚晴",
+        "y": 190,
+        "rgb": [
+          36,
+          167,
+          226
+        ],
+        "class": "teal"
+      },
+      {
+        "name": "陈默",
+        "y": 275,
+        "rgb": [
+          123,
+          202,
+          63
+        ],
+        "class": "green"
+      },
+      {
+        "name": "产品讨论组",
+        "y": 355,
+        "rgb": [
+          152,
+          94,
+          177
+        ],
+        "class": "purple"
+      },
+      {
+        "name": "周子昂",
+        "y": 435,
+        "rgb": [
+          31,
+          182,
+          200
+        ],
+        "class": "teal"
+      },
+      {
+        "name": "前端交流群",
+        "y": 515,
+        "rgb": [
+          212,
+          50,
+          108
+        ],
+        "class": "pink"
+      },
+      {
+        "name": "苏小满",
+        "y": 595,
+        "rgb": [
+          244,
+          151,
+          29
+        ],
+        "class": "other(244,151,29)"
+      },
+      {
+        "name": "沈亦舟",
+        "y": 675,
+        "rgb": [
+          130,
+          181,
+          75
+        ],
+        "class": "green"
+      },
+      {
+        "name": "郑一鸣",
+        "y": 755,
+        "rgb": [
+          93,
+          116,
+          127
+        ],
+        "class": "gray"
+      },
+      {
+        "name": "唐雪",
+        "y": 830,
+        "rgb": [
+          114,
+          193,
+          230
+        ],
+        "class": "teal"
+      }
+    ],
+    "red_badge_clusters": [
+      {
+        "bbox": [
+          342,
+          390,
+          343,
+          397
+        ],
+        "n": 11
+      },
+      {
+        "bbox": [
+          344,
+          388,
+          344,
+          399
+        ],
+        "n": 12
+      },
+      {
+        "bbox": [
+          345,
+          387,
+          345,
+          400
+        ],
+        "n": 14
+      },
+      {
+        "bbox": [
+          346,
+          387,
+          346,
+          400
+        ],
+        "n": 12
+      },
+      {
+        "bbox": [
+          347,
+          386,
+          347,
+          400
+        ],
+        "n": 11
+      },
+      {
+        "bbox": [
+          348,
+          386,
+          348,
+          389
+        ],
+        "n": 4
+      },
+      {
+        "bbox": [
+          348,
+          398,
+          348,
+          401
+        ],
+        "n": 4
+      },
+      {
+        "bbox": [
+          349,
+          386,
+          349,
+          389
+        ],
+        "n": 4
+      },
+      {
+        "bbox": [
+          349,
+          398,
+          349,
+          401
+        ],
+        "n": 4
+      },
+      {
+        "bbox": [
+          350,
+          385,
+          350,
+          401
+        ],
+        "n": 15
+      },
+      {
+        "bbox": [
+          351,
+          386,
+          351,
+          402
+        ],
+        "n": 15
+      },
+      {
+        "bbox": [
+          352,
+          386,
+          352,
+          402
+        ],
+        "n": 14
+      },
+      {
+        "bbox": [
+          353,
+          385,
+          353,
+          401
+        ],
+        "n": 12
+      },
+      {
+        "bbox": [
+          354,
+          386,
+          354,
+          401
+        ],
+        "n": 10
+      },
+      {
+        "bbox": [
+          355,
+          386,
+          355,
+          401
+        ],
+        "n": 9
+      },
+      {
+        "bbox": [
+          356,
+          386,
+          356,
+          400
+        ],
+        "n": 9
+      },
+      {
+        "bbox": [
+          357,
+          387,
+          357,
+          400
+        ],
+        "n": 11
+      },
+      {
+        "bbox": [
+          358,
+          387,
+          358,
+          400
+        ],
+        "n": 14
+      },
+      {
+        "bbox": [
+          359,
+          388,
+          359,
+          399
+        ],
+        "n": 12
+      },
+      {
+        "bbox": [
+          360,
+          390,
+          361,
+          397
+        ],
+        "n": 11
+      }
+    ],
+    "tab_label_blue_y830": [],
+    "dynamics_red_dot": {
+      "n": 15,
+      "x0": 355,
+      "y0": 796,
+      "x1": 358,
+      "y1": 799,
+      "w": 4,
+      "h": 4,
+      "cx": 356,
+      "cy": 797
+    },
+    "header_midgray_px": 41
+  },
+  "channels": {
+    "file": "channels-tab.jpg",
+    "size": [
+      900,
+      700
+    ],
+    "content_distribution": {
+      "left_non_white": 5717,
+      "right_non_white": 0,
+      "right_blank": true
+    },
+    "my_avatar_bbox": null,
+    "search_pill_bbox": {
+      "n": 40063,
+      "x0": 0,
+      "y0": 85,
+      "x1": 899,
+      "y1": 129,
+      "w": 900,
+      "h": 45,
+      "cx": 449,
+      "cy": 107
+    },
+    "card_red_bbox": {
+      "n": 6037,
+      "x0": 25,
+      "y0": 165,
+      "x1": 124,
+      "y1": 230,
+      "w": 100,
+      "h": 66,
+      "cx": 74,
+      "cy": 197
+    },
+    "card_blue_bbox": {
+      "n": 4667,
+      "x0": 153,
+      "y0": 165,
+      "x1": 347,
+      "y1": 230,
+      "w": 195,
+      "h": 66,
+      "cx": 250,
+      "cy": 197
+    },
+    "card_purple_bbox": {
+      "n": 3169,
+      "x0": 281,
+      "y0": 165,
+      "x1": 347,
+      "y1": 230,
+      "w": 67,
+      "h": 66,
+      "cx": 314,
+      "cy": 197
+    },
+    "科技资讯_avatar": {
+      "y": 425,
+      "rgb": [
+        58,
+        139,
+        205
+      ],
+      "class": "qq_blue"
+    },
+    "财经观察_avatar": {
+      "y": 490,
+      "rgb": [
+        233,
+        130,
+        51
+      ],
+      "class": "orange"
+    },
+    "职场成长_avatar": {
+      "y": 555,
+      "rgb": [
+        83,
+        151,
+        86
+      ],
+      "class": "green"
+    },
+    "follow_button_blue_outline_px": 0,
+    "tab_blue_clusters_y680": [],
+    "dynamics_red_dot": null
+  },
+  "contacts": {
+    "file": "contacts-tab.jpg",
+    "size": [
+      900,
+      700
+    ],
+    "content_distribution": {
+      "right_non_white": 0,
+      "right_blank": true
+    },
+    "my_avatar_bbox": null,
+    "az_letter_midgray_px": 0,
+    "search_pill_bbox": {
+      "n": 40238,
+      "x0": 0,
+      "y0": 85,
+      "x1": 899,
+      "y1": 129,
+      "w": 900,
+      "h": 45,
+      "cx": 449,
+      "cy": 107
+    },
+    "新朋友_avatar": {
+      "y": 220,
+      "rgb": [
+        180,
+        180,
+        180
+      ],
+      "class": "gray"
+    },
+    "产品讨论组_avatar": {
+      "y": 343,
+      "rgb": [
+        19,
+        169,
+        188
+      ],
+      "class": "teal"
+    },
+    "前端交流群_avatar": {
+      "y": 413,
+      "rgb": [
+        209,
+        46,
+        106
+      ],
+      "class": "pink"
+    },
+    "周末爬山小队_avatar": {
+      "y": 483,
+      "rgb": [
+        16,
+        171,
+        236
+      ],
+      "class": "teal"
+    },
+    "林晚晴_avatar": {
+      "y": 615,
+      "rgb": [
+        155,
+        92,
+        181
+      ],
+      "class": "purple"
+    },
+    "陈默_avatar": {
+      "y": 678,
+      "rgb": [
+        134,
+        134,
+        134
+      ],
+      "class": "gray"
+    },
+    "lin_green_dot": null,
+    "chen_green_dot": null,
+    "new_friend_red_badge": null,
+    "tab_blue_clusters_y680": []
+  },
+  "dynamics_tablet": {
+    "file": "dynamics-tab.jpg",
+    "size": [
+      900,
+      700
+    ],
+    "content_distribution": {
+      "right_non_white": 0,
+      "right_blank": true
+    },
+    "my_avatar_bbox": null,
+    "camera_icon": null,
+    "search_pill_bbox": {
+      "n": 36017,
+      "x0": 0,
+      "y0": 85,
+      "x1": 894,
+      "y1": 129,
+      "w": 895,
+      "h": 45,
+      "cx": 447,
+      "cy": 107
+    },
+    "shen_avatar": {
+      "y": 185,
+      "rgb": [
+        159,
+        145,
+        131
+      ],
+      "class": "gray"
+    },
+    "nine_grid": [
+      {
+        "r": 0,
+        "c": 0,
+        "avg_luma": 133.3,
+        "variance": 1325.4,
+        "is_image": true
+      },
+      {
+        "r": 0,
+        "c": 1,
+        "avg_luma": 100.7,
+        "variance": 6340.6,
+        "is_image": true
+      },
+      {
+        "r": 0,
+        "c": 2,
+        "avg_luma": 102.6,
+        "variance": 1587.8,
+        "is_image": true
+      },
+      {
+        "r": 1,
+        "c": 0,
+        "avg_luma": 102.5,
+        "variance": 4207.9,
+        "is_image": true
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "avg_luma": 139.6,
+        "variance": 2616.8,
+        "is_image": true
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "avg_luma": 90.2,
+        "variance": 4124.8,
+        "is_image": true
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "avg_luma": 155.6,
+        "variance": 4100.6,
+        "is_image": true
+      },
+      {
+        "r": 2,
+        "c": 1,
+        "avg_luma": 146.6,
+        "variance": 5271.2,
+        "is_image": true
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "avg_luma": 143.0,
+        "variance": 6209.8,
+        "is_image": true
+      }
+    ],
+    "nine_grid_image_count": 9,
+    "card1_bbox": {
+      "n": 80197,
+      "x0": 0,
+      "y0": 140,
+      "x1": 359,
+      "y1": 689,
+      "w": 360,
+      "h": 550,
+      "cx": 179,
+      "cy": 414
+    },
+    "like_count_px": 83,
+    "comment_count_px": 63,
+    "share_count_px": 40,
+    "tab_blue_clusters": [],
+    "dynamics_red_dot": null
+  },
+  "dynamics_mobile": {
+    "file": "dynamics-tab-mobile.jpg",
+    "size": [
+      390,
+      844
+    ],
+    "my_avatar_bbox": {
+      "n": 721,
+      "x0": 339,
+      "y0": 13,
+      "x1": 372,
+      "y1": 46,
+      "w": 34,
+      "h": 34,
+      "cx": 355,
+      "cy": 29
+    },
+    "camera_icon": null,
+    "search_pill_bbox": {
+      "n": 12678,
+      "x0": 0,
+      "y0": 85,
+      "x1": 384,
+      "y1": 129,
+      "w": 385,
+      "h": 45,
+      "cx": 192,
+      "cy": 107
+    },
+    "shen_avatar": {
+      "y": 185,
+      "rgb": [
+        159,
+        145,
+        130
+      ],
+      "class": "gray"
+    },
+    "nine_grid": [
+      {
+        "r": 0,
+        "c": 0,
+        "avg_luma": 106.7,
+        "variance": 2036.8,
+        "is_image": true
+      },
+      {
+        "r": 0,
+        "c": 1,
+        "avg_luma": 114.7,
+        "variance": 161.5,
+        "is_image": true
+      },
+      {
+        "r": 0,
+        "c": 2,
+        "avg_luma": 39.7,
+        "variance": 134.2,
+        "is_image": true
+      },
+      {
+        "r": 1,
+        "c": 0,
+        "avg_luma": 128.0,
+        "variance": 8605.2,
+        "is_image": true
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "avg_luma": 163.7,
+        "variance": 5194.3,
+        "is_image": true
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "avg_luma": 142.4,
+        "variance": 6489.2,
+        "is_image": true
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "avg_luma": 136.0,
+        "variance": 1106.4,
+        "is_image": true
+      },
+      {
+        "r": 2,
+        "c": 1,
+        "avg_luma": 152.3,
+        "variance": 3310.6,
+        "is_image": true
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "avg_luma": 57.4,
+        "variance": 221.1,
+        "is_image": true
+      }
+    ],
+    "nine_grid_image_count": 9,
+    "card1_bbox": {
+      "n": 74957,
+      "x0": 13,
+      "y0": 140,
+      "x1": 380,
+      "y1": 689,
+      "w": 368,
+      "h": 550,
+      "cx": 196,
+      "cy": 414
+    },
+    "like_count_px": 1,
+    "comment_count_px": 12,
+    "share_count_px": 4,
+    "tab_blue_clusters": [],
+    "dynamics_red_dot": {
+      "n": 16,
+      "x0": 355,
+      "y0": 796,
+      "x1": 358,
+      "y1": 799,
+      "w": 4,
+      "h": 4,
+      "cx": 356,
+      "cy": 797
+    }
+  },
+  "tablet_mid": {
+    "file": "tablet-mid.jpg",
+    "size": [
+      900,
+      700
+    ],
+    "pane_divider_x": 415,
+    "left_pane_avg_luma": 252.6,
+    "right_pane_avg_luma": 246.3,
+    "chat_top_avatar_bbox": {
+      "n": 277,
+      "x0": 440,
+      "y0": 9,
+      "x1": 450,
+      "y1": 42,
+      "w": 11,
+      "h": 34,
+      "cx": 445,
+      "cy": 25
+    },
+    "chat_top_green_dot": null,
+    "chat_top_right_icon_clusters": [
+      [
+        758,
+        766
+      ],
+      [
+        772,
+        786
+      ],
+      [
+        794,
+        795
+      ],
+      [
+        807,
+        814
+      ],
+      [
+        821,
+        843
+      ],
+      [
+        853,
+        878
+      ]
+    ],
+    "outbound_bubble_bbox": {
+      "n": 45827,
+      "x0": 444,
+      "y0": 60,
+      "x1": 887,
+      "y1": 599,
+      "w": 444,
+      "h": 540,
+      "cx": 665,
+      "cy": 329
+    },
+    "blue_text_count": 935,
+    "blue_text_bbox": [
+      446,
+      237,
+      864,
+      673
+    ],
+    "composer_send_btn_rgb": [
+      26,
+      150,
+      201
+    ],
+    "composer_send_btn_blue": true,
+    "left_pane_row1_bg": [
+      255,
+      255,
+      255
+    ],
+    "left_pane_row1_left_border": [
+      254,
+      255,
+      255
+    ],
+    "left_pane_row1_left_border_blue": false,
+    "full_avg_luma": 236.6,
+    "left_tab_blue_clusters_y680": []
+  },
+  "group_chat": {
+    "file": "group-chat.jpg",
+    "size": [
+      390,
+      844
+    ],
+    "full_avg_luma": 237.7,
+    "back_arrow_bbox": {
+      "n": 35,
+      "x0": 28,
+      "y0": 20,
+      "x1": 34,
+      "y1": 32,
+      "w": 7,
+      "h": 13,
+      "cx": 31,
+      "cy": 26
+    },
+    "top_avatar_white": false,
+    "more_icon_bbox": {
+      "n": 12,
+      "x0": 355,
+      "y0": 25,
+      "x1": 368,
+      "y1": 26,
+      "w": 14,
+      "h": 2,
+      "cx": 361,
+      "cy": 25
+    },
+    "inbound_white_sample": [
+      255,
+      255,
+      255
+    ],
+    "outbound_blue_bbox": {
+      "n": 35151,
+      "x0": 152,
+      "y0": 245,
+      "x1": 379,
+      "y1": 799,
+      "w": 228,
+      "h": 555,
+      "cx": 265,
+      "cy": 522
+    },
+    "self_avatar_orange_count": 27,
+    "blue_read_text_count": 199,
+    "composer_send_btn_rgb": [
+      158,
+      219,
+      255
+    ],
+    "composer_send_btn_blue": false,
+    "mask_check": {
+      "top_bg": [
+        250,
+        250,
+        250
+      ],
+      "mid_bg": [
+        255,
+        255,
+        255
+      ],
+      "btm_bg": [
+        247,
+        248,
+        250
+      ]
+    }
+  }
+}

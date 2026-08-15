@@ -171,6 +171,9 @@ export class BubbleGroup {
       ...(options || this.getAvatarOptions(message))
     });
     this.avatar.node.classList.add('bubbles-group-avatar', 'user-avatar'/* , 'can-zoom-fade' */);
+    if(this.chat.isOutMessage(message)) {
+      this.avatar.node.classList.add('tq-own');
+    }
 
     this.updateAvatarClassNames(message);
 

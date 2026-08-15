@@ -141,6 +141,7 @@ import wrapReply from '@components/wrappers/reply';
 import {modifyAckedPromise} from '@helpers/modifyAckedResult';
 import callbackify from '@helpers/callbackify';
 import {avatarNew, findUpAvatar} from '@components/avatarNew';
+import {tqFlags} from '@/tgqq/config/flags';
 import Icon from '@components/icon';
 import apiManagerProxy from '@lib/apiManagerProxy';
 import {_tgico} from '@helpers/tgico';
@@ -11998,7 +11999,17 @@ export default class ChatBubbles {
     if(isMessageForVerificationBot(message)) return true;
     // * guest-chat messages carry the guest bot's avatar even in a 1-on-1 chat
     if(isGuestChatMessage(message)) return true;
-    return this.chat.isLikeGroup && !this.chat.isOutMessage(message);
+    if(this.chat.isLikeGroup && this.chat.isOutMessage(message)) {
+      // TGQQ: show the own avatar to the right of outgoing group messages
+      // (QQ9 style) when the skin is active; vanilla tweb keeps no own avatar.
+      return tqFlags.chatOwnAvatar && document.body.classList.contains('is-tgqq');
+    }
+    if(this.chat.isLikeGroup || (tqFlags.chatIncomingAvatar && document.body.classList.contains('is-tgqq'))) {
+      // TGQQ: private 1-on-1 chats also get the peer avatar on the first
+      // message of each group (QQ9 style); vanilla tweb keeps none.
+      return !this.chat.isOutMessage(message);
+    }
+    return false;
   }
 
   private reload() {

@@ -1,0 +1,142 @@
+.header {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 16px 8px;
+}
+
+.profileRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  background: radial-gradient(circle at 32% 28%, #ffb3bb 0%, #f04a3e 46%, #e00000 100%);
+  user-select: none;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--tq-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--tq-text-secondary);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--tq-accent-online, #00d66c);
+}
+
+.add {
+  margin-inline-start: auto;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tq-surface-secondary);
+  color: var(--tq-text-primary);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--tq-transition-fast);
+
+  &:hover {
+    background: var(--tq-interactive-hover);
+  }
+
+  &::before {
+    content: '+';
+  }
+}
+
+.headerCompact .profileRow {
+  min-height: 36px;
+}
+
+.headerCompact .avatar {
+  width: 36px;
+  height: 36px;
+  font-size: 15px;
+}
+
+.addIcon {
+  margin-inline-start: auto;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--tq-text-primary);
+  cursor: pointer;
+  transition: background-color var(--tq-transition-fast);
+
+  &:hover {
+    background: var(--tq-interactive-hover);
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 19px;
+  background: var(--tq-surface-secondary);
+  color: var(--tq-text-tertiary);
+  font-size: 14px;
+}
+
+.searchIcon {
+  flex: none;
+}
+
+.searchPlaceholder {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -154,6 +154,26 @@ export class AppSidebarLeft extends SidebarSlider {
     const sidebarHeader = this.sidebarEl.querySelector('.item-main .sidebar-header');
     sidebarHeader.append(this.inputSearch.container);
 
+    // TGQQ: fill the QQ-style profile row in the sidebar header
+    // (avatar initial + display name + online status).
+    const tgqqProfile = sidebarHeader.querySelector<HTMLElement>('.tgqq-profile');
+    if(tgqqProfile) {
+      const profileAvatar = tgqqProfile.querySelector<HTMLElement>('.tgqq-profile-avatar');
+      const profileName = tgqqProfile.querySelector<HTMLElement>('.tgqq-profile-name');
+      const profileStatusText = tgqqProfile.querySelector<HTMLElement>('.tgqq-profile-status-text');
+      const fillProfile = async() => {
+        const me = await this.managers.appUsersManager.getSelf();
+        if(!me) return;
+        const name = [me.first_name, me.last_name].filter(Boolean).join(' ').trim() || '我';
+        if(profileName) profileName.textContent = name;
+        if(profileAvatar) profileAvatar.textContent = name.charAt(0).toUpperCase();
+        const isOnline = isObject(me.status) && me.status._ === 'userStatusOnline';
+        if(profileStatusText) profileStatusText.textContent = isOnline ? '手机在线' : '离线';
+      };
+      void fillProfile();
+      rootScope.addEventListener('user_update', () => void fillProfile());
+    }
+
     this.backBtn = this.sidebarEl.querySelector('.sidebar-back-button') as HTMLButtonElement;
 
     this.toolsBtn = this.createToolsMenu();

@@ -1,0 +1,921 @@
+{
+  "mobile": {
+    "file": "mobile.jpg",
+    "size": [
+      390,
+      844
+    ],
+    "my_avatar_center_rgb": [
+      17,
+      170,
+      240
+    ],
+    "my_avatar_is_qq_blue": true,
+    "green_dot_rgb": [
+      246,
+      245,
+      241
+    ],
+    "green_dot_present": false,
+    "plus_icon_rgb": [
+      239,
+      239,
+      239
+    ],
+    "plus_icon_is_dark": false,
+    "header_bg_rgb": [
+      245,
+      245,
+      245
+    ],
+    "header_text_pixels": 28,
+    "search_pill_bg_rgb": [
+      232,
+      244,
+      255
+    ],
+    "search_pill_is_light": true,
+    "search_icon_rgb": [
+      17,
+      176,
+      234
+    ],
+    "search_pill_y_range": [
+      114,
+      169
+    ],
+    "row1_bg_rgb": [
+      255,
+      255,
+      255
+    ],
+    "row1_selected_bg": false,
+    "row1_left_border_rgb": [
+      245,
+      245,
+      245
+    ],
+    "row1_left_border_blue": false,
+    "row1_avatar_rgb": [
+      255,
+      141,
+      76
+    ],
+    "row1_avatar_blue": false,
+    "row1_time_rgb": [
+      255,
+      255,
+      255
+    ],
+    "row1_badge_rgb": [
+      255,
+      244,
+      253
+    ],
+    "row1_badge_red": false,
+    "avatar_y_bands": [
+      [
+        133,
+        148,
+        133.005
+      ],
+      [
+        166,
+        184,
+        125.06599999999999
+      ],
+      [
+        208,
+        222,
+        165.32799999999997
+      ],
+      [
+        240,
+        257,
+        155.024
+      ],
+      [
+        355,
+        370,
+        112.857
+      ],
+      [
+        388,
+        404,
+        107.797
+      ],
+      [
+        429,
+        445,
+        124.874
+      ],
+      [
+        459,
+        480,
+        116.429
+      ]
+    ],
+    "avatar_heights": [
+      16,
+      19,
+      15,
+      18,
+      16,
+      17,
+      17,
+      22
+    ],
+    "row_gaps": [
+      18,
+      24,
+      18,
+      98,
+      18,
+      25,
+      14
+    ],
+    "row4_avatar_rgb": [
+      254,
+      181,
+      211
+    ],
+    "row4_avatar_purple": false,
+    "row4_badge_rgb": [
+      228,
+      228,
+      228
+    ],
+    "row4_badge_red": false,
+    "row2_avatar_rgb": [
+      87,
+      187,
+      61
+    ],
+    "row2_avatar_orange": false,
+    "row2_right_mark_rgb": [
+      255,
+      255,
+      255
+    ],
+    "tab_y_text_label": [
+      815,
+      838
+    ],
+    "tab_message_icon": [
+      8,
+      151,
+      217
+    ],
+    "tab_message_label_rgb": [
+      242,
+      253,
+      255
+    ],
+    "tab_message_selected_blue": false,
+    "tab_channels_label_rgb": [
+      230,
+      230,
+      230
+    ],
+    "tab_contacts_label_rgb": [
+      243,
+      243,
+      243
+    ],
+    "tab_dynamics_label_rgb": [
+      251,
+      251,
+      251
+    ],
+    "tab_dynamics_selected_blue": false,
+    "tab_dynamics_badge_rgb": [
+      255,
+      255,
+      255
+    ],
+    "tab_dynamics_badge_red": false,
+    "tab_dynamics_badge_bbox": [
+      355,
+      796,
+      358,
+      799
+    ]
+  },
+  "channels": {
+    "file": "channels-tab.jpg",
+    "size": [
+      900,
+      700
+    ],
+    "page_bg_rgb": [
+      245,
+      245,
+      245
+    ],
+    "header_text_pixels": 316,
+    "my_avatar_rgb": [
+      245,
+      245,
+      245
+    ],
+    "my_avatar_blue": false,
+    "search_bg_rgb": [
+      245,
+      245,
+      245
+    ],
+    "search_pill_light": true,
+    "section_recommend_text_px": 0,
+    "card1_cover_rgb": [
+      254,
+      82,
+      98
+    ],
+    "card1_cover_red": true,
+    "card1_name_rgb": [
+      255,
+      255,
+      255
+    ],
+    "card1_follow_text_px": 0,
+    "card1_red_cover_bbox": {
+      "n": 5144,
+      "x0": 26,
+      "y0": 170,
+      "x1": 124,
+      "y1": 230,
+      "w": 99,
+      "h": 61,
+      "cx": 75,
+      "cy": 200,
+      "sample_rgb": [
+        255,
+        240,
+        243
+      ]
+    },
+    "card2_blue_cover_bbox": {
+      "n": 2836,
+      "x0": 175,
+      "y0": 170,
+      "x1": 286,
+      "y1": 230,
+      "w": 112,
+      "h": 61,
+      "cx": 230,
+      "cy": 200,
+      "sample_rgb": [
+        12,
+        121,
+        178
+      ]
+    },
+    "card3_purple_cover_bbox": {
+      "n": 539,
+      "x0": 325,
+      "y0": 170,
+      "x1": 347,
+      "y1": 230,
+      "w": 23,
+      "h": 61,
+      "cx": 336,
+      "cy": 200,
+      "sample_rgb": [
+        255,
+        236,
+        255
+      ]
+    },
+    "row_sci_avatar_rgb": [
+      36,
+      125,
+      205
+    ],
+    "row_sci_avatar_blue": true,
+    "row_fin_avatar_rgb": [
+      226,
+      120,
+      44
+    ],
+    "row_fin_avatar_orange": true,
+    "row_car_avatar_rgb": [
+      233,
+      255,
+      228
+    ],
+    "row_car_avatar_green": false,
+    "row_follow_buttons_blue_px": 0,
+    "tab_message_label_rgb": [
+      255,
+      255,
+      255
+    ],
+    "tab_channels_label_rgb": [
+      255,
+      255,
+      255
+    ],
+    "tab_channels_selected_blue": false,
+    "tab_contacts_label_rgb": [
+      255,
+      255,
+      255
+    ],
+    "tab_dynamics_label_rgb": [
+      255,
+      255,
+      255
+    ]
+  },
+  "contacts": {
+    "file": "contacts-tab.jpg",
+    "size": [
+      900,
+      700
+    ],
+    "page_bg_rgb": [
+      245,
+      245,
+      245
+    ],
+    "header_text_pixels": 356,
+    "my_avatar_rgb": [
+      245,
+      245,
+      245
+    ],
+    "my_avatar_blue": false,
+    "search_pill_rgb": [
+      245,
+      245,
+      245
+    ],
+    "search_pill_light": true,
+    "new_friend_avatar_rgb": [
+      245,
+      245,
+      245
+    ],
+    "new_friend_avatar_orange": false,
+    "new_friend_badge_rgb": [
+      245,
+      245,
+      245
+    ],
+    "new_friend_badge_red": false,
+    "group_prod_avatar_rgb": [
+      9,
+      168,
+      198
+    ],
+    "group_qian_avatar_rgb": [
+      220,
+      88,
+      137
+    ],
+    "group_zhou_avatar_rgb": [
+      237,
+      237,
+      237
+    ],
+    "friend_lin_avatar_rgb": [
+      243,
+      119,
+      83
+    ],
+    "friend_lin_green_dot_rgb": [
+      255,
+      255,
+      255
+    ],
+    "friend_lin_green_dot": false,
+    "friend_chen_avatar_rgb": [
+      250,
+      250,
+      250
+    ],
+    "friend_chen_green_dot_rgb": [
+      255,
+      255,
+      255
+    ],
+    "friend_chen_green_dot": false,
+    "az_letter_index_text_px": 0,
+    "az_A_rgb": [
+      245,
+      245,
+      245
+    ],
+    "az_B_rgb": [
+      245,
+      245,
+      245
+    ],
+    "az_M_rgb": [
+      245,
+      245,
+      245
+    ],
+    "az_Z_rgb": [
+      245,
+      245,
+      245
+    ],
+    "tab_contacts_label_rgb": [
+      255,
+      255,
+      255
+    ],
+    "tab_contacts_selected_blue": false
+  },
+  "dynamics_tablet": {
+    "file": "dynamics-tab.jpg",
+    "size": [
+      900,
+      700
+    ],
+    "page_bg_rgb": [
+      245,
+      245,
+      245
+    ],
+    "header_text_pixels": 260,
+    "camera_icon_rgb": [
+      245,
+      245,
+      245
+    ],
+    "camera_icon_dark": false,
+    "my_avatar_rgb": [
+      245,
+      245,
+      245
+    ],
+    "my_avatar_blue": false,
+    "search_pill_rgb": [
+      245,
+      245,
+      245
+    ],
+    "search_pill_light": true,
+    "card_shen_avatar_rgb": [
+      144,
+      144,
+      144
+    ],
+    "card_shen_avatar_orange": false,
+    "nine_grid_tiles": [
+      [
+        0,
+        0,
+        [
+          141,
+          152,
+          184
+        ]
+      ],
+      [
+        0,
+        1,
+        [
+          179,
+          126,
+          72
+        ]
+      ],
+      [
+        0,
+        2,
+        [
+          110,
+          91,
+          59
+        ]
+      ],
+      [
+        1,
+        0,
+        [
+          152,
+          18,
+          55
+        ]
+      ],
+      [
+        1,
+        1,
+        [
+          156,
+          134,
+          136
+        ]
+      ],
+      [
+        1,
+        2,
+        [
+          36,
+          32,
+          29
+        ]
+      ],
+      [
+        2,
+        0,
+        [
+          84,
+          134,
+          167
+        ]
+      ],
+      [
+        2,
+        1,
+        [
+          84,
+          74,
+          75
+        ]
+      ],
+      [
+        2,
+        2,
+        [
+          68,
+          71,
+          62
+        ]
+      ]
+    ],
+    "like_button_icon_rgb": [
+      255,
+      255,
+      255
+    ],
+    "like_count_text_px": 61,
+    "comment_count_text_px": 27,
+    "share_count_text_px": 0,
+    "dynamics_card1_bbox": {
+      "n": 78625,
+      "x0": 10,
+      "y0": 145,
+      "x1": 359,
+      "y1": 689,
+      "w": 350,
+      "h": 545,
+      "cx": 184,
+      "cy": 417,
+      "sample_rgb": [
+        182,
+        151,
+        148
+      ]
+    },
+    "right_empty_luma": 245.0,
+    "right_empty_width_px": 450,
+    "tab_dynamics_label_rgb": [
+      255,
+      255,
+      255
+    ],
+    "tab_dynamics_selected_blue": false,
+    "tab_dynamics_badge_bbox": null
+  },
+  "dynamics_mobile": {
+    "file": "dynamics-tab-mobile.jpg",
+    "size": [
+      390,
+      844
+    ],
+    "page_bg_rgb": [
+      220,
+      200,
+      193
+    ],
+    "header_text_pixels": 260,
+    "camera_icon_rgb": [
+      245,
+      246,
+      250
+    ],
+    "camera_icon_dark": false,
+    "my_avatar_rgb": [
+      209,
+      255,
+      255
+    ],
+    "my_avatar_blue": false,
+    "search_pill_rgb": [
+      245,
+      245,
+      245
+    ],
+    "search_pill_light": true,
+    "card_shen_avatar_rgb": [
+      144,
+      144,
+      144
+    ],
+    "card_shen_avatar_orange": false,
+    "nine_grid_tiles": [
+      [
+        0,
+        0,
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      [
+        0,
+        1,
+        [
+          255,
+          255,
+          253
+        ]
+      ],
+      [
+        0,
+        2,
+        [
+          254,
+          255,
+          251
+        ]
+      ],
+      [
+        1,
+        0,
+        [
+          51,
+          26,
+          22
+        ]
+      ],
+      [
+        1,
+        1,
+        [
+          64,
+          43,
+          62
+        ]
+      ],
+      [
+        1,
+        2,
+        [
+          103,
+          90,
+          73
+        ]
+      ],
+      [
+        2,
+        0,
+        [
+          26,
+          108,
+          146
+        ]
+      ],
+      [
+        2,
+        1,
+        [
+          129,
+          125,
+          113
+        ]
+      ],
+      [
+        2,
+        2,
+        [
+          29,
+          84,
+          91
+        ]
+      ]
+    ],
+    "like_count_text_px": 0,
+    "comment_count_text_px": 0,
+    "share_count_text_px": 0,
+    "dynamics_card1_bbox": {
+      "n": 74155,
+      "x0": 13,
+      "y0": 145,
+      "x1": 376,
+      "y1": 689,
+      "w": 364,
+      "h": 545,
+      "cx": 194,
+      "cy": 417,
+      "sample_rgb": [
+        184,
+        159,
+        163
+      ]
+    },
+    "tab_dynamics_label_rgb": [
+      158,
+      196,
+      207
+    ],
+    "tab_dynamics_selected_blue": false,
+    "tab_dynamics_badge_bbox": [
+      355,
+      796,
+      358,
+      799
+    ]
+  },
+  "tablet_mid": {
+    "file": "tablet-mid.jpg",
+    "size": [
+      900,
+      700
+    ],
+    "left_pane_bg_rgb": [
+      255,
+      255,
+      255
+    ],
+    "left_pane_luma": 255.0,
+    "right_pane_bg_rgb": [
+      255,
+      255,
+      255
+    ],
+    "right_pane_luma": 255.0,
+    "chat_avatar_lin_rgb": [
+      255,
+      252,
+      255
+    ],
+    "chat_avatar_lin_blue": false,
+    "chat_green_dot_rgb": [
+      239,
+      244,
+      248
+    ],
+    "chat_green_dot": false,
+    "chat_top_right_icon_clusters": [
+      [
+        773,
+        786
+      ],
+      [
+        821,
+        834
+      ]
+    ],
+    "right_pane_blue_bubble_bbox": {
+      "n": 45827,
+      "x0": 444,
+      "y0": 60,
+      "x1": 887,
+      "y1": 599,
+      "w": 444,
+      "h": 540,
+      "cx": 665,
+      "cy": 329,
+      "sample_rgb": [
+        240,
+        243,
+        248
+      ]
+    },
+    "right_pane_blue_text_count": 92,
+    "right_pane_blue_text_bbox": [
+      446,
+      236,
+      478,
+      277
+    ],
+    "full_avg_luma": 236.59712752598534,
+    "composer_bg_rgb": [
+      247,
+      248,
+      250
+    ],
+    "composer_emoji_rgb": [
+      158,
+      159,
+      161
+    ],
+    "composer_send_btn_rgb": [
+      26,
+      150,
+      201
+    ],
+    "left_pane_row1_bg_rgb": [
+      255,
+      255,
+      255
+    ],
+    "left_pane_row1_selected_bg": false,
+    "left_pane_row1_left_border_rgb": [
+      255,
+      253,
+      255
+    ],
+    "left_pane_row1_left_border_blue": false,
+    "left_pane_row1_avatar_rgb": [
+      252,
+      120,
+      72
+    ],
+    "left_pane_row1_avatar_blue": false,
+    "left_pane_tab_message_label_rgb": [
+      255,
+      255,
+      255
+    ],
+    "left_pane_tab_message_selected_blue": false
+  },
+  "group_chat": {
+    "file": "group-chat.jpg",
+    "size": [
+      390,
+      844
+    ],
+    "full_avg_luma": 235.25705851627055,
+    "back_arrow_rgb": [
+      254,
+      254,
+      255
+    ],
+    "back_arrow_dark": false,
+    "top_avatar_white": true,
+    "more_icon_rgb": [
+      254,
+      254,
+      255
+    ],
+    "more_icon_dark": false,
+    "inbound_bubble_bg_rgb": [
+      240,
+      243,
+      248
+    ],
+    "inbound_bubble_white": false,
+    "outbound_blue_bubble_bbox": {
+      "n": 35151,
+      "x0": 152,
+      "y0": 245,
+      "x1": 379,
+      "y1": 799,
+      "w": 228,
+      "h": 555,
+      "cx": 265,
+      "cy": 522,
+      "sample_rgb": [
+        240,
+        243,
+        248
+      ]
+    },
+    "blue_read_text_count": 206,
+    "blue_read_text_bbox": [
+      339,
+      790,
+      368,
+      799
+    ],
+    "composer_bg_rgb": [
+      247,
+      248,
+      250
+    ],
+    "composer_emoji_rgb": [
+      247,
+      249,
+      244
+    ],
+    "composer_send_btn_rgb": [
+      158,
+      219,
+      255
+    ],
+    "composer_send_blue": false,
+    "self_avatar_orange": true,
+    "self_avatar_rgb": [
+      251,
+      127,
+      63
+    ],
+    "inbound_avatar_chen_rgb": [
+      254,
+      132,
+      81
+    ],
+    "inbound_avatar_zhou_rgb": [
+      240,
+      243,
+      248
+    ]
+  }
+}

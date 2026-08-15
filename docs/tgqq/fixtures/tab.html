@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TGQQ Tab Fixture</title>
+<link rel="stylesheet" href="css/tweb.css">
+<link rel="stylesheet" href="css/tgqq.css">
+<link rel="stylesheet" href="css/fixture.css">
+</head>
+<script>if(location.search.includes('dark'))document.documentElement.classList.add('night');</script>
+<body class="is-tgqq tq-tablet tq-dialog-skin tq-chat-header tq-chat-bubbles tq-chat-composer tq-shell-on is-left-column-shown animation-level-2">
+
+<div id="page-chats" class="page-chats">
+  <div id="main-columns">
+    <aside id="column-left" class="main-column sidebar-left-common">
+      <div class="sidebar-header-container">
+        <div class="main-search-sidebar-header">
+          <div class="tgqq-profile">
+            <div class="tgqq-profile-avatar">我</div>
+            <div class="tgqq-profile-meta">
+              <div class="tgqq-profile-name">我</div>
+              <div class="tgqq-profile-status"><i class="tgqq-profile-dot"></i><span>手机在线·WiFi</span></div>
+            </div>
+            <button type="button" class="tgqq-profile-add" aria-label="添加"></button>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <section id="column-center" class="main-column"></section>
+    <aside id="column-right" class="main-column"></aside>
+  </div>
+
+  <div class="tq-shell _root_xi3m0_1 tq-shell-active">
+    <div class="tq-pages" id="tq-pages"></div>
+    <nav class="_root_rma6i_1" aria-label="TGQQ home">
+      <button class="_item_rma6i_14" type="button" data-tab="messages">
+        <svg class="_icon_rma6i_40" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H11l-4.6 3.6V17.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z"/></svg>
+        <span>消息</span>
+      </button>
+      <button class="_item_rma6i_14" type="button" data-tab="channels">
+        <svg class="_icon_rma6i_40" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3.5 6.5 20.5"/><path d="M17.5 3.5 15 20.5"/><path d="M4 9h17"/><path d="M3 15h17"/></svg>
+        <span>频道</span>
+      </button>
+      <button class="_item_rma6i_14" type="button" data-tab="contacts">
+        <svg class="_icon_rma6i_40" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.8"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>
+        <span>联系人</span>
+      </button>
+      <button class="_item_rma6i_14" type="button" data-tab="dynamics">
+        <svg class="_icon_rma6i_40" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 21V3.5"/><path d="M5.5 4.5c3.5-1.8 7 1.6 11-.2v8.4c-4 1.8-7.5-1.6-11 .2z"/></svg>
+        <span>动态</span>
+      </button>
+    </nav>
+  </div>
+</div>
+
+<script>
+const TAB = new URLSearchParams(location.search).get('tab') || 'channels';
+
+const PHOTO_GRADS = [
+  'linear-gradient(135deg,#ffd3a5,#fd6585)',
+  'linear-gradient(135deg,#a1c4fd,#7aa5f0)',
+  'linear-gradient(135deg,#fbc2eb,#a18cd1)',
+  'linear-gradient(135deg,#84fab0,#5ecf8a)',
+  'linear-gradient(135deg,#f6d365,#fda085)',
+  'linear-gradient(135deg,#d4fc79,#96e6a1)'
+];
+
+const PAGES = {
+  channels: `
+    <div class="tq-page">
+      <header class="tq-page-header">
+        <div class="tgqq-profile"><div class="tgqq-profile-avatar">我</div><div class="tgqq-profile-meta"><div class="tgqq-profile-name">我</div><div class="tgqq-profile-status"><i class="tgqq-profile-dot"></i><span>手机在线 · WiFi</span></div></div><button type="button" class="tgqq-profile-add" aria-label="添加"></button></div>
+        <div class="tq-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>搜索频道</span></div>
+      </header>
+      <div class="tq-tabs">
+          <button type="button" class="tq-tab tq-tab-active" data-tq-tab="recommend">推荐</button>
+          <button type="button" class="tq-tab" data-tq-tab="follow">关注</button>
+      </div>
+      <div class="tq-page-content">
+        <div class="tq-tab-panel" data-tq-panel="recommend">
+          <section class="tq-section"><h2 class="tq-section-title">推荐频道</h2>
+            <div class="tq-cards">
+              <div class="tq-card"><div class="tq-card-cover" style="background:linear-gradient(135deg,#ff7a59,#ff3d68)"><span>腾</span></div><div class="tq-card-name">腾讯新闻</div><div class="tq-card-desc">每天 3 分钟，读懂世界</div><div class="tq-card-foot"><span class="tq-card-subs">128万人关注</span><button class="tq-follow">+ 关注</button></div></div>
+              <div class="tq-card"><div class="tq-card-cover" style="background:linear-gradient(135deg,#12b7f5,#0a5f94)"><span>科</span></div><div class="tq-card-name">科技前沿</div><div class="tq-card-desc">AI / 芯片 / 新能源</div><div class="tq-card-foot"><span class="tq-card-subs">56万人关注</span><button class="tq-follow">+ 关注</button></div></div>
+              <div class="tq-card"><div class="tq-card-cover" style="background:linear-gradient(135deg,#9b59b6,#6c3483)"><span>影</span></div><div class="tq-card-name">影视热播</div><div class="tq-card-desc">新片速递与深度影评</div><div class="tq-card-foot"><span class="tq-card-subs">89万人关注</span><button class="tq-follow">+ 关注</button></div></div>
+              <div class="tq-card"><div class="tq-card-cover" style="background:linear-gradient(135deg,#27ae60,#1e8449)"><span>游</span></div><div class="tq-card-name">游戏圈</div><div class="tq-card-desc">开黑组队与攻略分享</div><div class="tq-card-foot"><span class="tq-card-subs">210万人关注</span><button class="tq-follow">+ 关注</button></div></div>
+            </div>
+          </section>
+          ${channelSection('行业频道', [
+            ['科技资讯','互联网大厂动态与行业观察','45.2万','linear-gradient(135deg,#4fc3f7,#1565c0)'],
+            ['财经观察','宏观经济与投资理财','38.7万','linear-gradient(135deg,#ffb74d,#e65100)'],
+            ['职场成长','简历面试与职场干货','21.5万','linear-gradient(135deg,#81c784,#2e7d32)']
+          ])}
+          ${channelSection('兴趣频道', [
+            ['摄影漫游','街头摄影与调色教程','12.3万','linear-gradient(135deg,#ba68c8,#6a1b9a)'],
+            ['深夜电台','助眠音乐与睡前故事','9.8万','linear-gradient(135deg,#4dd0e1,#006064)']
+          ])}
+          ${channelSection('常逛的小频道', [
+            ['独立游戏开发','聊聊引擎、玩法与发行','3.2万','linear-gradient(135deg,#ff8a80,#b71c1c)'],
+            ['手冲咖啡研究所','豆子、器具与冲煮方案','2.6万','linear-gradient(135deg,#a1887f,#4e342e)']
+          ])}
+        </div>
+        <div class="tq-tab-panel" data-tq-panel="follow">
+          <div class="tq-follow-empty">
+            <div class="tq-follow-empty-icon">＋</div>
+            <div class="tq-follow-empty-title">还没有关注的频道</div>
+            <div class="tq-follow-empty-sub">去「推荐」页点关注，好频道不错过</div>
+          </div>
+          <section class="tq-section tq-follow-list" hidden>
+            <h2 class="tq-section-title">已关注</h2>
+            <div class="tq-list">
+              ${followRow('腾讯新闻','每天 3 分钟，读懂世界','128万','linear-gradient(135deg,#ff7a59,#ff3d68)')}
+              ${followRow('科技前沿','AI / 芯片 / 新能源','56万','linear-gradient(135deg,#12b7f5,#0a5f94)')}
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>`,
+  contacts: `
+    <div class="tq-page">
+      <header class="tq-page-header">
+        <div class="tgqq-profile tgqq-profile-compact"><div class="tgqq-profile-avatar">我</div><div class="tgqq-profile-meta"><div class="tgqq-profile-name">联系人</div></div><button type="button" class="tgqq-profile-addicon" aria-label="添加联系人"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3.5 19c.8-3.2 2.8-4.8 5.5-4.8s4.7 1.6 5.5 4.8"/><path d="M18.5 9v6M15.5 12h6"/></svg></button></div>
+        <div class="tq-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>搜索联系人</span></div>
+      </header>
+      <div class="tq-quicknav">
+        <div class="tq-quicknav-item"><span class="tq-quicknav-text">新朋友</span><span class="tq-quicknav-right"><span class="tq-quicknav-badge">1</span><span class="tq-quicknav-arrow">›</span></span></div>
+        <div class="tq-quicknav-item"><span class="tq-quicknav-text">群通知</span><span class="tq-quicknav-arrow">›</span></div>
+      </div>
+      <div class="tq-tabs" id="tq-contacts-tabs">
+        <button type="button" class="tq-tab" data-tq-tab="recommend">推荐</button>
+        <button type="button" class="tq-tab" data-tq-tab="friends">好友</button>
+        <button type="button" class="tq-tab tq-tab-active" data-tq-tab="group">分组</button>
+        <button type="button" class="tq-tab" data-tq-tab="groupChat">群聊</button>
+        <button type="button" class="tq-tab" data-tq-tab="device">设备</button>
+      </div>
+      <div class="tq-page-content tq-contacts" id="tq-contacts-content">
+        <section class="tq-section">
+          <div class="tq-section-header"><span class="tq-section-header-left"><i class="tq-section-arrow tq-section-arrow-open"></i><span class="tq-section-name">特别关心</span></span><span class="tq-section-count">0/0</span></div>
+        </section>
+        <section class="tq-section">
+          <div class="tq-section-header"><span class="tq-section-header-left"><i class="tq-section-arrow tq-section-arrow-open"></i><span class="tq-section-name">我的好友</span></span><span class="tq-section-count">3/6</span></div>
+          <div class="tq-list">
+            ${contactRows([
+              ['林晚晴','手机在线','linear-gradient(135deg,#12b7f5,#1296db)','','online'],
+              ['陈默','3G 在线','linear-gradient(135deg,#ff9a56,#ff6a3d)','','online'],
+              ['周子昂','离线','linear-gradient(135deg,#9b59b6,#8e44ad)'],
+              ['苏小满','离线','linear-gradient(135deg,#e91e63,#c2185b)'],
+              ['沈亦舟','WiFi 在线','linear-gradient(135deg,#ff9800,#f57c00)','','online'],
+              ['郑一鸣','离线','linear-gradient(135deg,#8bc34a,#689f38)']
+            ])}
+          </div>
+        </section>
+        <section class="tq-section">
+          <div class="tq-section-header"><span class="tq-section-header-left"><i class="tq-section-arrow tq-section-arrow-open"></i><span class="tq-section-name">我的群聊</span></span><span class="tq-section-count">3/3</span></div>
+          <div class="tq-list">
+            ${contactRows([
+              ['产品讨论组','12 人','linear-gradient(135deg,#7ed321,#4caf50)'],
+              ['前端交流群','86 人','linear-gradient(135deg,#00bcd4,#0097a7)'],
+              ['周末爬山小队','8 人','linear-gradient(135deg,#e91e63,#c2185b)']
+            ])}
+          </div>
+        </section>
+        <section class="tq-section">
+          <div class="tq-section-header"><span class="tq-section-header-left"><i class="tq-section-arrow tq-section-arrow-open"></i><span class="tq-section-name">多人聊天</span></span><span class="tq-section-count">2/2</span></div>
+          <div class="tq-list">
+            ${contactRows([
+              ['四人开黑群','4 人','linear-gradient(135deg,#607d8b,#455a64)'],
+              ['图书馆自习室','6 人','linear-gradient(135deg,#9c27b0,#7b1fa2)']
+            ])}
+          </div>
+        </section>
+        <div class="tq-index">${'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(l => `<span>${l}</span>`).join('')}</div>
+      </div>
+    </div>`,
+dynamics: `
+    <div class="tq-page">
+      <div class="tq-cover">
+        <div class="tq-cover-menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h.01M12 12h.01M19 12h.01"/></svg></div>
+        <div class="tq-cover-avatar">我</div>
+        <div class="tq-cover-name">我</div>
+        <div class="tq-cover-sub">已绑定 462 天 · 开启死党空间</div>
+        <span class="tq-cover-lv">Lv.3</span>
+        <div class="tq-cover-action">开启我的动态空间 ›</div>
+      </div>
+      <div class="tq-page-content">
+        <div class="tq-search-floating"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>搜索动态</span></div>
+        <div class="tq-entries">
+          <div class="tq-entry"><div class="tq-entry-icon" style="background:linear-gradient(135deg,#12b7f5,#1296db)">好</div><span class="tq-entry-label">好友动态</span></div>
+          <div class="tq-entry"><div class="tq-entry-icon" style="background:linear-gradient(135deg,#ff9a56,#ff6a3d)">相</div><span class="tq-entry-label">相册</span></div>
+          <div class="tq-entry"><div class="tq-entry-icon" style="background:linear-gradient(135deg,#f6d365,#fda085)">收</div><span class="tq-entry-label">收藏</span></div>
+          <div class="tq-entry"><div class="tq-entry-icon" style="background:linear-gradient(135deg,#7ed321,#4caf50)">文</div><span class="tq-entry-label">文件</span></div>
+          <div class="tq-entry"><div class="tq-entry-icon" style="background:linear-gradient(135deg,#a1c4fd,#7aa5f0)">小</div><span class="tq-entry-label">小世界</span></div>
+          <div class="tq-entry"><div class="tq-entry-icon" style="background:linear-gradient(135deg,#fbc2eb,#a18cd1)">厘</div><span class="tq-entry-label">厘米秀</span></div>
+          <div class="tq-entry"><div class="tq-entry-icon" style="background:linear-gradient(135deg,#9b59b6,#8e44ad)">游</div><span class="tq-entry-label">游戏</span></div>
+          <div class="tq-entry"><div class="tq-entry-icon" style="background:linear-gradient(135deg,#4dd0e1,#0097a7)">小</div><span class="tq-entry-label">小程序</span></div>
+        </div>
+        <div class="tq-feature-grid">
+          <div class="tq-feature-card"><div class="tq-feature-top"><span class="tq-feature-title">直播</span><button type="button" class="tq-feature-add">+</button></div><div class="tq-feature-sub">和朋友一起看</div></div>
+          <div class="tq-feature-card"><div class="tq-feature-top"><span class="tq-feature-title">小游戏</span><button type="button" class="tq-feature-add">+</button></div><div class="tq-feature-sub">开黑不孤单</div></div>
+          <div class="tq-feature-card"><div class="tq-feature-top"><span class="tq-feature-title">小程序中心</span><button type="button" class="tq-feature-add">+</button></div><div class="tq-feature-sub">即点即用</div></div>
+          <div class="tq-feature-card"><div class="tq-feature-top"><span class="tq-feature-title">我的收藏</span><button type="button" class="tq-feature-add">+</button></div><div class="tq-feature-sub">珍藏每一刻</div></div>
+        </div>
+        <div class="tq-partners">
+          <div class="tq-partner-item"><div class="tq-partner-title">梦搭子</div><div class="tq-partner-sub">专属战绩</div><button type="button" class="tq-partner-add">+</button></div>
+          <div class="tq-partner-item"><div class="tq-partner-title">王者搭子</div><div class="tq-partner-sub">同步王者战绩</div><button type="button" class="tq-partner-add">+</button></div>
+          <div class="tq-partner-item"><div class="tq-partner-title">学习搭子</div><div class="tq-partner-sub">一起进步</div><button type="button" class="tq-partner-add">+</button></div>
+          <div class="tq-partner-item"><div class="tq-partner-title">运动搭子</div><div class="tq-partner-sub">一起自律</div><button type="button" class="tq-partner-add">+</button></div>
+        </div>
+        <div class="tq-badges">
+          <div class="tq-badges-head"><span class="tq-badges-title">互动标识</span><span class="tq-badges-count">3/23</span><span class="tq-badges-more">›</span></div>
+          <div class="tq-badges-row">
+            <div class="tq-badge-item" style="background:linear-gradient(135deg,#a78bfa,#4ecdc4)"><svg class="tq-badge-svg" viewBox="0 0 24 24"><rect x="10.8" y="1.6" width="2.4" height="3.2" rx="1.1" fill="#fff"/><rect x="10.8" y="4.2" width="2.4" height="7.4" rx="1.1" fill="#fff"/><path d="M12 11.6c-4.2 0-6.9 2.7-6.9 5.6 0 2.9 2.7 5 6.9 5s6.9-2.1 6.9-5S16.2 11.6 12 11.6z" fill="#fff"/><path d="M9.6 14.6c.6-.5 1.4-.8 2.4-.8" stroke="#a78bfa" stroke-width="1.1" fill="none" stroke-linecap="round"/></svg><i class="tq-badge-q">Q</i></div>
+            <div class="tq-badge-item" style="background:linear-gradient(135deg,#4ecdc4,#44a8b3)"><svg class="tq-badge-svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2s6 6.3 6 10.3A6 6 0 0 1 12 19.5a6 6 0 0 1-6-6c0-4 6-10.3 6-10.3z"/></svg></div>
+            <div class="tq-badge-item" style="background:linear-gradient(135deg,#ffe066,#ffb300)"><svg class="tq-badge-svg" viewBox="0 0 24 24" fill="none" stroke="none"><ellipse cx="12" cy="6.5" rx="3" ry="4.2" fill="#fff" opacity="0.95"/><ellipse cx="17.2" cy="9" rx="3" ry="4.2" transform="rotate(72 12 12)" fill="#ffb3d1" opacity="0.95"/><ellipse cx="15.2" cy="15.4" rx="3" ry="4.2" transform="rotate(144 12 12)" fill="#fff" opacity="0.95"/><ellipse cx="8.8" cy="15.4" rx="3" ry="4.2" transform="rotate(216 12 12)" fill="#ffb3d1" opacity="0.95"/><ellipse cx="6.8" cy="9" rx="3" ry="4.2" transform="rotate(288 12 12)" fill="#fff" opacity="0.95"/><circle cx="12" cy="12" r="2.4" fill="#fff3c4"/></svg></div>
+            <div class="tq-badge-item tq-badge-empty"><span class="tq-badge-placeholder">20个</span><span class="tq-badge-placeholder-sub">待点亮</span></div>
+          </div>
+        </div>
+        <div class="tq-section-label">我们的幸运物种</div>
+        <div class="tq-asset-card">
+          <div class="tq-asset-icon tq-asset-icon-lucky"><svg viewBox="0 0 24 24" fill="none" stroke="#c4a35a" stroke-width="2.6" stroke-linecap="round"><path d="M8 5l8 14M16 5L8 19"/></svg></div>
+          <div class="tq-asset-meta"><div class="tq-asset-title">幸运字符</div><div class="tq-asset-sub">抽取专属字符</div></div>
+          <span class="tq-asset-cta">开启 〉</span>
+        </div>
+        <div class="tq-section-label">新奇物种</div>
+        <div class="tq-asset-card">
+          <div class="tq-asset-icon tq-asset-icon-novel"><svg class="tq-creature-svg" viewBox="0 0 48 48" fill="none"><circle cx="17" cy="25" r="9" fill="#ff9ecb"/><circle cx="31" cy="25" r="9" fill="#7ec8ff"/><circle cx="14.4" cy="22.6" r="1.6" fill="#333"/><circle cx="19.6" cy="22.6" r="1.6" fill="#333"/><circle cx="28.4" cy="22.6" r="1.6" fill="#333"/><circle cx="33.6" cy="22.6" r="1.6" fill="#333"/><path d="M14.6 27.4c1.5 1.4 3.3 2 5.4 2s3.9-.6 5.4-2" stroke="#333" stroke-width="1.4" stroke-linecap="round"/><path d="M28.6 27.4c1.5 1.4 3.3 2 5.4 2s3.9-.6 5.4-2" stroke="#333" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          <div class="tq-asset-meta"><div class="tq-asset-title">解锁聊天新玩法</div><div class="tq-asset-sub">我是超级可爱的新奇物种</div></div>
+          <span class="tq-asset-cta">去养成 〉</span>
+        </div>
+        <div class="tq-dna"><div class="tq-section-label">我们的DNA</div><div class="tq-dna-divider"></div></div>
+        <div class="tq-feed-title">好友动态</div>
+        ${postCard('沈亦舟','昨天 21:40','linear-gradient(135deg,#ff9800,#f57c00)','周五晚八点老地方，桌游 + 烤肉，报名接龙走起 🍖',9,'35','20','3',3)}
+        ${postCard('林晚晴','10 分钟前','linear-gradient(135deg,#12b7f5,#1296db)','周末去爬山，有一起的吗？🌄 山顶风景真的绝了，随手一拍都是壁纸。',3,'23','5','2',0)}
+        ${postCard('陈默','1 小时前','linear-gradient(135deg,#ff9a56,#ff6a3d)','新版原型终于定稿了，感谢大家这几天的反馈！',1,'41','12','6',4)}
+        ${postCard('产品讨论组','2 小时前','linear-gradient(135deg,#7ed321,#4caf50)','本周周会纪要已同步，重点：v3 排期、灰度方案、下周双周会时间。',0,'18','9','4')}
+      </div>
+    </div>`
+
+}
+
+function followRow(name, desc, subs, gradient) {
+  return `<div class="tq-row"><div class="tq-row-avatar" style="background:${gradient}">${name.slice(0,1)}</div><div class="tq-row-meta"><div class="tq-row-name">${name}</div><div class="tq-row-desc">${desc}</div></div><span class="tq-row-subs">${subs}人关注</span><button class="tq-follow tq-follow-active">已关注</button></div>`;
+}
+
+function channelSection(title, rows) {
+  return `<section class="tq-section"><h2 class="tq-section-title">${title}</h2><div class="tq-list">
+    ${rows.map(r => `<div class="tq-row"><div class="tq-row-avatar" style="background:${r[3]}">${r[0].slice(0,1)}</div><div class="tq-row-meta"><div class="tq-row-name">${r[0]}</div><div class="tq-row-desc">${r[1]}</div></div><span class="tq-row-subs">${r[2]}人关注</span><button class="tq-follow">+ 关注</button></div>`).join('')}
+  </div></section>`;
+}
+
+function contactRows(rows) {
+  return rows.map(r => `<div class="tq-row"><div class="tq-avatar-wrap"><div class="tq-row-avatar tq-round" style="background:${r[2]}">${r[0].slice(0,1)}</div>${r[4] ? '<i class="tq-online-dot"></i>' : ''}</div><div class="tq-row-meta"><div class="tq-row-name">${r[0]}</div><div class="tq-row-desc">${r[1]}</div></div>${r[3] ? `<span class="tq-badge">${r[3]}</span>` : ''}</div>`).join('');
+}
+
+function contactSection(title, rows) {
+  return `<section class="tq-section"><h2 class="tq-section-title">${title}</h2><div class="tq-list">
+    ${rows.map(r => `<div class="tq-row"><div class="tq-avatar-wrap"><div class="tq-row-avatar tq-round" style="background:${r[2]}">${r[0].slice(0,1)}</div>${r[4] ? '<i class="tq-online-dot"></i>' : ''}</div><div class="tq-row-meta"><div class="tq-row-name">${r[0]}</div><div class="tq-row-desc">${r[1]}</div></div>${r[3] ? `<span class="tq-badge">${r[3]}</span>` : ''}</div>`).join('')}
+  </div></section>`;
+}
+
+function postCard(name, time, gradient, text, images, likes, comments, forwards, imgStart = 0) {
+  const cells = [];
+  for(let i = 0; i < images; i++) {
+    const src = `imgs/photo${String(((i + imgStart) % 12) + 1).padStart(2, '0')}.jpg`;
+    cells.push(`<img class="tq-img" src="${src}" alt="" loading="lazy">`);
+  }
+  const grid = images === 0 ? '' : images === 1 ? `<div class="tq-img-single">${cells.join('')}</div>` : `<div class="tq-img-grid">${cells.join('')}</div>`;
+  return `<article class="tq-post"><div class="tq-post-head"><div class="tq-row-avatar tq-round tq-post-avatar" style="background:${gradient}">${name.slice(0,1)}</div><div class="tq-post-meta"><div class="tq-post-name">${name}</div><div class="tq-post-time">${time}</div></div></div><div class="tq-post-text">${text}</div>${grid}<div class="tq-post-actions"><button><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.6-9.2-8.6C1.2 8.6 3 5.5 6.2 5.5c2 0 3.3 1.1 4.2 2.4l1.6 2.1 1.6-2.1c.9-1.3 2.2-2.4 4.2-2.4 3.2 0 5 3.1 3.2 5.9C19 15.4 12 20 12 20z"/></svg>${likes}</button><button><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.9 8.9 0 0 1-3.4-.7L3 20.5l1.3-4.1a8 8 0 0 1-.8-3.4A8.4 8.4 0 0 1 12 4.5a8.4 8.4 0 0 1 9 7z"/></svg>${comments}</button><button><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>${forwards}</button></div></article>`;
+}
+
+if(new URLSearchParams(location.search).get('mobile')) {
+  document.body.classList.remove('tq-tablet');
+}
+document.getElementById('tq-pages').innerHTML = PAGES[TAB] || PAGES.channels;
+
+function recommendRows(rows) {
+  return rows.map(r => `<div class="tq-row"><div class="tq-avatar-wrap"><div class="tq-row-avatar tq-round" style="background:${r[2]}">${r[0].slice(0,1)}</div></div><div class="tq-row-meta"><div class="tq-row-name">${r[0]}</div><div class="tq-row-desc">${r[1]}</div></div><button class="tq-add-btn">添加</button></div>`).join('');
+}
+
+function deviceRows(rows) {
+  return rows.map(r => `<div class="tq-row"><span class="tq-device-icon">${r[3]}</span><div class="tq-row-meta"><div class="tq-row-name">${r[0]}</div><div class="tq-row-desc">${r[1]}</div></div><span class="tq-row-arrow">›</span></div>`).join('');
+}
+
+// Contacts page: optional ctab=recommend|device view
+if(TAB === 'contacts') {
+  const ctab = new URLSearchParams(location.search).get('ctab');
+  if(ctab === 'recommend' || ctab === 'device') {
+    const content = document.getElementById('tq-contacts-content');
+    const tabs = document.querySelectorAll('#tq-contacts-tabs .tq-tab');
+    tabs.forEach(t => t.classList.toggle('tq-tab-active', t.dataset.tqTab === ctab));
+    document.querySelector('.tq-contacts .tq-index')?.remove();
+    content.innerHTML = ctab === 'recommend'
+      ? `<section class="tq-section"><div class="tq-section-label">推荐联系人</div><div class="tq-list">
+          ${recommendRows([
+            ['顾南星','共同好友 3 人 · 喜欢摄影','linear-gradient(135deg,#12b7f5,#1296db)'],
+            ['许一诺','通讯录好友 · 来自手机通讯录','linear-gradient(135deg,#ff9a56,#ff6a3d)'],
+            ['陆之遥','共同群聊：前端交流群','linear-gradient(135deg,#9b59b6,#8e44ad)']
+          ])}
+        </div></section>`
+      : `<section class="tq-section"><div class="tq-section-label">我的设备</div><div class="tq-list">
+          ${deviceRows([
+            ['我的手机','当前设备 · 在线','','<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M10.8 18.5h2.4"/></svg>'],
+            ['我的电脑','上次登录：3 天前','','<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M9 20.5h6M12 16.5v4"/></svg>'],
+            ['我的平板','上次登录：上周','','<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="3.5" width="15" height="17" rx="2"/><path d="M10.5 18h3"/></svg>']
+          ])}
+        </div></section>`;
+  }
+}
+
+// Channel page: 推荐/关注 tab strip
+if(TAB === 'channels') {
+  const qs = new URLSearchParams(location.search);
+  const tabs = document.querySelectorAll('.tq-tab');
+  const panels = document.querySelectorAll('.tq-tab-panel');
+  const switchTab = (name) => {
+    tabs.forEach(t => t.classList.toggle('tq-tab-active', t.dataset.tqTab === name));
+    panels.forEach(p => { p.hidden = p.dataset.tqPanel !== name; });
+  };
+  tabs.forEach(t => t.addEventListener('click', () => switchTab(t.dataset.tqTab)));
+  document.querySelectorAll('.tq-follow').forEach(btn => {
+    btn.addEventListener('click', () => btn.classList.toggle('tq-follow-active'));
+  });
+  if(qs.get('follow') === '1') {
+    document.querySelector('.tq-follow-empty').hidden = true;
+    document.querySelector('.tq-follow-list').hidden = false;
+    switchTab('follow');
+  } else {
+    switchTab('recommend');
+  }
+}
+document.querySelectorAll('nav button').forEach(b => {
+  b.classList.toggle('_itemSelected_rma6i_36', b.dataset.tab === TAB);
+  if(b.dataset.tab === 'dynamics') {
+    const dot = document.createElement('i');
+    dot.className = 'tq-nav-dot';
+    b.appendChild(dot);
+  }
+});
+if(TAB === 'contacts') document.body.classList.add('tq-contacts-page');
+document.querySelectorAll('.tq-follow').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const active = btn.classList.toggle('tq-follow-active');
+    btn.textContent = active ? '已关注' : '+ 关注';
+  });
+});
+document.querySelectorAll('.tq-post-actions button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const active = btn.classList.toggle('tq-action-active');
+    if(active && btn.firstElementChild) {
+      const n = parseInt(btn.textContent.replace(/[^0-9]/g, ''), 10) || 0;
+      btn.childNodes[btn.childNodes.length - 1].textContent = ' ' + (n + 1);
+    }
+  });
+});
+</script>
+</body>
+</html>

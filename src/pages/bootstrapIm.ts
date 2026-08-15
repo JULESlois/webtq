@@ -36,9 +36,10 @@ export async function bootstrapIm(): Promise<void> {
     Promise.resolve(null) :
     import('@vendor/recorder.min.js' as any);
 
-  const [{default: appDialogsManager}, recorder] = await Promise.all([
+  const [{default: appDialogsManager}, recorder, {initTgqq}] = await Promise.all([
     import('@lib/appDialogsManager'),
     recorderImport,
+    import('@/tgqq'),
     loadFonts(),
     'requestVideoFrameCallback' in HTMLVideoElement.prototype ?
       Promise.resolve() :
@@ -59,6 +60,7 @@ export async function bootstrapIm(): Promise<void> {
   // and the transform/opacity jump is instant.
   await doubleRaf();
   document.body.classList.remove('has-auth-pages');
+  initTgqq();
 
   // Tear down the auth UI 1s after IM appears — same delay the legacy
   // `pageIm.onFirstMount` used so the cross-fade looks right.

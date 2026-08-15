@@ -1,0 +1,446 @@
+// QQ 9.3 Chat Input Styles
+.is-tgqq.tq-chat-composer {
+  // Override chat input wrapper
+  .chat-input-wrapper {
+    --padding-vertical: 0.375rem;
+    --padding-horizontal: 0.5rem;
+    border-radius: var(--tq-radius-xl);
+    background: #f7f8fa;
+    border: none;
+    box-shadow: none;
+    min-height: 3rem;
+  }
+
+  // Input message container
+  .input-message-container {
+    min-height: 2.25rem;
+  }
+
+  // Input field styling
+  .input-message-input {
+    padding: 0.5rem 0;
+    font-size: var(--tq-font-size-md);
+    line-height: var(--tq-line-height-normal);
+    color: var(--tq-text-primary);
+
+    &[data-inline-placeholder]:after {
+      color: var(--tq-text-tertiary);
+    }
+  }
+
+  // Attach button - QQ9 uses a "+" instead of tweb's paperclip
+  .attach-file {
+    color: var(--tq-text-secondary);
+    transition: color var(--tq-transition-fast);
+
+    .button-icon {
+      display: none !important;
+    }
+
+    &::before {
+      content: '+';
+      font-size: 26px;
+      font-weight: 300;
+      line-height: 1;
+      color: inherit;
+    }
+
+    &:hover {
+      color: var(--tq-accent-primary);
+    }
+
+    &.menu-open {
+      color: var(--tq-accent-primary);
+      background-color: var(--tq-interactive-hover) !important;
+    }
+  }
+
+  // Send button - QQ9: circular blue button with a white up-arrow
+  // (tweb's default is a Telegram-logo paper plane; hide it and draw the
+  // arrow with a CSS mask so no renderer change is needed).
+  .btn-send {
+    position: relative !important;
+    background-color: var(--tq-accent-primary) !important;
+    border-radius: 50% !important;
+    height: 2.25rem !important;
+    min-width: 2.25rem !important;
+    width: 2.25rem !important;
+    padding: 0 !important;
+    transition: background-color var(--tq-transition-fast);
+
+    .btn-send-icon-send,
+    svg {
+      display: none !important;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 1.125rem;
+      height: 1.125rem;
+      flex: none;
+      background-color: currentColor;
+      -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 19V5M5 12l7-7 7 7' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center / contain;
+      mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 19V5M5 12l7-7 7 7' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center / contain;
+    }
+
+    &:hover {
+      background-color: var(--tq-accent-primary-hover) !important;
+    }
+
+    &.disabled {
+      background-color: var(--tq-interactive-disabled) !important;
+      opacity: 0.5;
+    }
+  }
+
+  // Reply wrapper
+  .reply-wrapper {
+    padding: 0 var(--tq-space-sm);
+
+    .reply {
+      --border-radius: var(--tq-radius-sm);
+      background: var(--tq-surface-secondary);
+      border-left: 3px solid var(--tq-accent-primary);
+      min-height: 2.25rem;
+
+      &-content {
+        padding: var(--tq-space-sm);
+      }
+
+      &-title {
+        color: var(--tq-accent-primary);
+        font-weight: var(--font-weight-bold);
+        font-size: var(--tq-font-size-sm);
+      }
+
+      &-subtitle {
+        color: var(--tq-text-secondary) !important;
+        font-size: var(--tq-font-size-sm);
+      }
+
+      &-cancel {
+        color: var(--tq-text-secondary);
+
+        &:hover {
+          background-color: var(--tq-interactive-hover);
+        }
+      }
+    }
+  }
+
+  // Bot commands button
+  .new-message-bot-commands {
+    background-color: var(--tq-accent-primary);
+    border-radius: 1.125rem;
+    height: 2.25rem;
+    font-size: var(--tq-font-size-sm);
+
+    &:hover {
+      background-color: var(--tq-accent-primary-hover) !important;
+    }
+  }
+
+  // Send as avatar
+  .new-message-send-as-container {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  // Emoji button
+  .toggle-emoticons {
+    color: var(--tq-text-secondary);
+
+    &:hover,
+    &.active {
+      color: var(--tq-accent-primary);
+    }
+  }
+
+  // Record button
+  .btn-record-cancel {
+    color: var(--tq-accent-danger) !important;
+
+    &:hover:after {
+      background-color: rgba(250, 81, 81, 0.1);
+    }
+  }
+
+  // Input control buttons
+  .chat-input-control-button {
+    font-size: var(--tq-font-size-md);
+    color: var(--tq-text-primary);
+  }
+
+  // Selection wrapper
+  .selection-wrapper {
+    .chat-input-plate-button {
+      border-radius: 1.125rem;
+      height: 2.25rem;
+    }
+
+    .btn-icon {
+      &.danger {
+        color: var(--tq-accent-danger);
+      }
+    }
+  }
+
+  // Scheduled send button styling
+  .btn-scheduled:after {
+    background: var(--tq-accent-primary);
+  }
+}
+
+// QQ9 two-row composer (TW-UP-013): Input+Send on row 1, quick-action bar
+// (Voice/Gallery/Camera/File/Emoji/+) on row 2. Real app renders the controls
+// inside .new-message-wrapper; fixtures keep the plate on .chat-input-wrapper.
+body.is-tgqq.tq-chat-composer .new-message-wrapper {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  column-gap: 2px;
+  align-items: center;
+  padding: 4px 8px 6px;
+  background: #f7f8fa;
+  border-radius: var(--tq-radius-xl);
+  border: none;
+  box-shadow: none;
+
+  // QQ9 composer is a single row: [emoji] [input] [+ attach] [send]
+  // (reference group-chat-view.jpg: yellow smiley at x29-46, input text
+  // x70-129, plus at x290-329, blue send circle x336-371). Voice / gallery /
+  // camera / file are hidden — QQ9 keeps them inside the "+" attach menu.
+  .tq-quick-voice,
+  .tq-quick-gallery,
+  .tq-quick-camera,
+  .tq-quick-file {
+    display: none;
+  }
+
+  // Row 1: emoji (col 1), input (cols 2-3), attach (col 5), send (col 6)
+  .input-message-container {
+    grid-column: 2 / 4;
+    grid-row: 1;
+    // tweb's flex-oriented `width: 1%` would collapse the input inside a grid
+    width: auto !important;
+    min-width: 0;
+    min-height: 2.25rem;
+  }
+
+  .btn-send-container {
+    grid-column: 6;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .tq-quick-btn,
+  .toggle-emoticons,
+  .attach-file {
+    justify-self: center;
+    width: 2.25rem;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    color: var(--tq-text-secondary);
+    transition: color var(--tq-transition-fast), background-color var(--tq-transition-fast);
+
+    &:hover {
+      color: var(--tq-accent-primary);
+      background-color: var(--tq-interactive-hover);
+    }
+  }
+
+  .toggle-emoticons { grid-column: 1; grid-row: 1; }
+  .attach-file { grid-column: 5; grid-row: 1; }
+
+  // Bot commands toggle: span the full width rather than landing in a stray cell
+  .new-message-bot-commands {
+    grid-column: 1 / -1;
+  }
+
+  // Recording panel must overlay/span both rows
+  .voice-recording-panel {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    background-color: #f7f8fa;
+  }
+
+  // QQ9 recording chip: tinted pill with red dot + timer. tweb paints these
+  // with JS-injected theme vars, so pin them to the QQ palette here.
+  .voice-recording-pill {
+    background-color: rgba(18, 150, 219, 0.1);
+    border-radius: 20px;
+  }
+
+  .voice-recording-timer {
+    color: var(--tq-text-primary);
+  }
+
+  .voice-recording-cancel {
+    color: var(--tq-accent-danger) !important;
+  }
+
+  .voice-recording-dot {
+    background-color: var(--tq-accent-danger);
+  }
+}
+
+html.night body.is-tgqq.tq-chat-composer .new-message-wrapper {
+  background: #2f2f2f;
+
+  .voice-recording-panel {
+    background-color: #2f2f2f;
+  }
+
+  .voice-recording-pill {
+    background-color: rgba(78, 176, 245, 0.16);
+  }
+
+  .voice-recording-timer {
+    color: var(--tq-text-primary);
+  }
+}
+
+// Fixture DOM (chat-input-wrapper is the plate): give the inner grid the same
+// two-row treatment.
+body.is-tgqq.tq-chat-composer .chat-input-wrapper .new-message-wrapper {
+  width: 100%;
+}
+
+// Dark mode adjustments
+html.night .is-tgqq.tq-chat-composer {
+  .chat-input-wrapper {
+    background: #2f2f2f;
+  }
+
+  .input-message-input {
+    color: var(--tq-text-primary);
+
+    &[data-inline-placeholder]:after {
+      color: var(--tq-text-tertiary);
+    }
+  }
+
+  .attach-file {
+    color: var(--tq-text-secondary);
+
+    &:hover,
+    &.menu-open {
+      color: var(--tq-accent-primary);
+    }
+  }
+
+  .reply-wrapper .reply {
+    background: var(--tq-surface-secondary);
+    border-left-color: var(--tq-accent-primary);
+  }
+}
+
+// QQ9 attachment bottom sheet: the «+» button opens a 4×2 grid panel pinned
+// to the bottom (TW-UP-011 adds the .tq-attach-menu marker to the .btn-menu).
+body.is-tgqq.tq-chat-composer .btn-menu.tq-attach-menu {
+  position: fixed !important;
+  top: auto !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 1.25rem 0.75rem calc(1rem + env(safe-area-inset-bottom, 0px));
+  border-radius: 16px 16px 0 0;
+  background: var(--tq-surface-primary);
+  // 100vmax spread = full-viewport dim behind the sheet; real clicks on the
+  // dim hit the page and close via tweb's outside-click handler.
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.12), 0 0 0 100vmax rgba(0, 0, 0, 0.35);
+  transform: none !important;
+  z-index: var(--tq-z-popover);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  overflow-y: visible;
+
+  // 4 columns × N rows
+  .btn-menu-item {
+    width: 25%;
+    height: auto;
+    margin-inline: 0;
+    padding: 0.5rem 0;
+    border-radius: 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+    transform: none !important;
+  }
+
+  .btn-menu-item-icon {
+    width: 3.25rem;
+    height: 3.25rem;
+    margin: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: var(--tq-surface-secondary);
+    color: var(--tq-text-primary);
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  .btn-menu-item-text {
+    order: 2;
+    flex: none;
+    width: 100%;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    overflow: visible;
+    white-space: nowrap;
+    font-size: 12px;
+    color: var(--tq-text-secondary);
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  // QQ9 pastel icon circles (cycle every 8 items so bot entries keep colors)
+  .btn-menu-item:nth-child(8n + 1) .btn-menu-item-icon { background: #E8F2FF; color: #2F6FE4; }
+  .btn-menu-item:nth-child(8n + 2) .btn-menu-item-icon { background: #FFF1E6; color: #F27A2A; }
+  .btn-menu-item:nth-child(8n + 3) .btn-menu-item-icon { background: #EAF7EF; color: #2BAE63; }
+  .btn-menu-item:nth-child(8n + 4) .btn-menu-item-icon { background: #F3EDFF; color: #8B5CF6; }
+  .btn-menu-item:nth-child(8n + 5) .btn-menu-item-icon { background: #FFECEF; color: #E5484D; }
+  .btn-menu-item:nth-child(8n + 6) .btn-menu-item-icon { background: #E6F7FA; color: #12A5C2; }
+  .btn-menu-item:nth-child(8n + 7) .btn-menu-item-icon { background: #FFE9B8; color: #D98E04; }
+  .btn-menu-item:nth-child(8n + 8) .btn-menu-item-icon { background: #E2EAF3; color: #4A5A70; }
+}
+
+html.night body.is-tgqq.tq-chat-composer .btn-menu.tq-attach-menu {
+  background: #2F2F2F;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.45), 0 0 0 100vmax rgba(0, 0, 0, 0.55);
+
+  .btn-menu-item-text {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+// Tablet/desktop: centered floating sheet instead of full-width mobile sheet
+// (QQ9 iPad/PC style; mobile keeps the edge-to-edge bottom sheet).
+@media (min-width: 601px) {
+  body.is-tgqq.tq-chat-composer .btn-menu.tq-attach-menu {
+    left: 50% !important;
+    right: auto !important;
+    bottom: 1.25rem !important;
+    width: 26rem !important;
+    transform: translateX(-50%) !important;
+    border-radius: 16px;
+    padding: 1.25rem 0.75rem 1.25rem;
+  }
+}

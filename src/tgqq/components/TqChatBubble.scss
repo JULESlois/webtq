@@ -1,0 +1,535 @@
+// QQ 9.3 Chat Bubble Styles
+// This overrides tweb's default chat bubble styles when .is-tgqq is active
+
+body.is-tgqq.tq-chat-bubbles {
+
+  // Bubbles container
+  .bubbles-inner {
+    background: var(--tq-chat-page);
+  }
+
+  // Individual bubble adjustments
+  .bubble {
+    margin-bottom: var(--tq-bubble-margin);
+
+    &:not(.service):not(.is-date) {
+      // Override max-width to use QQ's value
+      --max-width: var(--tq-bubble-max-width) !important;
+    }
+  }
+
+  // Bubble content wrapper
+  .bubble-content {
+    border-radius: var(--tq-bubble-radius-incoming);
+    box-shadow: none; // QQ uses flat design, no shadows
+    padding: var(--tq-bubble-padding-v) var(--tq-bubble-padding-h);
+
+    // Smooth transitions
+    transition: background-color var(--tq-transition-fast);
+  }
+
+  // Incoming messages (default, not .is-out)
+  .bubble:not(.is-out) {
+    .bubble-content {
+      background-color: var(--tq-bubble-incoming-bg);
+      color: var(--tq-bubble-incoming-text);
+      border: 1px solid var(--tq-bubble-incoming-border);
+      border-radius: var(--tq-bubble-radius-incoming);
+    }
+
+    // Message text
+    .message,
+    .text-content {
+      color: var(--tq-bubble-incoming-text);
+    }
+
+    // Name in groups
+    .name {
+      color: var(--tq-accent-primary);
+      font-weight: 500;
+    }
+
+    // Time and status
+    .time,
+    .message-status {
+      color: var(--tq-text-tertiary);
+    }
+  }
+
+  // Outgoing messages (.is-out)
+  .bubble.is-out {
+    .bubble-content {
+      background-color: var(--tq-bubble-outgoing-bg);
+      color: var(--tq-bubble-outgoing-text);
+      border: 1px solid var(--tq-bubble-outgoing-border);
+      border-radius: var(--tq-bubble-radius-outgoing);
+    }
+
+    // Message text
+    .message,
+    .text-content {
+      color: var(--tq-bubble-outgoing-text);
+    }
+
+    // Name (shouldn't show in outgoing, but style it anyway)
+    .name {
+      color: var(--tq-bubble-outgoing-text);
+      font-weight: 500;
+    }
+
+    // Time and status
+    .time,
+    .message-status {
+      color: var(--tq-bubble-outgoing-meta);
+    }
+
+    // QQ9 read marker: blue double-check next to the time (status classes are
+    // set by tweb's setBubbleSendingStatus). Sent-but-unread messages show no
+    // marker at all, matching QQ9.
+    &.is-read {
+      .time-sending-status {
+        color: var(--tq-accent-primary);
+        -webkit-text-stroke: 0.4px currentColor;
+      }
+    }
+
+    &.is-sent {
+      .time-sending-status {
+        display: none;
+      }
+    }
+
+    // Message status icons (checkmarks)
+    .message-status {
+      filter: none;
+    }
+  }
+
+  // Bubble grouping - adjust corner radius like QQ
+  .bubble.is-group-first:not(.is-out) {
+    .bubble-content {
+      border-top-left-radius: var(--tq-radius-xs);
+    }
+  }
+
+  .bubble.is-group-last:not(.is-out) {
+    .bubble-content {
+      border-bottom-left-radius: var(--tq-radius-xs);
+    }
+  }
+
+  .bubble.is-group-first.is-out {
+    .bubble-content {
+      border-top-right-radius: var(--tq-radius-xs);
+    }
+  }
+
+  .bubble.is-group-last.is-out {
+    .bubble-content {
+      border-bottom-right-radius: var(--tq-radius-xs);
+    }
+  }
+
+  // Middle messages in a group - reduce radius
+  .bubble:not(.is-group-first):not(.is-group-last):not(.is-out) {
+    .bubble-content {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+  }
+
+  .bubble:not(.is-group-first):not(.is-group-last).is-out {
+    .bubble-content {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+
+  // QQ9 small tail: a little triangle on group-first bubbles pointing at
+  // the avatar (incoming: left, outgoing: right). tweb's own SVG tail is
+  // Telegram-style, so hide it and draw a flat QQ-style corner instead.
+  .bubble-tail {
+    display: none !important;
+  }
+
+  .bubble.is-group-first:not(.is-out) .bubble-content {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -5px;
+      border-top: 5px solid var(--tq-bubble-incoming-bg);
+      border-left: 5px solid transparent;
+    }
+  }
+
+  .bubble.is-group-first.is-out .bubble-content {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -5px;
+      border-top: 5px solid var(--tq-bubble-outgoing-bg);
+      border-right: 5px solid transparent;
+    }
+  }
+
+  // Reply/Forward styling
+  .reply {
+    background-color: rgba(0, 0, 0, 0.06);
+    border-left: 3px solid var(--tq-accent-primary);
+    border-radius: 6px;
+    padding: var(--tq-space-xs) var(--tq-space-sm);
+    margin-bottom: var(--tq-space-xs);
+
+  }
+
+  .bubble.is-out .reply {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .reply-title {
+    color: var(--tq-accent-primary);
+    font-weight: 500;
+    font-size: var(--tq-font-size-sm);
+  }
+
+  .reply-subtitle {
+    color: var(--tq-text-secondary);
+    font-size: var(--tq-font-size-sm);
+
+  }
+
+  .bubble.is-out .reply-subtitle {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  html.night .bubble .reply {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  // Forwarded message styling
+  .forward {
+    color: var(--tq-text-secondary);
+    font-size: var(--tq-font-size-sm);
+    margin-bottom: var(--tq-space-xs);
+
+  }
+
+  .bubble.is-out .forward {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  // Link styling in bubbles
+  .bubble-content {
+    a {
+      color: var(--tq-accent-primary);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+  }
+
+  .bubble.is-out .bubble-content a {
+    color: #0066cc;
+  }
+
+  // Media messages
+  .bubble.photo,
+  .bubble.video,
+  .bubble.just-media {
+    .bubble-content {
+      padding: 0;
+      border-radius: var(--tq-radius-md);
+      overflow: hidden;
+    }
+
+    .attachment {
+      border-radius: var(--tq-radius-md);
+    }
+  }
+
+  // Document/file messages - QQ style
+  .document {
+    background-color: transparent;
+    border-radius: var(--tq-radius-sm);
+    padding: var(--tq-space-sm);
+
+    .document-ico {
+      background-color: var(--tq-accent-primary);
+      border-radius: var(--tq-radius-sm);
+    }
+
+    .document-name {
+      color: var(--tq-text-primary);
+      font-size: var(--tq-font-size-md);
+    }
+
+    .document-size {
+      color: var(--tq-text-tertiary);
+      font-size: var(--tq-font-size-xs);
+    }
+  }
+
+  // Audio messages
+  .audio {
+    background-color: transparent;
+    border-radius: var(--tq-radius-sm);
+  }
+
+  // Voice message - QQ waveform style
+  .bubble.is-out .audio-waveform {
+    .audio-waveform-bar {
+      background-color: rgba(0, 0, 0, 0.2);
+
+      &.active {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  // Sticker messages - no background
+  .bubble.sticker {
+    .bubble-content {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+    }
+  }
+
+  // Emoji-only messages - larger size
+  .bubble.emoji-big {
+    .bubble-content {
+      background-color: transparent;
+      border: none;
+      padding: var(--tq-space-xs);
+    }
+  }
+
+  // Service messages (date dividers, system messages)
+  .bubble.service {
+    .bubble-content {
+      background-color: var(--tq-surface-secondary);
+      color: var(--tq-text-secondary);
+      border-radius: var(--tq-radius-full);
+      padding: var(--tq-space-xs) var(--tq-space-md);
+      font-size: var(--tq-font-size-sm);
+      box-shadow: none;
+    }
+  }
+
+  // Date bubble — QQ9 keeps the date pill permanently visible (tweb hides
+  // it via `.bubbles:not(.has-sticky-dates) .bubble.is-date{visibility:hidden}`
+  // until JS adds a class; we never wait for JS).
+  .bubble.is-date {
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    .bubble-content {
+      background-color: var(--tq-surface-tertiary);
+      color: var(--tq-text-secondary);
+      border-radius: var(--tq-radius-full);
+      padding: var(--tq-space-xs) var(--tq-space-md);
+      font-size: var(--tq-font-size-xs);
+      font-weight: 500;
+      box-shadow: none;
+    }
+  }
+
+  // Selected/highlighted state
+  .bubble.is-selected,
+  .bubble.is-highlighted {
+    &::after {
+      background-color: var(--tq-interactive-active);
+    }
+  }
+
+  // Unread messages divider
+  .bubble.is-first-unread {
+    &::before {
+      background-color: var(--tq-surface-page);
+      color: var(--tq-accent-primary);
+      font-size: var(--tq-font-size-sm);
+      font-weight: 500;
+    }
+  }
+
+  // Reactions - QQ style
+  .reactions-element {
+    margin-top: var(--tq-space-xs);
+
+    .reaction {
+      background-color: var(--tq-surface-secondary);
+      border: 1px solid var(--tq-border-light);
+      border-radius: var(--tq-radius-full);
+      padding: var(--tq-space-xs) var(--tq-space-sm);
+
+      &.is-chosen {
+        background-color: var(--tq-accent-primary);
+        border-color: var(--tq-accent-primary);
+        color: #fff;
+      }
+    }
+  }
+
+  // Poll messages
+  .poll-message {
+    .poll-option {
+      background-color: var(--tq-surface-secondary);
+      border-radius: var(--tq-radius-sm);
+      margin-bottom: var(--tq-space-xs);
+
+      &.is-voted {
+        background-color: var(--tq-accent-primary);
+        color: #fff;
+      }
+    }
+  }
+
+  // Contact card
+  .contact {
+    .row {
+      background-color: transparent;
+    }
+  }
+
+  // Location messages
+  .location-message {
+    .bubble-content {
+      padding: 0;
+      overflow: hidden;
+    }
+  }
+
+  // Message padding adjustments for text messages
+  .bubble:not(.photo):not(.video):not(.just-media):not(.sticker) {
+    .message {
+      line-height: var(--tq-line-height-normal);
+      font-size: var(--tq-font-size-md);
+      word-wrap: break-word;
+      // tweb's .message carries `margin: 4px 8px 5px`, which makes the text
+      // sit 23px/15px from the bubble edge (loose, uneven). QQ9 text sits at
+      // the bubble padding itself, so zero it and let the padding token win.
+      margin: 0;
+    }
+  }
+
+  // Improve emoji in text
+  .emoji {
+    vertical-align: text-bottom;
+  }
+
+  // Avatar in bubbles (for groups) — QQ9: 40px, bottom-aligned with the
+  // message group (tweb's native column-reverse layout anchors it there),
+  // not sticky while scrolling. Own avatar (added by the renderer hook in
+  // bubbleGroups.ts with .tq-own) is pinned to the right edge.
+  .bubbles-group-avatar {
+    position: static !important;
+    bottom: auto;
+    flex: none;
+    margin-inline-start: 0;
+    // tweb's group box includes the last bubble's margin-bottom, so pull the
+    // avatar up by that margin to sit flush with the bubble bottom (QQ9).
+    margin-bottom: var(--tq-bubble-margin);
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+    }
+
+    &.tq-own {
+      margin-inline-start: auto;
+    }
+  }
+
+  // Group sender name — QQ9 renders it ABOVE the bubble (on page bg),
+  // tweb puts it inside the pill. Lift it out: reserve 18px above the first
+  // bubble of a group and absolutely position the name there. Only group
+  // chats render a name, so private chats must not reserve the space.
+  .chat.is-tgqq-chat.is-tgqq-group .bubble.is-group-first:not(.is-out) {
+    .bubble-content {
+      // Reserve room above the first pill for the lifted-out sender name
+      // (calibrated: name 12px tall + 4px gap, no overlap with the message
+      // above; group boundaries get 18px + 4px bubble margin).
+      margin-top: 1.125rem;
+    }
+
+    .name {
+      position: absolute;
+      top: -1.3125rem;
+      inset-inline-start: 2px;
+      max-width: calc(100% - 4px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 12px;
+      line-height: 10px;
+    }
+  }
+
+  .chat.is-tgqq-chat:not(.is-tgqq-group) .bubble.is-group-first:not(.is-out) {
+    .bubble-content {
+      margin-top: 0;
+    }
+  }
+
+  // Room for the own avatar on the right of outgoing groups.
+  .chat.is-tgqq-chat.is-tgqq-group .bubble.is-out .bubble-content-wrapper {
+    margin-inline-end: 2.875rem;
+  }
+
+  // Private 1-on-1 chats (QQ9): the peer avatar sits on the first message of
+  // each incoming group, so every message in such a group indents by the
+  // avatar column (40px avatar + 6px gap, same as group chats).
+  .chat.is-tgqq-chat:not(.is-tgqq-group) .bubbles-group:has(.bubbles-group-avatar-container) .bubble-content-wrapper {
+    margin-inline-start: 2.875rem;
+  }
+
+  // Time badge at bottom of bubble
+  .time {
+    font-size: var(--tq-font-size-xs);
+    opacity: 0.75;
+    visibility: visible !important;
+  }
+
+  // Views/forwards counter
+  .views,
+  .forwards {
+    font-size: var(--tq-font-size-xs);
+    color: var(--tq-text-tertiary);
+
+  }
+
+  .bubble.is-out .views,
+  .bubble.is-out .forwards {
+    color: var(--tq-bubble-outgoing-meta);
+  }
+
+  // Edit label
+  .edited {
+    font-size: var(--tq-font-size-xs);
+    color: var(--tq-text-tertiary);
+
+  }
+
+  .bubble.is-out .edited {
+    color: var(--tq-bubble-outgoing-meta);
+  }
+
+  // Pinned message indicator
+  .pinned-message {
+    background-color: var(--tq-surface-secondary);
+    border-left: 2px solid var(--tq-accent-primary);
+    border-radius: 0;
+    padding: var(--tq-space-sm);
+    margin-bottom: var(--tq-space-sm);
+  }
+}

@@ -1,0 +1,1920 @@
+/* TGQQ fixture scaffolding: CSS vars normally written by tweb JS + minimal
+   cosmetics. Real tweb styles come from css/tweb.css, QQ skins from css/tgqq.css. */
+:root {
+  --left-column-visual-width: 360px;
+  --left-column-width: 360px;
+  --default-column-width: 360px;
+  --page-chats-padding: 16px;
+  --folders-sidebar-offset: 0px;
+  --middle-column-width: 100%;
+  --chat-width: 100%;
+  --right-column-width: 0px;
+  --right-sidebar-fits: 1680px;
+  --main-column-border-radius: 0;
+  --column-box-shadow: none;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+#page-chats, #main-columns {
+  height: 100% !important;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+  background: #f3f2f7;
+}
+
+/* ---- fixture cosmetics (not part of the skins) ---- */
+.avatar, .person-avatar .avatar {
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(135deg, #12b7f5, #1296db);
+  overflow: hidden;
+}
+
+.dialog-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  color: #fff;
+  font-weight: 600;
+}
+
+.bubble-content .avatar, .bubbles-group-avatar .avatar {
+  background: linear-gradient(135deg, #ff9a56, #ff6a3d);
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--tq-text-secondary, #5a5a5a);
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.chatlist-chat .avatar-holder, .chatlist-chat .avatar {
+  font-size: 18px;
+}
+
+/* left column header: QQ9 profile row above the search capsule */
+.main-search-sidebar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  padding: 10px 12px 8px;
+}
+
+.tgqq-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+}
+
+.tgqq-profile-avatar {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  background: radial-gradient(circle at 32% 28%, #ffb3bb 0%, #f04a3e 46%, #e00000 100%);
+  user-select: none;
+}
+
+.tgqq-profile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tgqq-profile-name {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #111;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tgqq-profile-status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  line-height: 1.2;
+  color: #8a8a8a;
+}
+
+.tgqq-profile-dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: #00d66c;
+}
+
+.tgqq-profile-add {
+  margin-inline-start: auto;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f1f5;
+  color: #333;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tgqq-profile-add::before {
+  content: '+';
+}
+
+/* dynamics tab notification dot */
+.tq-shell nav button {
+  position: relative;
+}
+
+.tq-nav-dot {
+  position: absolute;
+  top: 5px;
+  right: calc(50% - 20px);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fe4735;
+  border: none;
+}
+
+.input-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 20px;
+  background: var(--tq-search-bg, #ffffff);
+  color: var(--tq-text-tertiary, #999);
+  font-size: 14px;
+  box-shadow: none;
+}
+
+.input-search::before {
+  content: "";
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239aa0aa' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4.3-4.3'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.input-search .input-search-icon {
+  display: none;
+}
+
+/* tweb pins the placeholder absolutely to the capsule's left; lift it back
+   into flex flow so justify-content:center centers magnifier + text as one
+   group (QQ9 spec: 放大镜+文字整体居中). */
+.input-search .input-search-placeholder {
+  position: static;
+  inset-inline-start: auto;
+  transform: none;
+  z-index: auto;
+}
+
+/* column header: pin the capsule full-width with fixed height (flex:1 above
+   would collapse it vertically inside the column layout) */
+.input-search {
+  flex: none;
+  width: 100%;
+  height: 40px;
+}
+
+/* chatlist item cosmetics */
+.chatlist-chat {
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 12px;
+}
+
+.chatlist-chat .row-row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+  gap: 2px;
+}
+
+.chatlist-chat .row-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.chatlist-chat .row-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chatlist-chat .row-row {
+  flex: 1;
+  min-width: 0;
+}
+
+.chatlist-chat .row-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatlist-chat .row-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.chatlist-chat .user-last-message {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* chat pane cosmetics (mirrors tweb .chat flex layout: topbar / bubbles / input) */
+.chat {
+  --chat-input-height: 88px;
+  --chat-topbar-height: 52px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.topbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: var(--chat-width, 100%);
+  height: var(--chat-topbar-height, 52px);
+  min-height: var(--chat-topbar-height, 52px);
+  padding: 0 12px;
+  box-sizing: border-box;
+  z-index: 2;
+  /* tweb makes .topbar absolute; keep it in the flex flow for the fixture */
+  position: relative !important;
+  top: auto !important;
+  transform: none !important;
+}
+
+.bubbles-viewport {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  overflow-y: auto;
+  position: relative;
+  /* tweb's absolute-inset vars (--chat-padding-top/bottom) leak here as
+     relative offsets and push the viewport over the input bar; clear them */
+  top: auto !important;
+  bottom: auto !important;
+}
+
+.bubbles {
+  height: 100%;
+  overflow-y: auto;
+  /* pin the message stream to the bottom (like a real chat): when content
+     overflows, the newest messages stay visible above the input bar */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.bubbles-inner {
+  max-width: var(--chat-width, 696px);
+  margin: 0 auto;
+  padding: 12px 16px 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex: none;
+}
+
+/* tweb's production CSS consumes --max-width on .bubble-content-wrapper
+   (a CSS-module rule the static fixture does not ship); mirror it so long
+   messages cap at the QQ9 70% width exactly like the real app. */
+.bubble-content-wrapper {
+  max-width: min(100%, var(--max-width, 100%));
+}
+
+/* tweb's CSS-module layer stretches the pill to its wrapper; without it the
+   pill shrinks to the text width and long messages never reach the QQ9 70%
+   cap. width:100% + border-box reproduces that stretch (short messages are
+   unaffected: the wrapper itself stays content-sized). */
+.bubble-content {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.bubbles-date-group {
+  align-self: center;
+  margin: 8px 0;
+}
+
+.bubble {
+  /* mirror tweb: bubble is a full-width flex row, the visible pill
+     (.bubble-content) is aligned via auto margins + max-width */
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto 2px;
+}
+
+.bubble.is-in .bubble-content { margin-inline-end: auto; }
+.bubble.is-out .bubble-content { margin-inline-start: auto; }
+
+.bubble .time {
+  font-size: 11px;
+  opacity: .6;
+  align-self: flex-end;
+  margin-top: 2px;
+}
+
+.message-status {
+  margin-inline-start: 4px;
+}
+
+/* composer cosmetics */
+.chat-input {
+  flex: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px 10px;
+  box-sizing: border-box;
+  margin-top: auto;
+}
+
+.chat-input-container,
+.rows-wrapper-wrapper {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.rows-wrapper.chat-input-control.chat-input-wrapper {
+  height: auto !important;
+  min-height: 52px !important;
+  max-height: none !important;
+  box-sizing: border-box;
+}
+
+.chat-input-container {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  max-width: var(--chat-width, 100%);
+  margin: 0 auto;
+}
+
+.rows-wrapper-wrapper {
+  flex: 0 1 auto;
+  display: flex;
+  width: 100%;
+}
+
+.rows-wrapper.chat-input-control.chat-input-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column !important;
+  align-items: stretch;
+  gap: 0;
+  padding: 6px 8px;
+  background: #f7f8fa;
+  border-radius: 20px;
+}
+
+/* QQ9 two-row composer (Round 15): the plate wraps a .new-message-wrapper grid
+   (input+send / quick actions). The inner grid's own plate styles from
+   chatInput.scss are neutralised here — the outer plate is the visible box. */
+.rows-wrapper.chat-input-control.chat-input-wrapper .new-message-wrapper {
+  width: 100%;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+/* tweb hides .chat-input-control until focus and absolutely positions its
+   children; the fixture keeps the compact bar visible and lays it out as a
+   plain flex row. */
+.chat-input-control {
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  height: auto !important;
+  inset: auto !important;
+  bottom: auto !important;
+}
+
+.chat-input-control > *,
+.chat-input-control .new-message-wrapper > * {
+  position: static !important;
+  top: auto !important;
+  bottom: auto !important;
+  inset-inline: auto !important;
+}
+
+/* The voice recording overlay is the one child that must keep tweb's real
+   absolute positioning (it spans the whole plate over both composer rows). */
+.chat-input-control .new-message-wrapper > .voice-recording-panel {
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  inset-inline: auto !important;
+  inset-inline-end: calc(var(--chat-input-height, 3rem) + .5rem) !important;
+}
+
+/* QQ9 composer: media quick actions (gallery/camera/file) live inside the
+   "+" attach menu; the bar shows attach/input/voice/emoji/send in one row. */
+.rows-wrapper.chat-input-control .new-message-wrapper .tq-quick-gallery,
+.rows-wrapper.chat-input-control .new-message-wrapper .tq-quick-camera,
+.rows-wrapper.chat-input-control .new-message-wrapper .tq-quick-file {
+  display: none;
+}
+
+.rows-wrapper.chat-input-control .new-message-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.rows-wrapper.chat-input-control .new-message-wrapper .attach-file { order: 1; }
+.rows-wrapper.chat-input-control .new-message-wrapper .input-message-container { order: 2; flex: 1; }
+.rows-wrapper.chat-input-control .new-message-wrapper .tq-quick-voice { order: 3; }
+.rows-wrapper.chat-input-control .new-message-wrapper .toggle-emoticons { order: 4; }
+.rows-wrapper.chat-input-control .new-message-wrapper .btn-send-container { order: 5; }
+
+/* Composer reply chip (fixture): compact QQ9-style quote above the two-row
+   grid, matching the real .reply-wrapper (3rem) + .reply (2.25rem) sizing. */
+.chat-input-wrapper .reply-wrapper .reply {
+  min-height: 0;
+  height: 2.25rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+}
+
+.chat-input-wrapper .reply-wrapper .reply-icon {
+  display: none;
+}
+
+.chat-input-wrapper .reply-wrapper .reply-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  padding: 0;
+  min-width: 0;
+}
+
+.chat-input-wrapper .reply-wrapper .reply-title,
+.chat-input-wrapper .reply-wrapper .reply-subtitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.input-message-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 4px 8px;
+}
+
+.input-message-input {
+  width: 100%;
+  outline: none;
+  color: #1a1a1a;
+  font-size: 15px;
+}
+
+.btn-send {
+  background: #1296db;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  min-width: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-send svg {
+  display: none;
+}
+
+/* bottom nav item cosmetics */
+.tq-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-size: 11px;
+  border: none;
+  background: none;
+  color: #5a5a5a;
+  cursor: pointer;
+}
+
+.tq-nav-item .tq-nav-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.tq-nav-item.tq-nav-selected {
+  color: #1296db;
+}
+
+/* misc chrome */
+.chat-utils { display: flex; align-items: center; margin-inline-start: auto; }
+.person { display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.person .content { display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.person .top { display: flex; align-items: center; min-width: 0; }
+.person .bottom { display: flex; align-items: center; gap: 4px; margin-top: 2px; }
+.person-avatar { display: inline-flex; }
+.chat-info { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; }
+
+/* unread badge cosmetics */
+.badge.unread {
+  position: absolute;
+  top: 8px;
+  left: calc(var(--tq-chatlist-padding, 12px) + var(--tq-chatlist-avatar-size, 52px) - 10px);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background: #fe4735;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 0 4px;
+}
+
+/* ---- tab fixture: shell pages container (mirrors TqMobileShell) ---- */
+.tq-pages {
+  position: absolute;
+  inset: 0 0 calc(var(--tq-nav-height, 56px) + var(--tq-nav-safe-bottom, 0px)) 0;
+  overflow-y: auto;
+  pointer-events: auto;
+  background: var(--tq-surface-page, #f0f4f8);
+}
+
+/* ---- tab fixture: shared page primitives ---- */
+.tq-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: #111;
+}
+
+.tq-page-header {
+  flex: none;
+  padding: 10px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tq-page-header-row {
+  display: flex;
+  align-items: center;
+}
+
+.tq-page-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.tq-page-avatar {
+  margin-inline-start: auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #12b7f5, #1296db);
+}
+
+.tq-page-actions {
+  margin-inline-start: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tq-icon-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f1f5;
+  color: #333;
+  cursor: pointer;
+}
+.tq-tabs {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 2px 0 0;
+  padding: 0 16px;
+}
+
+.tq-tab {
+  position: relative;
+  height: 34px;
+  padding: 0 6px;
+  border: none;
+  background: none;
+  color: #8a8a8a;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.tq-tab.tq-tab-active {
+  color: #1296db;
+  font-weight: 600;
+}
+
+.tq-tab.tq-tab-active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 3px;
+  border-radius: 2px;
+  background: #1296db;
+}
+
+.tq-tab-panel[hidden],
+.tq-follow-empty[hidden],
+.tq-follow-list[hidden] {
+  display: none;
+}
+
+.tq-follow-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 120px;
+  text-align: center;
+}
+
+.tq-follow-empty-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #b0b0b0;
+  background: #f0f1f5;
+  border: 1px dashed #d8d8d8;
+}
+
+.tq-follow-empty-title {
+  margin-top: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.tq-follow-empty-sub {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #9a9a9a;
+}
+
+
+.tq-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 19px;
+  background: #f0f1f5;
+  color: #9a9a9a;
+  font-size: 14px;
+}
+
+.tq-page-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 88px;
+}
+
+.tq-section {
+  margin-top: 14px;
+}
+
+.tq-section-title {
+  margin: 0 16px 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.tq-cards {
+  display: flex;
+  gap: 10px;
+  padding: 0 16px;
+  overflow-x: auto;
+  -webkit-mask-image: linear-gradient(90deg, #000 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 94%, transparent 100%);
+}
+
+.tq-card {
+  flex: 0 0 118px;
+  min-width: 0;
+  background: #fff;
+  border-radius: 14px;
+  padding: 8px 8px 10px;
+  border: 1px solid #ececec;
+}
+
+.tq-card-cover {
+  height: 72px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, .92);
+}
+
+.tq-card-cover span {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.tq-card-name {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tq-card-desc {
+  margin-top: 2px;
+  font-size: 11px;
+  color: #8a8a8a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tq-card-foot {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tq-card-subs {
+  font-size: 10px;
+  color: #b0b0b0;
+}
+
+.tq-follow {
+  flex: none;
+  height: 26px;
+  padding: 0 12px;
+  border: 1px solid #1296db;
+  border-radius: 13px;
+  background: transparent;
+  color: #1296db;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.tq-follow.tq-follow-active {
+  background: #1296db;
+  border-color: #1296db;
+  color: #fff;
+}
+
+.tq-list {
+  background: #fff;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+}
+
+.tq-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 16px;
+  padding-inline-end: 26px;
+  border-bottom: 1px solid #ececec;
+}
+
+.tq-row:last-child {
+  border-bottom: none;
+}
+
+.tq-row-avatar {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.tq-round {
+  border-radius: 50%;
+}
+
+.tq-avatar-wrap {
+  position: relative;
+  flex: none;
+}
+
+.tq-online-dot {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #07c160;
+  border: 2px solid #fff;
+}
+
+.tq-row-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.tq-row-name {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.tq-row-desc {
+  margin-top: 2px;
+  font-size: 12px;
+  color: #8a8a8a;
+}
+
+.tq-row-subs {
+  flex: none;
+  font-size: 10px;
+  color: #b0b0b0;
+}
+
+.tq-badge {
+  flex: none;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: #fe4735;
+  color: #fff;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.tq-contacts .tq-page-content {
+  position: relative;
+}
+
+/* absolute within the page root (360px column on tablet), like the real
+   Contacts component's indexBar */
+.tq-index {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 9px;
+  line-height: 1.25;
+  color: #9a9a9a;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 5;
+}
+
+/* Contacts page: section titles match Contacts.module.scss (13px/500
+   secondary) instead of the shared 15px/600 used by Channels. */
+.tq-contacts .tq-section-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8a8a8a;
+  margin: 0 16px 8px;
+}
+
+/* Dynamics post avatar: real Dynamics.module.scss uses 42px (.cardAvatar),
+   not the shared 44px row avatar. */
+.tq-post-avatar {
+  width: 42px;
+  height: 42px;
+  font-size: 16px;
+}
+
+.tq-post {
+  margin: 10px 12px 0;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #ececec;
+  padding: 12px;
+}
+
+.tq-post-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tq-post-meta {
+  min-width: 0;
+}
+
+.tq-post-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.tq-post-time {
+  margin-top: 2px;
+  font-size: 11px;
+  color: #b0b0b0;
+}
+
+.tq-post-text {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.tq-img-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.tq-img-single {
+  margin-top: 10px;
+}
+
+.tq-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+}
+
+.tq-img-single .tq-img {
+  aspect-ratio: 16 / 9;
+}
+
+.tq-post-actions {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ececec;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.tq-post-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  background: none;
+  color: #8a8a8a;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.tq-post-actions button.tq-action-active {
+  color: #1296db;
+}
+
+/* mobile-chat fixture: tweb JS toggles #column-center visibility in the real
+   app; the static fixture needs a force-show (tablet gets it from tq-tablet
+   rules). Also drop the page padding so the chat is full-bleed like QQ9. */
+body:not(.tq-tablet) #column-center {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (max-width: 599px) {
+  #column-center {
+    --page-chats-padding: 0px;
+  }
+
+  /* mobile chat topbar: tweb JS normally drops the drawer classes; the static
+     fixture keeps is-left-column-shown, which pushes the back button to an
+     absolute 52px position overlapping the avatar. Restore QQ9 order:
+     back chevron, avatar, name. */
+  body.is-tgqq.tq-chat-header:not(.tq-tablet) .topbar.has-avatar .chat-info {
+    padding-inline-start: 4px !important;
+  }
+
+  body:not(.tq-tablet) .topbar .sidebar-close-button {
+    position: static !important;
+    inset-inline-start: auto !important;
+    left: auto !important;
+    order: -1;
+  }
+}
+
+/* ---- Dark mode: fixture replicas must follow the same dark tokens as the
+   real app (src/tgqq/design/dark.scss). Values fall back to QQ9 dark values
+   if the token layer is not loaded. ---- */
+html.night body {
+  background: var(--tq-surface-page, #1a1a1a);
+}
+
+html.night .tgqq-profile-name {
+  color: var(--tq-text-primary, #e5e5e5);
+}
+
+html.night .tgqq-profile-status {
+  color: var(--tq-text-secondary, #b3b3b3);
+}
+
+html.night .tgqq-profile-add {
+  background: var(--tq-surface-secondary, #373737);
+  color: var(--tq-text-primary, #e5e5e5);
+}
+
+html.night .tq-nav-dot,
+html.night .tq-online-dot {
+  border-color: var(--tq-surface-page, #1a1a1a);
+}
+
+html.night .input-message-input {
+  color: var(--tq-text-primary, #e5e5e5);
+}
+
+html.night .rows-wrapper.chat-input-control.chat-input-wrapper {
+  background: var(--tq-surface-primary, #2b2b2b);
+}
+
+html.night .tq-nav-item {
+  color: var(--tq-text-secondary, #b3b3b3);
+}
+
+html.night .tq-nav-item.tq-nav-selected {
+  color: var(--tq-text-accent, #4eb0f5);
+}
+
+html.night .tq-page {
+  color: var(--tq-text-primary, #e5e5e5);
+}
+
+html.night .tq-tab {
+  color: #9a9a9a;
+}
+
+html.night .tq-tab.tq-tab-active {
+  color: #1296db;
+}
+
+html.night .tq-tab.tq-tab-active::after {
+  background: #1296db;
+}
+
+html.night .tq-follow-empty-icon {
+  color: #7a7a7a;
+  background: #2b2b2b;
+  border-color: #444;
+}
+
+html.night .tq-follow-empty-title {
+  color: #e5e5e5;
+}
+
+html.night .tq-follow-empty-sub {
+  color: #808080;
+}
+
+html.night .tq-search {
+  background: var(--tq-surface-secondary, #373737);
+  color: var(--tq-text-tertiary, #808080);
+}
+
+html.night .tq-card {
+  background: var(--tq-surface-primary, #2b2b2b);
+  border-color: var(--tq-border-light, #373737);
+}
+
+html.night .tq-card-desc,
+html.night .tq-row-desc {
+  color: var(--tq-text-secondary, #b3b3b3);
+}
+
+html.night .tq-card-subs,
+html.night .tq-row-subs,
+html.night .tq-index {
+  color: var(--tq-text-tertiary, #808080);
+}
+
+html.night .tq-list {
+  background: var(--tq-surface-primary, #2b2b2b);
+  border-top-color: var(--tq-border-light, #373737);
+  border-bottom-color: var(--tq-border-light, #373737);
+}
+
+html.night .tq-row {
+  border-bottom-color: var(--tq-border-light, #373737);
+}
+
+html.night .tq-contacts .tq-section-title {
+  color: var(--tq-text-secondary, #b3b3b3);
+}
+
+html.night .tq-post {
+  background: var(--tq-surface-primary, #2b2b2b);
+  border-color: var(--tq-border-light, #373737);
+}
+
+html.night .tq-post-time {
+  color: var(--tq-text-tertiary, #808080);
+}
+
+html.night .tq-post-actions {
+  border-top-color: var(--tq-border-light, #373737);
+}
+
+html.night .tq-post-actions button {
+  color: var(--tq-text-secondary, #b3b3b3);
+}
+
+html.night .tq-follow {
+  border-color: var(--tq-text-accent, #4eb0f5);
+  color: var(--tq-text-accent, #4eb0f5);
+}
+
+html.night .tq-follow.tq-follow-active {
+  background: var(--tq-accent-primary, #1296db);
+  border-color: var(--tq-accent-primary, #1296db);
+  color: #fff;
+}
+
+html.night .tq-post-actions button.tq-action-active {
+  color: var(--tq-text-accent, #4eb0f5);
+}
+
+/* ---- Round 22: contacts header variant (avatar + title + person-add) ---- */
+.tgqq-profile-compact {
+  min-height: 36px;
+}
+
+body.is-tgqq.tq-shell-on .tgqq-profile-compact .tgqq-profile-avatar {
+  width: 36px;
+  height: 36px;
+  font-size: 15px;
+}
+
+body.is-tgqq.tq-shell-on .tgqq-profile-compact .tgqq-profile-name {
+  font-size: 15px;
+}
+
+.tgqq-profile-addicon {
+  margin-inline-start: auto;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #333;
+  cursor: pointer;
+}
+
+/* ---- Round 22: contacts quick nav + collapsible sections ---- */
+.tq-quicknav {
+  background: #fff;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.tq-quicknav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 16px;
+  border-bottom: 1px solid #ebebeb;
+  cursor: pointer;
+}
+
+.tq-quicknav-item:last-child {
+  border-bottom: none;
+}
+
+.tq-quicknav-text {
+  font-size: 15px;
+  color: #111;
+}
+
+.tq-quicknav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tq-quicknav-badge {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: #fa5151;
+  color: #fff;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.tq-quicknav-arrow {
+  color: #ccc;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.tq-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tq-section-header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tq-section-arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-top: 5px solid #999;
+  border-right: 5px solid transparent;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.tq-section-arrow-open {
+  transform: rotate(90deg);
+}
+
+.tq-section-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111;
+}
+
+.tq-section-count {
+  font-size: 13px;
+  color: #999;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Round 22: dynamics hub (cover / entries / feature cards) ---- */
+.tq-cover {
+  position: relative;
+  flex: none;
+  height: 176px;
+  padding: 16px;
+  background: linear-gradient(160deg, #df81f9 0%, #b6b0ff 100%);
+  overflow: hidden;
+}
+
+.tq-cover-menu {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.tq-cover-avatar {
+  position: absolute;
+  top: 24px;
+  left: 16px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #bb6bff;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  user-select: none;
+}
+
+.tq-cover-name {
+  position: absolute;
+  top: 28px;
+  left: 92px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.tq-cover-sub {
+  position: absolute;
+  top: 52px;
+  left: 92px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.tq-cover-lv {
+  position: absolute;
+  top: 28px;
+  right: 16px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tq-cover-action {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  font-size: 13px;
+  color: #fff;
+  opacity: 0.92;
+}
+
+.tq-search-floating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  margin: -19px 12px 0;
+  padding: 0 14px;
+  border-radius: 19px;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  color: #9a9a9a;
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.tq-entries {
+  margin: 10px 12px 0;
+  padding: 14px 8px;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 14px;
+}
+
+.tq-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.tq-entry-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tq-entry-label {
+  font-size: 11px;
+  color: #666;
+}
+
+.tq-feature-grid {
+  margin: 10px 12px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.tq-feature-card {
+  background: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.tq-feature-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tq-feature-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+
+.tq-feature-add {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f1f5;
+  color: #333;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tq-feature-sub {
+  margin-top: 2px;
+  font-size: 12px;
+  color: #999;
+}
+
+.tq-feed-title {
+  margin: 14px 16px 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+html.night .tq-cover {
+  background: linear-gradient(160deg, #6a3fb0 0%, #4a5bd0 100%);
+}
+
+html.night .tq-search-floating {
+  background: #2b2b2b;
+  border-color: #373737;
+}
+
+html.night .tq-section-name {
+  color: #e5e5e5;
+}
+
+html.night .tq-feature-title,
+html.night .tq-feed-title {
+  color: #e5e5e5;
+}
+
+.tq-contacts .tq-tabs {
+  background: #fff;
+  border-bottom: 1px solid #ebebeb;
+}
+
+html.night .tq-contacts .tq-tabs {
+  background: #2b2b2b;
+  border-bottom-color: #373737;
+}
+
+/* ---- Round 22 dark: contacts quicknav/sections + dynamics cards must flip ---- */
+html.night .tq-quicknav {
+  background: #2b2b2b;
+  border-top-color: #373737;
+  border-bottom-color: #373737;
+}
+
+html.night .tq-quicknav-item {
+  border-bottom-color: #373737;
+}
+
+html.night .tq-quicknav-text {
+  color: #e5e5e5;
+}
+
+html.night .tq-section-header {
+  background: #2b2b2b;
+}
+
+html.night .tq-section-arrow {
+  border-top-color: #999;
+}
+
+html.night .tq-entries {
+  background: #2b2b2b;
+  border-color: #373737;
+}
+
+html.night .tq-entry-label {
+  color: #b3b3b3;
+}
+
+html.night .tq-feature-card {
+  background: #2b2b2b;
+  border-color: #373737;
+}
+
+/* ---- Round 23: dynamics partners / badges / lucky char / novel creature / DNA ---- */
+.tq-partners {
+  margin: 10px 12px 0;
+  padding: 14px 8px 12px;
+  background: linear-gradient(135deg, #f1eaff 0%, #e9ecff 100%);
+  border-radius: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+html.night .tq-partners {
+  background: linear-gradient(135deg, #3d3a55 0%, #333a52 100%);
+}
+
+.tq-partner-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.tq-partner-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+}
+
+.tq-partner-sub {
+  font-size: 11px;
+  color: #999;
+  white-space: nowrap;
+}
+
+.tq-partner-add {
+  width: 36px;
+  height: 36px;
+  margin-top: 7px;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #b7b5fe;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tq-badges {
+  margin: 10px 12px 0;
+  padding: 14px 14px 16px;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 14px;
+}
+
+.tq-badges-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tq-badges-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+
+.tq-badges-count {
+  font-size: 13px;
+  color: #999;
+}
+
+.tq-badges-more {
+  margin-left: auto;
+  color: #ccc;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.tq-badges-row {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+}
+
+.tq-badge-item {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.tq-badge-empty {
+  background: #f0f1f5;
+}
+
+.tq-badge-svg {
+  width: 26px;
+  height: 26px;
+}
+
+.tq-badge-q {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 3px;
+  border-radius: 9px;
+  background: #fa5151;
+  color: #fff;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 17px;
+  text-align: center;
+}
+
+.tq-badge-placeholder,
+.tq-badge-placeholder-sub {
+  font-size: 10px;
+  line-height: 1.2;
+  color: #bbb;
+}
+
+.tq-section-label {
+  margin: 16px 16px 8px;
+  font-size: 13px;
+  color: #999;
+}
+
+.tq-asset-card {
+  margin: 0 12px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tq-asset-icon {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #2a1810;
+  border: 1.5px solid #c4a35a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.tq-asset-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.tq-asset-icon-novel {
+  background: linear-gradient(135deg, #f8d3e8, #cfe9ff);
+  border: none;
+}
+
+.tq-creature-svg {
+  width: 40px;
+  height: 40px;
+}
+
+.tq-asset-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.tq-asset-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+
+.tq-asset-sub {
+  margin-top: 2px;
+  font-size: 12px;
+  color: #999;
+}
+
+.tq-asset-cta {
+  flex: none;
+  font-size: 13px;
+  color: #1296db;
+}
+
+.tq-dna {
+  margin-top: 16px;
+}
+
+.tq-dna .tq-section-label {
+  margin-bottom: 0;
+}
+
+.tq-dna-divider {
+  margin: 8px 16px 0;
+  height: 1px;
+  background: #ebebeb;
+}
+
+/* ---- Round 23: contacts recommend / device tabs ---- */
+.tq-contacts .tq-section-label {
+  margin: 0;
+  padding: 0 16px 8px;
+  font-size: 13px;
+  color: #999;
+}
+
+.tq-add-btn {
+  flex: none;
+  height: 28px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 14px;
+  background: #1296db;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.tq-device-icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f1f5;
+  color: #1f1f1f;
+}
+
+.tq-row-arrow {
+  flex: none;
+  color: #ccc;
+  font-size: 17px;
+  line-height: 1;
+}
+
+/* ---- Round 23 dark ---- */
+html.night .tq-partner-title {
+  color: #e5e5e5;
+}
+
+html.night .tq-partner-add {
+  background: #6b6fd0;
+}
+
+html.night .tq-badges {
+  background: #2b2b2b;
+  border-color: #373737;
+}
+
+html.night .tq-badges-title,
+html.night .tq-asset-title {
+  color: #e5e5e5;
+}
+
+html.night .tq-badge-empty {
+  background: #373737;
+}
+
+html.night .tq-badge-placeholder,
+html.night .tq-badge-placeholder-sub {
+  color: #808080;
+}
+
+html.night .tq-asset-card {
+  background: #2b2b2b;
+  border-color: #373737;
+}
+
+html.night .tq-section-label {
+  color: #808080;
+}
+
+html.night .tq-asset-cta {
+  color: #4eb0f5;
+}
+
+html.night .tq-dna-divider {
+  background: #373737;
+}
+
+html.night .tq-add-btn {
+  background: #4eb0f5;
+}
+
+html.night .tq-device-icon {
+  background: #373737;
+  color: #d6d6d6;
+}

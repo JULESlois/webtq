@@ -34,6 +34,7 @@ import blurActiveElement from '@helpers/dom/blurActiveElement';
 import cancelEvent from '@helpers/dom/cancelEvent';
 import cancelSelection from '@helpers/dom/cancelSelection';
 import {attachClickEvent} from '@helpers/dom/clickEvent';
+import {tqFlags} from '@/tgqq/config/flags';
 import isInputEmpty from '@helpers/dom/isInputEmpty';
 import isSendShortcutPressed from '@helpers/dom/isSendShortcutPressed';
 import placeCaretAtEnd from '@helpers/dom/placeCaretAtEnd';
@@ -1007,6 +1008,33 @@ export default class ChatInput {
     });
   }
 
+  // TGQQ two-row composer quick actions (TW-UP-013): QQ9's bottom quick bar
+  // (Voice / Gallery / Camera / File) sits under the Input+Send row. Buttons
+  // reuse existing behaviours only; layout is done by chatInput.scss.
+  private constructTqQuickActions() {
+    if(!tqFlags.twoRowComposer || !document.body.classList.contains('is-tgqq')) return;
+    if(this.chat.type === ChatType.Stories) return; // stories composer is out of the QQ9 skin scope
+
+    const btnVoice = this.createButtonIcon('microphone_filled tq-quick-btn tq-quick-voice');
+    attachClickEvent(btnVoice, () => {
+      if(this.recordingController?.active) return;
+      this.recordingController?.setRecordingMediaType('voice');
+      this.recordingController?.startActive();
+    }, {listenerSetter: this.listenerSetter});
+
+    const btnGallery = this.createButtonIcon('image tq-quick-btn tq-quick-gallery');
+    attachClickEvent(btnGallery, wrapAsyncClickHandler(() => this.onAttachClick(false, true, true)), {listenerSetter: this.listenerSetter});
+
+    // Web file inputs have no camera capture semantics; keep the same picker.
+    const btnCamera = this.createButtonIcon('camera tq-quick-btn tq-quick-camera');
+    attachClickEvent(btnCamera, wrapAsyncClickHandler(() => this.onAttachClick(false, true, true)), {listenerSetter: this.listenerSetter});
+
+    const btnFile = this.createButtonIcon('document tq-quick-btn tq-quick-file');
+    attachClickEvent(btnFile, wrapAsyncClickHandler(() => this.onAttachClick(true)), {listenerSetter: this.listenerSetter});
+
+    this.newMessageWrapper.append(btnVoice, btnGallery, btnCamera, btnFile);
+  }
+
   private constructRecorder() {
     // All recording state + behaviour lives in ChatRecording now; constructing
     // it wires the recorders, mounts the voice + video panels, and installs the
@@ -1284,7 +1312,10 @@ export default class ChatInput {
         buttons.splice(buttons.length, 0, ...attachMenuBotsButtons);
         this.attachMenuButtons.splice(0, this.attachMenuButtons.length, ...buttons);
       },
-      onOpen: () => {
+      onOpen: (_e, _element) => {
+        // QQ9 attach panel marker (TW-UP-011): lets the tgqq skin restyle
+        // this .btn-menu into a bottom-sheet grid without touching other menus.
+        _element?.classList.add('tq-attach-menu');
         this.emoticonsDropdown?.toggle(false);
         this.onMenuToggle?.(true);
       },
@@ -1321,6 +1352,8 @@ export default class ChatInput {
       this.btnToggleEmoticons,
       this.fileInput
     ].filter(Boolean));
+
+    this.constructTqQuickActions();
 
     if(this.replyElements?.container) this.rowsWrapper.append(this.replyElements.container);
     this.autocompleteHelperController = new AutocompleteHelperController();
