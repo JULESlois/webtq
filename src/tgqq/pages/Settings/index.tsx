@@ -1,7 +1,8 @@
-import {Show, For} from 'solid-js';
+import {Show, For, createSignal} from 'solid-js';
 import classNames from '@helpers/string/classNames';
 import type {JSXElement} from 'solid-js';
 import styles from './Settings.module.scss';
+import TqAboutPage from './About';
 
 // QQ9 设置页：通用（004）/ 辅助功能（005）两个子屏，共用导航头与列表行样式。
 
@@ -16,6 +17,7 @@ const ICON = {
 type Row = {
   icon: string;
   label: string;
+  onClick?: () => void;
   value?: string;
   chevron?: boolean;
   toggle?: boolean;
@@ -45,13 +47,14 @@ const svgIcons: Record<string, JSXElement> = {
   tag: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><path d="M5 4.5h14v15l-7-3.2-7 3.2z"/></svg>,
   menu: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><path d="M4 6.5h16"/><path d="M4 12h16"/><path d="M4 17.5h16"/></svg>,
   wave: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><path d="M4 12h2l2-6 3 12 2.5-9 1.5 3h3"/></svg>,
-  grid: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><circle cx="5" cy="5" r="1.8"/><circle cx="12" cy="5" r="1.8"/><circle cx="19" cy="5" r="1.8"/><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/><circle cx="5" cy="19" r="1.8"/><circle cx="12" cy="19" r="1.8"/><circle cx="19" cy="19" r="1.8"/></svg>
+  grid: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><circle cx="5" cy="5" r="1.8"/><circle cx="12" cy="5" r="1.8"/><circle cx="19" cy="5" r="1.8"/><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/><circle cx="5" cy="19" r="1.8"/><circle cx="12" cy="19" r="1.8"/><circle cx="19" cy="19" r="1.8"/></svg>,
+  info: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><path d="M12 7.8h.01"/></svg>
 };
 
 function RowItem(props: {row: Row}) {
   const r = props.row;
   return (
-    <div class={styles.row}>
+    <div class={styles.row} onClick={r.onClick}>
       <span class={styles.rowIcon}>{svgIcons[r.icon]}</span>
       <span class={styles.rowLabel}>
         {r.label}
@@ -136,14 +139,23 @@ const ACCESSIBILITY: Group[] = [
   }
 ];
 
-export default function TqSettingsPage(props: {sub?: 'general' | 'accessibility', onBack?: () => void}) {
-  const isAccessibility = () => props.sub === 'accessibility';
-  const groups = () => isAccessibility() ? ACCESSIBILITY : GENERAL;
+export default function TqSettingsPage(props: {sub?: 'general' | 'accessibility' | 'about', onBack?: () => void}) {
+  const [screen, setScreen] = createSignal<'general' | 'accessibility' | 'about'>(props.sub === 'about' ? 'about' : props.sub === 'accessibility' ? 'accessibility' : 'general');
+  const isAccessibility = () => screen() === 'accessibility';
+  const isAbout = () => screen() === 'about';
+  const groups = () => isAccessibility()
+    ? ACCESSIBILITY
+    : [...GENERAL, {rows: [{icon: 'info', label: '关于QQ', chevron: true, onClick: () => setScreen('about')}]}];
+  const back = () => isAbout() ? setScreen('general') : props.onBack?.();
 
   return (
     <div class={styles.root}>
+      <Show when={isAbout()}>
+        <TqAboutPage onBack={() => setScreen('general')}/>
+      </Show>
+      <Show when={!isAbout()}>
       <header class={styles.nav}>
-        <button type="button" class={styles.back} aria-label="返回" onClick={props.onBack}>
+        <button type="button" class={styles.back} aria-label="返回" onClick={back}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5 8 12l6.5 7"/></svg>
         </button>
         <h1 class={styles.title}>{isAccessibility() ? '辅助功能' : '设置'}</h1>
@@ -192,6 +204,7 @@ export default function TqSettingsPage(props: {sub?: 'general' | 'accessibility'
           )}
         </For>
       </div>
+      </Show>
     </div>
   );
 }

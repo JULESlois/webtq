@@ -89,7 +89,8 @@ const SICON = {
   tag: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h14v15l-7-3.2-7 3.2z"/></svg>',
   menu: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5h16"/><path d="M4 12h16"/><path d="M4 17.5h16"/></svg>',
   wave: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h2l2-6 3 12 2.5-9 1.5 3h3"/></svg>',
-  grid: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="5" r="1.8"/><circle cx="12" cy="5" r="1.8"/><circle cx="19" cy="5" r="1.8"/><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/><circle cx="5" cy="19" r="1.8"/><circle cx="12" cy="19" r="1.8"/><circle cx="19" cy="19" r="1.8"/></svg>'
+  grid: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="5" r="1.8"/><circle cx="12" cy="5" r="1.8"/><circle cx="19" cy="5" r="1.8"/><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/><circle cx="5" cy="19" r="1.8"/><circle cx="12" cy="19" r="1.8"/><circle cx="19" cy="19" r="1.8"/></svg>',
+  info: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><path d="M12 7.8h.01"/></svg>'
 };
 
 function settingsRow([icon, label, value, type, state, badge]) {
@@ -128,6 +129,40 @@ const SETTINGS_ACCESSIBILITY = `
           ['wave','语音消息自动转文本(可体验)','','toggle','','SVIP'],
           ['grid','更多功能设置','','chevron','']
         ])}
+      </div>
+    </div>`;
+
+
+const SETTINGS_ABOUT = `
+    <div class="tq-about">
+      <div class="tq-about-hero">
+        <button type="button" class="tq-about-back" aria-label="返回"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5 8 12l6.5 7"/></svg></button>
+        <div class="tq-about-logo">
+          <svg class="tq-about-penguin" viewBox="0 0 120 138" aria-hidden="true">
+            <defs><linearGradient id="tq-about-penguin-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.95"/><stop offset="1" stop-color="#fff" stop-opacity="0.55"/></linearGradient></defs>
+            <path fill="url(#tq-about-penguin-g)" d="M60 6c-19 0-33 13-35 29-11 4-19 14-19 25 0 11 7 19 16 24l-4 38c-1 6 3 10 9 10h66c6 0 10-4 9-10l-4-38c9-5 16-13 16-24 0-11-8-21-19-25-2-16-16-29-35-29z"/>
+            <ellipse cx="60" cy="98" rx="23" ry="20" fill="#fff" opacity="0.35"/>
+            <circle cx="47" cy="52" r="4.5" fill="#fff" opacity="0.8"/>
+            <circle cx="73" cy="52" r="4.5" fill="#fff" opacity="0.8"/>
+            <path d="M55 63.5h10l-5 7.5z" fill="#fff" opacity="0.75"/>
+          </svg>
+          <div class="tq-about-wordmark">QQ9</div>
+        </div>
+      </div>
+      <div class="tq-about-card">
+        <div class="tq-about-row"><span class="tq-about-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5h14a1.5 1.5 0 0 1 1.5 1.5v10a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 17V7A1.5 1.5 0 0 1 5 5.5z"/><path d="M3.5 9.5h17M8 5.5V3.8M16 5.5V3.8"/></svg></span><span class="tq-about-label">当前版本</span><span class="tq-about-value">V 9.0.0.14110</span></div>
+        <div class="tq-about-row"><span class="tq-about-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8.2v7.6"/><path d="M8.2 12h7.6"/></svg></span><span class="tq-about-label">版本更新</span><span class="tq-about-value">已是最新版本</span></div>
+        <div class="tq-about-row"><span class="tq-about-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 6.5H18a1.5 1.5 0 0 1 1.5 1.5v10a1.5 1.5 0 0 1-1.5 1.5H6A1.5 1.5 0 0 1 4.5 18V9"/><path d="M4.5 6.5h3M8 3.5v6"/></svg></span><span class="tq-about-label">功能介绍</span><span class="tq-about-arrow">${SICON.chevron}</span></div>
+        <div class="tq-about-row"><span class="tq-about-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5a4.2 4.2 0 0 1 1.9 8"/><path d="M12 15.5a2.4 2.4 0 0 0 2.3-2.7c-.2-1.9-1.9-2.4-2.3-5.3-.4 2.9-2.1 3.4-2.3 5.3a2.4 2.4 0 0 0 2.3 2.7z"/></svg></span><span class="tq-about-label">官网</span><span class="tq-about-arrow">${SICON.chevron}</span></div>
+        <div class="tq-about-row"><span class="tq-about-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.8 10.2a2.4 2.4 0 1 1 4.4 1.3c-.7 1.2-2.2 1.5-2.2 2.9"/><path d="M12 17.4h.01"/></svg></span><span class="tq-about-label">帮助</span><span class="tq-about-arrow">${SICON.chevron}</span></div>
+        <div class="tq-about-row"><span class="tq-about-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2.5"/><path d="M9.5 9.8a2.6 2.6 0 0 1 5 .8c0 1.8-2.4 2.2-2.4 3.4"/><path d="M12 16.6h.01"/></svg></span><span class="tq-about-label">反馈</span><span class="tq-about-arrow">${SICON.chevron}</span></div>
+      </div>
+      <div class="tq-about-footer">
+        <p><span>基于</span><svg class="tq-about-qnt" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.2 13.6 4.6v6.8L8 14.8 2.4 11.4V4.6z" fill="#f7c948" fill-opacity="0.25" stroke="#d9a52e" stroke-width="1"/><text x="8" y="10.6" text-anchor="middle" font-size="6.2" font-weight="700" fill="#b07d1a">QNT</text></svg><span>QQNT 技术架构</span></p>
+        <p><a href="#">服务协议</a><span class="tq-about-sep">|</span><a href="#">隐私政策</a></p>
+        <p>客户服务热线 400 670 0700</p>
+        <p>Copyright © 2009-2023 Tencent. All Rights Reserved.</p>
+        <p>ICP 备案号 粤B2-20090059-1622A ›</p>
       </div>
     </div>`;
 
@@ -187,7 +222,7 @@ const PAGES = {
     <div class="tq-page">
       <header class="tq-page-header">
         <div class="tgqq-profile tgqq-profile-compact"><div class="tgqq-profile-avatar">我</div><div class="tgqq-profile-meta"><div class="tgqq-profile-name">联系人</div></div><button type="button" class="tgqq-profile-addicon" aria-label="添加联系人"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3.5 19c.8-3.2 2.8-4.8 5.5-4.8s4.7 1.6 5.5 4.8"/><path d="M18.5 9v6M15.5 12h6"/></svg></button></div>
-        <div class="tq-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>搜索联系人</span></div>
+        <div class="tq-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>搜索</span></div>
       </header>
       <div class="tq-quicknav">
         <div class="tq-quicknav-item"><span class="tq-quicknav-text">新朋友</span><span class="tq-quicknav-right"><span class="tq-quicknav-badge">1</span><span class="tq-quicknav-arrow">›</span></span></div>
@@ -205,15 +240,13 @@ const PAGES = {
           <div class="tq-section-header"><span class="tq-section-header-left"><i class="tq-section-arrow tq-section-arrow-open"></i><span class="tq-section-name">特别关心</span></span><span class="tq-section-count">0/0</span></div>
         </section>
         <section class="tq-section">
-          <div class="tq-section-header"><span class="tq-section-header-left"><i class="tq-section-arrow tq-section-arrow-open"></i><span class="tq-section-name">我的好友</span></span><span class="tq-section-count">3/6</span></div>
+          <div class="tq-section-header"><span class="tq-section-header-left"><i class="tq-section-arrow tq-section-arrow-open"></i><span class="tq-section-name">我的好友</span></span><span class="tq-section-count">3/4</span></div>
           <div class="tq-list">
             ${contactRows([
               ['林晚晴','手机在线','linear-gradient(135deg,#12b7f5,#1296db)','','online'],
               ['陈默','3G 在线','linear-gradient(135deg,#ff9a56,#ff6a3d)','','online'],
               ['周子昂','离线','linear-gradient(135deg,#9b59b6,#8e44ad)'],
-              ['苏小满','离线','linear-gradient(135deg,#e91e63,#c2185b)'],
-              ['沈亦舟','WiFi 在线','linear-gradient(135deg,#ff9800,#f57c00)','','online'],
-              ['郑一鸣','离线','linear-gradient(135deg,#8bc34a,#689f38)']
+              ['沈亦舟','WiFi 在线','linear-gradient(135deg,#ff9800,#f57c00)','','online']
             ])}
           </div>
         </section>
@@ -352,6 +385,9 @@ dynamics: `
           ['enter','回车键发送消息','','toggle',''],
           ['eye','使用群文件在线预览服务','','toggle','on']
         ], '开启后支持100MB以下的Office文件在线预览，大于100MB以上的文件需下载后查看。')}
+        ${settingsCard([
+          ['info','关于QQ','','chevron','']
+        ])}
       </div>
     </div>`,
 
@@ -396,8 +432,11 @@ document.getElementById('tq-pages').innerHTML = PAGES[TAB] || PAGES.channels;
 // Settings page: full-screen (hide bottom nav, extend pages), optional sub swap
 if(TAB === 'settings') {
   document.body.classList.add('tq-settings-open');
-  if(new URLSearchParams(location.search).get('sub') === 'accessibility') {
+  const sub = new URLSearchParams(location.search).get('sub');
+  if(sub === 'accessibility') {
     document.getElementById('tq-pages').innerHTML = SETTINGS_ACCESSIBILITY;
+  } else if(sub === 'about') {
+    document.getElementById('tq-pages').innerHTML = SETTINGS_ABOUT;
   }
 }
 

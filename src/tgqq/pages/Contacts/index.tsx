@@ -48,9 +48,16 @@ const devices = [
   {name: '我的平板', sub: '上次登录：上周', icon: 'pad'}
 ];
 
+const groupFriends: Contact[] = [
+  {name: '林晚晴', sub: '手机在线', gradient: 'linear-gradient(135deg,#12b7f5,#1296db)', online: true},
+  {name: '陈默', sub: '3G 在线', gradient: 'linear-gradient(135deg,#ff9a56,#ff6a3d)', online: true},
+  {name: '周子昂', sub: '离线', gradient: 'linear-gradient(135deg,#9b59b6,#8e44ad)'},
+  {name: '沈亦舟', sub: 'WiFi 在线', gradient: 'linear-gradient(135deg,#ff9800,#f57c00)', online: true}
+];
+
 const groupSections: Section[] = [
   {title: '特别关心', items: []},
-  {title: '我的好友', items: friends},
+  {title: '我的好友', items: groupFriends},
   {title: '我的群聊', items: groupChats},
   {title: '多人聊天', items: multiChats}
 ];
@@ -135,7 +142,7 @@ function DeviceRow(props: {name: string, sub: string, icon: string}) {
 
 export default function TqContactsPage() {
   const [activeTab, setActiveTab] = createSignal<TabKey>('group');
-  const [collapsed, setCollapsed] = createSignal<Set<number>>(new Set());
+  const [collapsed, setCollapsed] = createSignal<Set<number>>(new Set([0]));
 
   const toggleGroup = (idx: number) => {
     setCollapsed(prev => {

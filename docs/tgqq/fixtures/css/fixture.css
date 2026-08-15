@@ -2010,7 +2010,7 @@ html.night .tq-settings {
 .tq-settings-row + .tq-settings-row::before {
   content: '';
   position: absolute;
-  left: 34px;
+  left: 50px;
   right: 16px;
   top: 0;
   height: 0.5px;
@@ -2187,4 +2187,182 @@ body.tq-settings-open .tq-pages {
 
 body.tq-settings-open .tq-shell nav {
   display: none;
+}
+
+/* ---- tab fixture: QQ9 关于QQ page (002, mirrors pages/Settings/About) ---- */
+.tq-about {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  background: #f0f4ff;
+  color: #1a1a1a;
+  --tq-about-icon: #666666;
+  --tq-about-divider: #eef0f5;
+  --tq-about-arrow: #c7c7cc;
+  --tq-about-value: #999999;
+  --tq-about-footer: #8f8f98;
+  --tq-about-link: #4077c8;
+  --tq-about-back: #333333;
+}
+
+html.night .tq-about {
+  background: #16171c;
+  color: #e5e5e5;
+  --tq-about-icon: #9a9a9a;
+  --tq-about-divider: #33343c;
+  --tq-about-arrow: #5f5f68;
+  --tq-about-value: #8a8a92;
+  --tq-about-footer: #7a7a82;
+  --tq-about-link: #6fa8dc;
+  --tq-about-back: #e5e5e5;
+}
+
+.tq-about-hero {
+  position: relative;
+  flex: none;
+  height: 268px;
+  background: linear-gradient(165deg, #f6c7da 0%, #f4d7c9 34%, #e6dcf1 62%, #eaf1ff 100%);
+}
+
+html.night .tq-about-hero {
+  background: linear-gradient(165deg, #35264a 0%, #2a2f52 55%, #1e2a48 100%);
+}
+
+.tq-about-back {
+  position: absolute;
+  top: 8px;
+  left: 4px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: var(--tq-about-back);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.tq-about-logo {
+  position: absolute;
+  left: 50%;
+  top: 104px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tq-about-penguin {
+  width: 108px;
+  height: 124px;
+  filter: drop-shadow(0 8px 20px rgba(120, 120, 200, 0.28));
+}
+
+.tq-about-wordmark {
+  margin-top: 2px;
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  line-height: 1;
+  background: linear-gradient(90deg, #5eb8f0 0%, #9d8aef 55%, #d48eed 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 3px 10px rgba(110, 120, 220, 0.35));
+}
+
+.tq-about-card {
+  flex: none;
+  margin: -2px 13px 0;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+html.night .tq-about-card {
+  background: #2b2b2b;
+}
+
+.tq-about-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 45px;
+  padding: 0 14px 0 24px;
+}
+
+.tq-about-row + .tq-about-row::before {
+  content: '';
+  position: absolute;
+  left: 52px;
+  right: 0;
+  top: 0;
+  height: 0.5px;
+  background: var(--tq-about-divider);
+}
+
+.tq-about-icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tq-about-icon);
+}
+
+.tq-about-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tq-about-value {
+  flex: none;
+  font-size: 13px;
+  color: var(--tq-about-value);
+  white-space: nowrap;
+}
+
+.tq-about-arrow {
+  flex: none;
+  display: inline-flex;
+  color: var(--tq-about-arrow);
+}
+
+.tq-about-footer {
+  flex: none;
+  margin-top: auto;
+  padding: 18px 20px 34px;
+  text-align: center;
+}
+
+.tq-about-footer p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 19px;
+  color: var(--tq-about-footer);
+}
+
+.tq-about-footer a {
+  color: var(--tq-about-link);
+  text-decoration: none;
+}
+
+.tq-about-sep {
+  margin: 0 6px;
+  color: var(--tq-about-footer);
+}
+
+.tq-about-qnt {
+  vertical-align: -3px;
+  margin: 0 3px;
 }
