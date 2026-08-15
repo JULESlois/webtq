@@ -22,3 +22,7 @@
 :global(body.is-tgqq.tq-shell-on #chatlist-container .folders-scrollable) {
   padding-bottom: calc(var(--tq-nav-height) + var(--tq-nav-safe-bottom));
 }
+
+.pagesFull {
+  inset: 0;
+}

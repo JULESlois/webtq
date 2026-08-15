@@ -106,3 +106,23 @@ body.is-tgqq.tq-shell-on {
     opacity: .75;
   }
 }
+
+  // QQ9 settings entry: gear button appended next to the "+" add button
+  .tgqq-profile .tq-profile-gear {
+    width: 32px;
+    height: 32px;
+    flex: none;
+    border: none;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--tq-surface-secondary);
+    color: var(--tq-text-secondary);
+    cursor: pointer;
+    transition: background-color var(--tq-transition-fast);
+
+    &:hover {
+      background: var(--tq-interactive-hover);
+    }
+  }

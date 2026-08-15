@@ -46,8 +46,8 @@ const items: {tab: TqHomeTab, labelKey: keyof typeof lang}[] = [
 ];
 
 export default function TqBottomNavigation(props: {
-  selected: TqHomeTab,
-  onSelect: (tab: TqHomeTab) => void
+  selected: TqHomeTab | 'settings',
+  onSelect: (tab: TqHomeTab | 'settings') => void
 }) {
   return (
     <nav class={styles.root} aria-label="TGQQ home">
