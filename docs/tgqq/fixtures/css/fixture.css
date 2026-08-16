@@ -221,57 +221,14 @@ body {
   height: 40px;
 }
 
-/* chatlist item cosmetics */
-.chatlist-chat {
-  display: flex;
-  flex-direction: row !important;
-  align-items: center;
-  gap: 12px;
-}
-
-.chatlist-chat .row-row {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-width: 0;
-  gap: 2px;
-}
-
-.chatlist-chat .row-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-}
-
-.chatlist-chat .row-subtitle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.chatlist-chat .row-row {
-  flex: 1;
-  min-width: 0;
-}
-
-.chatlist-chat .row-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chatlist-chat .row-subtitle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  min-width: 0;
-}
-
-.chatlist-chat .user-last-message {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+/* chatlist item cosmetics
+   The fixture rows now mirror the real tweb chat row DOM
+   (Row + DialogElement): li.chatlist-chat is a flex column with
+   .row-row.row-title-row / .row-row.row-subtitle-row and an absolutely
+   positioned .dialog-avatar.row-media.row-media-bigger. All of that is
+   styled by css/tgqq.css; only fixture-only helpers live here. */
+.chatlist-chat .dialog-avatar {
+  font-weight: 600;
 }
 
 /* chat pane cosmetics (mirrors tweb .chat flex layout: topbar / bubbles / input) */
@@ -589,24 +546,8 @@ body {
 .person-avatar { display: inline-flex; }
 .chat-info { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; }
 
-/* unread badge cosmetics */
-.badge.unread {
-  position: absolute;
-  top: 8px;
-  left: calc(var(--tq-chatlist-padding, 12px) + var(--tq-chatlist-avatar-size, 52px) - 10px);
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 16px;
-  height: 16px;
-  border-radius: 8px;
-  background: #fe4735;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 500;
-  padding: 0 4px;
-}
+/* unread badge cosmetics are handled by css/tgqq.css on the real
+   dialog-subtitle-badge-unread / mention / avatar-badge classes. */
 
 /* ---- tab fixture: shell pages container (mirrors TqMobileShell) ---- */
 .tq-pages {

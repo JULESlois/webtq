@@ -66,18 +66,25 @@ body.is-tgqq.tq-dialog-skin {
         color: var(--tq-text-tertiary) !important;
       }
 
-      .badge.unread {
+      .badge.unread,
+      .dialog-subtitle-badge-unread,
+      .avatar-badge {
         background-color: var(--tq-badge-bg) !important;
         color: var(--tq-badge-text) !important;
       }
     }
   }
 
-  // Avatar - larger size like QQ
-  .dialog-avatar {
-    position: relative;
-    width: var(--tq-chatlist-avatar-size);
-    height: var(--tq-chatlist-avatar-size);
+  // Avatar - larger size like QQ.
+  // tweb's `.row-media-bigger` pins it absolutely at 54px/9px with
+  // !important; QQ9 wants 52px at 12px, vertically centered.
+  .chatlist-chat .dialog-avatar {
+    position: absolute !important;
+    top: 50%;
+    transform: translateY(-50%);
+    inset-inline-start: var(--tq-chatlist-padding) !important;
+    width: var(--tq-chatlist-avatar-size) !important;
+    height: var(--tq-chatlist-avatar-size) !important;
     flex-shrink: 0;
 
     // QQ9 default avatar: flat gray circle + person silhouette
@@ -139,21 +146,53 @@ body.is-tgqq.tq-dialog-skin {
     }
   }
 
-  // Row structure adjustments
-  // tweb locks .row-row to 1.375rem and squeezes title/subtitle as grid items
-  // (they end up 2-4px tall + overflow:hidden, clipping all text/badges);
-  // QQ rows are 68px tall with both lines visible.
+  .chatlist-chat {
+  // Row structure adjustments (scoped to chat rows so the same class names
+  // used elsewhere - e.g. .mention inside message bubbles - stay untouched)
+  // tweb chat rows (Row + DialogElement) are:
+  //   li.chatlist-chat (flex column, justify-content:center)
+  //     ├─ div.row-row.row-title-row.dialog-title        (title + time)
+  //     ├─ div.row-row.row-subtitle-row.dialog-subtitle  (subtitle + badges)
+  //     └─ canvas.dialog-avatar.row-media.row-media-bigger (absolute)
+  // tweb locks .row-row to 1.375rem and squeezes the text; QQ9 rows keep
+  // both lines visible inside a fixed 74px row. The old fixture used a
+  // single .row-row wrapper, the real app uses title/subtitle rows.
   .row-row {
     height: auto !important;
-    display: block !important;
-    gap: var(--tq-space-md);
     // tweb sets position:relative on .row-row/.row-subtitle; reset so the
     // unread badge (absolute) anchors to the row, not the text columns.
     position: static !important;
   }
 
-  .row-subtitle {
-    position: static !important;
+  .row-title-row,
+  .row-subtitle-row {
+    display: flex !important;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .row-title-row {
+    justify-content: space-between;
+    gap: var(--tq-space-sm);
+  }
+
+  .row-subtitle-row {
+    justify-content: flex-start;
+    gap: var(--tq-space-xs);
+    margin-top: var(--tq-space-xs);
+  }
+
+  // Text column: tweb's `.chatlist-chat.row-with-padding` pins 72px
+  // (!important); QQ9 uses 12px avatar margin + 52px avatar + 12px gap.
+  &.row-with-padding {
+    padding-inline-start: calc(var(--tq-chatlist-padding) + var(--tq-chatlist-avatar-size) + var(--tq-chatlist-gap)) !important;
+  }
+
+  // tweb's `.row.no-wrap` zeroes vertical padding (!important); QQ9 rows
+  // keep the 12px breathing room (and a stable 74px height).
+  &.no-wrap {
+    padding-top: var(--tq-chatlist-padding) !important;
+    padding-bottom: var(--tq-chatlist-padding) !important;
   }
 
   .row-title,
@@ -163,56 +202,124 @@ body.is-tgqq.tq-dialog-skin {
 
   // Title section
   .user-title {
-    font-size: var(--tq-font-size-lg);
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: var(--tq-font-size-lg) !important;
     font-weight: 500;
     color: var(--tq-text-primary);
     line-height: var(--tq-line-height-tight);
   }
 
-  // Last message / subtitle
-  .user-last-message,
+  // Last message / subtitle. tweb's `.chatlist-chat.chatlist-chat-bigger
+  // .row-subtitle` paints font-size:16px !important; QQ9 uses 13px.
   .row-subtitle {
-    font-size: var(--tq-font-size-sm);
-    color: var(--tq-text-secondary);
-    line-height: var(--tq-line-height-normal);
-    margin-top: var(--tq-space-xs);
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: var(--tq-font-size-sm) !important;
+    color: var(--tq-text-secondary) !important;
+    line-height: var(--tq-line-height-normal) !important;
+    margin-top: 0 !important;
   }
 
-  // Time badge
-  .row-title-right,
-  .dialog-subtitle-badge {
-    font-size: var(--tq-font-size-xs);
-    color: var(--tq-text-tertiary);
-    // tweb animates the badge to scale(0) until JS adds .is-visible;
-    // QQ9 keeps timestamps permanently visible.
+  .user-last-message {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: inherit;
+    color: inherit;
+    line-height: inherit;
+  }
+
+  // Time / status column. tweb's `.chatlist-chat .row-title` paints
+  // font-size:16px !important on the whole row incl. the details; QQ9 time
+  // is 12px tertiary at the row end. tweb also animates it to scale(0)
+  // until JS adds .is-visible; QQ9 keeps timestamps permanently visible.
+  .dialog-title-details {
+    flex: 0 0 auto;
+    margin-inline-start: var(--tq-space-sm) !important;
+    font-size: var(--tq-font-size-xs) !important;
+    color: var(--tq-text-tertiary) !important;
+    line-height: var(--tq-line-height-tight) !important;
     transform: none !important;
     opacity: 1 !important;
   }
 
-  // Unread badge - QQ9 compact red pill on the avatar top-right corner
-  .badge.unread {
-    position: absolute;
+  .message-time {
+    font-size: inherit;
+    color: inherit;
+  }
+
+  // tweb animates subtitle badges (unread/pinned/mention) to scale(0) until
+  // JS adds .is-visible; QQ9 keeps every badge permanently visible.
+  .dialog-subtitle-badge {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  // Unread / mention / reaction badges - QQ9 compact pill on the avatar
+  // top-right corner. tweb appends them to the subtitle row (in-flow), so
+  // any badge makes that row ~20px taller -> rows jump while scrolling and
+  // the list misaligns. Pin them to the row instead.
+  .dialog-subtitle-badge-unread,
+  .mention-badge,
+  .dialog-subtitle-badge-mention,
+  .reaction-badge,
+  .dialog-subtitle-badge-reaction,
+  .poll-vote-badge,
+  .dialog-subtitle-badge-pollvote,
+  // Pinned chats: tweb keeps the pin badge in the subtitle flow too;
+  // pin it to the avatar corner so rows stay 74px.
+  .dialog-subtitle-badge-pinned {
+    position: absolute !important;
     top: 8px;
-    left: calc(var(--tq-chatlist-padding) + var(--tq-chatlist-avatar-size) - 10px);
-    z-index: 2;
-    background-color: var(--tq-badge-bg);
-    color: var(--tq-badge-text);
+    inset-inline-start: calc(var(--tq-chatlist-padding) + var(--tq-chatlist-avatar-size) - 10px);
+    margin: 0 !important;
+    z-index: 3;
+  }
+
+  .dialog-subtitle-badge-unread {
+    background-color: var(--tq-badge-bg) !important;
+    color: var(--tq-badge-text) !important;
     min-width: 16px;
     height: 16px;
     border-radius: var(--tq-radius-full);
     font-size: 10px;
     font-weight: 500;
     padding: 0 4px;
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
+    line-height: 1 !important;
   }
 
-  // Mention badge - QQ @ style
-  .mention {
+  // Muted-chat unread: tweb draws it on the avatar bottom-right; QQ9 keeps
+  // the count pill at the avatar top-right too.
+  .dialog-subtitle-badge.avatar-badge {
+    position: absolute !important;
+    top: 6px;
+    inset-inline-start: calc(var(--tq-chatlist-padding) + var(--tq-chatlist-avatar-size) - 12px);
+    inset-inline-end: auto;
+    background-color: var(--tq-badge-bg) !important;
+    color: var(--tq-badge-text) !important;
+    border-color: var(--tq-surface-primary) !important;
+  }
+
+  // Mention badge - QQ @ style (.mention alone is also used for @mentions
+  // inside message bubbles, so stay on the chat-list-only classes)
+  .mention-badge {
     background-color: var(--tq-accent-warning) !important;
     color: #fff;
     min-width: 18px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
     height: 18px;
     border-radius: var(--tq-radius-full);
     font-size: var(--tq-font-size-xs);
@@ -223,6 +330,9 @@ body.is-tgqq.tq-dialog-skin {
   .dialog-subtitle-badge-pinned {
     color: var(--tq-text-tertiary);
     font-size: var(--tq-font-size-md);
+    // avoid the unread pill: pin sits at the avatar top-left, unread at top-right
+    inset-inline-start: calc(var(--tq-chatlist-padding) + 2px);
+    top: 6px;
   }
 
   // Muted icon
@@ -263,6 +373,8 @@ body.is-tgqq.tq-dialog-skin {
   .dialog-group-call-icon {
     background-color: var(--tq-accent-success);
     border-color: var(--tq-surface-primary);
+  }
+
   }
 
   // Archive section
