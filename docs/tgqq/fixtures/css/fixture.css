@@ -1,9 +1,9 @@
 /* TGQQ fixture scaffolding: CSS vars normally written by tweb JS + minimal
    cosmetics. Real tweb styles come from css/tweb.css, QQ skins from css/tgqq.css. */
 :root {
-  --left-column-visual-width: 360px;
-  --left-column-width: 360px;
-  --default-column-width: 360px;
+  --left-column-visual-width: 400px;
+  --left-column-width: 400px;
+  --default-column-width: 400px;
   --page-chats-padding: 16px;
   --folders-sidebar-offset: 0px;
   --middle-column-width: 100%;
@@ -14,6 +14,25 @@
   --column-box-shadow: none;
 }
 
+/* tweb JS zeroes the root page padding on handhelds
+   (PAGE_CHATS_PADDING_ROOT_HANDHELD = 0 in updateColumnWidths.ts), so the
+   QQ phone chat list is full-bleed; the 16px desktop value only applies
+   at >=600px. */
+@media (max-width: 599px) {
+  :root {
+    --page-chats-padding: 0px;
+  }
+
+  /* Real app: #column-left is a grid item stretched by #main-columns
+     (grid-template-columns: 100%) to the viewport height; the fixture needs
+     an explicit height or the flex chain grows past the screen and rows land
+     behind the fixed bottom nav. */
+  #column-left {
+    height: 100%;
+    min-height: 0;
+  }
+}
+
 html, body {
   height: 100%;
   overflow: hidden;
@@ -21,6 +40,22 @@ html, body {
 
 #page-chats, #main-columns {
   height: 100% !important;
+}
+
+#column-left #chatlist-container {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* Real app: #folders-container wraps .folders-scrollable and the custom
+   scroll manager pins it absolutely (position:absolute in tweb.css is scoped
+   to #folders-container, which the fixture omits). Fill the container and
+   scroll so long lists clear the fixed bottom nav. */
+#chatlist-container .folders-scrollable {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
 }
 
 body {
