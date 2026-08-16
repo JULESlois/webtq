@@ -1,0 +1,320 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(0, 0, 0, 0.06);
+  pointer-events: auto;
+}
+
+.panel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3001;
+  width: 88%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 2px 0 24px rgba(0, 0, 0, 0.12);
+  pointer-events: auto;
+  animation: tqDrawerIn 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes tqDrawerIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.headerBar {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkin {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 30px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #444;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.headerBarRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.statusBtn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.82);
+  color: #555;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.close {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #444;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+  position: relative;
+  flex: none;
+  padding: 60px 20px 64px;
+  background: linear-gradient(180deg, #e9f2ff 0%, #e1edfd 55%, #dcebfc 100%);
+  color: #1f1f1f;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  background: radial-gradient(circle at 32% 28%, #ffb3bb 0%, #f04a3e 46%, #e00000 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  user-select: none;
+}
+
+.meta {
+  margin-top: 12px;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.switchAccount {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 20px;
+  padding: 0 8px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  color: #666;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.qq {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #666;
+}
+
+.sign {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #888;
+}
+
+.chevron {
+  position: absolute;
+  right: 18px;
+  bottom: 58px;
+  font-size: 22px;
+  color: #b0b0b0;
+}
+
+.card {
+  flex: none;
+  margin: -28px 14px 0;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  padding: 4px 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+}
+
+.rowIcon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rowLabel {
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  color: #1f1f1f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rowArrow {
+  flex: none;
+  font-size: 18px;
+  color: #c7c7cc;
+}
+
+.footer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 12px 14px calc(16px + env(safe-area-inset-bottom, 0px));
+  background: #f3f2f7;
+}
+
+.footerBar {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.footerItem {
+  flex: 1;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: none;
+  color: #1f1f1f;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.version {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #a5a5ad;
+}
+
+:global(html.night) .panel {
+  background: #2b2b2b;
+  box-shadow: 2px 0 24px rgba(0, 0, 0, 0.5);
+}
+
+:global(html.night) .header {
+  background: linear-gradient(180deg, #24304a 0%, #1f2a42 55%, #1c263c 100%);
+  color: #e5e5e5;
+}
+
+:global(html.night) .qq,
+:global(html.night) .sign {
+  color: #b3b3b3;
+}
+
+:global(html.night) .chevron {
+  color: #5f5f68;
+}
+
+:global(html.night) .card {
+  background: #2b2b2b;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+:global(html.night) .row:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+:global(html.night) .rowLabel {
+  color: #e5e5e5;
+}
+
+:global(html.night) .rowArrow {
+  color: #5f5f68;
+}
+
+:global(html.night) .footer {
+  background: #17181b;
+}
+
+:global(html.night) .checkin,
+:global(html.night) .statusBtn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ccc;
+}
+
+:global(html.night) .close {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #ccc;
+}
+
+:global(html.night) .switchAccount {
+  background: rgba(255, 255, 255, 0.08);
+  color: #aaa;
+}
+
+:global(html.night) .footerBar {
+  background: #2b2b2b;
+}
+
+:global(html.night) .footerItem {
+  color: #e5e5e5;
+}
+
+:global(html.night) .version {
+  color: #6a6a72;
+}

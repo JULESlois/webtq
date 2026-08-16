@@ -1,5 +1,4 @@
 import {For, Show, createSignal} from 'solid-js';
-import {i18n} from '@lib/langPack';
 import styles from './Dynamics.module.scss';
 
 import photo01 from '../../assets/photos/photo01.jpg';
@@ -62,21 +61,14 @@ const PHOTO_GRADS = [
 ];
 
 const ENTRIES = [
-  {label: '好友动态', gradient: 'linear-gradient(135deg,#12b7f5,#1296db)'},
-  {label: '相册', gradient: 'linear-gradient(135deg,#ff9a56,#ff6a3d)'},
-  {label: '收藏', gradient: 'linear-gradient(135deg,#f6d365,#fda085)'},
-  {label: '文件', gradient: 'linear-gradient(135deg,#7ed321,#4caf50)'},
-  {label: '小世界', gradient: 'linear-gradient(135deg,#a1c4fd,#7aa5f0)'},
-  {label: '厘米秀', gradient: 'linear-gradient(135deg,#fbc2eb,#a18cd1)'},
-  {label: '游戏', gradient: 'linear-gradient(135deg,#9b59b6,#8e44ad)'},
-  {label: '小程序', gradient: 'linear-gradient(135deg,#4dd0e1,#0097a7)'}
-];
-
-const FEATURE_CARDS = [
-  {title: '直播', sub: '和朋友一起看'},
-  {title: '小游戏', sub: '开黑不孤单'},
-  {title: '小程序中心', sub: '即点即用'},
-  {title: '我的收藏', sub: '珍藏每一刻'}
+  {label: '相册', color: '#F0C020', d: 'M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z', d2: 'm4 18 5.2-5.2 3.4 3.4 2.8-2.8L21 18'},
+  {label: '说说', color: '#F0C010', d: 'M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5Z', d2: 'M8.5 12h.01M12 12h.01M15.5 12h.01'},
+  {label: '游戏中心', color: '#1090E0', d: 'M7 8h10a4 4 0 0 1 4 4v3a3 3 0 0 1-5.2 2L14 15h-4l-1.8 2A3 3 0 0 1 3 15v-3a4 4 0 0 1 4-4Z', d2: 'M7 12h.01M10 13.5h.01M14 13.5h.01M17 12h.01'},
+  {label: '小游戏', color: '#2090D0', d: 'M4 20V9l8-6 8 6v11h-5v-6H9v6H4Z', d2: 'M9 9h.01M15 9h.01M12 13v3m-1.5-1.5h3'},
+  {label: '农场', color: '#33C77D', d: 'M12 21c-4 0-7-2.7-7-6.5C5 9 9 5.5 12 3c3 2.5 7 6 7 11.5C19 18.3 16 21 12 21Z', d2: 'M12 21c-1.8-1.4-2.7-3.4-2.7-5.7 0-2 .8-3.7 2.7-5.3 1.9 1.6 2.7 3.3 2.7 5.3 0 2.3-.9 4.3-2.7 5.7Z'},
+  {label: '购物', color: '#EB6672', d: 'M6 8h12l-1 12H7L6 8Z', d2: 'M9 8a3 3 0 0 1 6 0'},
+  {label: '意见反馈', color: '#2496EA', d: 'M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5Z', d2: 'M8.5 12h.01M12 12h.01M15.5 12h.01'},
+  {label: '更多', color: '#1F96E8', d: 'M5 12h.01M12 12h.01M19 12h.01'}
 ];
 
 function ImageGrid(props: {count: number, imgStart: number}) {
@@ -277,7 +269,7 @@ function CoupleSpace() {
   return (
     <button type="button" class={styles.couple}>
       <span class={styles.coupleIcon}>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M3.5 19c.7-2.9 2.6-4.3 5.5-4.3s4.8 1.4 5.5 4.3"/><path d="M15.8 14.9c2.4.2 4.1 1.4 4.7 3.6"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 20s-7-4.6-9.2-8.6C1.2 8.6 3 5.5 6.2 5.5c2 0 3.3 1.1 4.2 2.4l1.6 2.1 1.6-2.1c.9-1.3 2.2-2.4 4.2-2.4 3.2 0 5 3.1 3.2 5.9C19 15.4 12 20 12 20z"/></svg>
       </span>
       <span class={styles.coupleMeta}>
         <span class={styles.coupleTitle}>亲密空间</span>
@@ -288,17 +280,15 @@ function CoupleSpace() {
   );
 }
 
-function DynamicsCover() {
+function DynamicsProfileCard() {
   return (
-    <div class={styles.cover}>
-      <div class={styles.coverMenu} aria-label="更多">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h.01M12 12h.01M19 12h.01"/></svg>
+    <div class={styles.profileCard}>
+      <div class={styles.profileAvatar}>我</div>
+      <div class={styles.profileMeta}>
+        <div class={styles.profileName}>我</div>
+        <div class={styles.profileSign}>活着就好 ›</div>
       </div>
-      <div class={styles.coverAvatar}>我</div>
-      <div class={styles.coverName}>我</div>
-      <div class={styles.coverSub}>已绑定 462 天 · 开启死党空间</div>
-      <span class={styles.coverLv}>Lv.3</span>
-      <div class={styles.coverAction}>开启我的动态空间 ›</div>
+      <span class={styles.profileArrow}>&#8250;</span>
     </div>
   );
 }
@@ -309,26 +299,10 @@ function DynamicsEntries() {
       <For each={ENTRIES}>
         {(e) => (
           <div class={styles.entryItem}>
-            <div class={styles.entryIcon} style={{background: e.gradient}}>{e.label.slice(0, 1)}</div>
+            <span class={styles.entryIcon} style={{color: e.color}}>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d={e.d}/>{e.d2 ? <path d={e.d2}/> : null}</svg>
+            </span>
             <span class={styles.entryLabel}>{e.label}</span>
-          </div>
-        )}
-      </For>
-    </div>
-  );
-}
-
-function DynamicsCards() {
-  return (
-    <div class={styles.featureGrid}>
-      <For each={FEATURE_CARDS}>
-        {(c) => (
-          <div class={styles.featureCard}>
-            <div class={styles.featureTop}>
-              <span class={styles.featureTitle}>{c.title}</span>
-              <button type="button" class={styles.featureAdd} aria-label="添加">+</button>
-            </div>
-            <div class={styles.featureSub}>{c.sub}</div>
           </div>
         )}
       </For>
@@ -340,16 +314,11 @@ export default function TqDynamicsPage() {
   return (
     <div class={styles.root}>
       <DynamicsHeader/>
-      <DynamicsCover/>
+      <DynamicsProfileCard/>
 
       <div class={styles.content}>
-        <div class={styles.search}>
-          <svg class={styles.searchIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-          <span>{i18n('Tgqq.Dynamics.Search')}</span>
-        </div>
         <DynamicsEntries/>
         <WeatherBanner/>
-        <DynamicsCards/>
         <CoupleSpace/>
 
         <DynamicsPartners/>

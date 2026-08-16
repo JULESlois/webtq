@@ -101,8 +101,8 @@
   background: var(--tq-accent-primary);
 }
 
-html.night .tabActive,
-html.night .tabActive::after {
+:global(html.night) .tabActive,
+:global(html.night) .tabActive::after {
   color: #1296db;
   background: #1296db;
 }

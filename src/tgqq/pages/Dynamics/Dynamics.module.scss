@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--tq-surface-page);
+  background: #fff;
   color: var(--tq-text-primary);
 }
 
@@ -134,114 +134,69 @@
 
 /* ---- QQ9 dynamics hub ---- */
 
-.cover {
-  position: relative;
+.profileCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   flex: none;
-  height: 176px;
-  padding: 16px;
-  background: linear-gradient(160deg, #df81f9 0%, #b6b0ff 100%);
-  overflow: hidden;
+  padding: 18px 16px 14px;
+  background: #fff;
+  border-bottom: 1px solid #eef0f5;
 }
 
-.coverMenu {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 30px;
-  height: 30px;
+.profileAvatar {
+  width: 60px;
+  height: 60px;
+  flex: none;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.22);
-}
-
-.coverAvatar {
-  position: absolute;
-  top: 24px;
-  left: 16px;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--tq-accent-dynamics, #bb6bff);
+  background: radial-gradient(circle at 32% 28%, #ffb3bb 0%, #f04a3e 46%, #e00000 100%);
   color: #fff;
   font-size: 24px;
   font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   user-select: none;
 }
 
-.coverName {
-  position: absolute;
-  top: 28px;
-  left: 92px;
-  font-size: 18px;
+.profileMeta {
+  flex: 1;
+  min-width: 0;
+}
+
+.profileName {
+  font-size: 17px;
   font-weight: 600;
-  color: #fff;
+  line-height: 1.3;
+  color: #1f1f1f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.coverSub {
-  position: absolute;
-  top: 52px;
-  left: 92px;
+.profileSign {
+  margin-top: 3px;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.85);
+  color: #999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.coverLv {
-  position: absolute;
-  top: 28px;
-  right: 16px;
-  padding: 2px 8px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.22);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.coverAction {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  font-size: 13px;
-  color: #fff;
-  opacity: 0.92;
-}
-
-.search {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  height: 38px;
-  margin: -19px 12px 0;
-  padding: 0 14px;
-  border-radius: 19px;
-  background: #ffffff;
-  border: 1px solid var(--tq-border-light);
-  color: var(--tq-text-tertiary);
-  font-size: 14px;
-  position: relative;
-  z-index: 1;
-}
-
-.searchIcon {
+.profileArrow {
   flex: none;
+  font-size: 20px;
+  color: #c7c7cc;
 }
 
 .entries {
-  margin: 10px 12px 0;
-  padding: 14px 8px;
-  background: var(--tq-surface-primary);
-  border: 1px solid var(--tq-border-light);
-  border-radius: 14px;
+  margin: 4px 0 0;
+  padding: 12px 0 6px;
+  background: #fff;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  row-gap: 14px;
+  row-gap: 16px;
 }
 
 .entryItem {
@@ -252,68 +207,16 @@
 }
 
 .entryIcon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  width: 40px;
+  height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
 }
 
 .entryLabel {
   font-size: 11px;
   color: var(--tq-text-secondary);
-}
-
-.featureGrid {
-  margin: 10px 12px 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
-.featureCard {
-  background: var(--tq-surface-primary);
-  border: 1px solid var(--tq-border-light);
-  border-radius: 14px;
-  padding: 12px;
-}
-
-.featureTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.featureTitle {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--tq-text-primary);
-}
-
-.featureAdd {
-  width: 24px;
-  height: 24px;
-  border: none;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--tq-surface-secondary);
-  color: var(--tq-text-primary);
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.featureSub {
-  margin-top: 2px;
-  font-size: 12px;
-  color: var(--tq-text-tertiary);
 }
 
 .feedTitle {
@@ -323,13 +226,25 @@
   color: var(--tq-text-primary);
 }
 
-html.night .cover {
-  background: linear-gradient(160deg, #6a3fb0 0%, #4a5bd0 100%);
+:global(html.night) .profileCard {
+  background: #1a1a1a;
+  border-bottom-color: #2a2a2a;
 }
 
-html.night .search {
-  background: var(--tq-surface-primary, #2b2b2b);
-  border-color: var(--tq-border-light, #373737);
+:global(html.night) .profileName {
+  color: #e5e5e5;
+}
+
+:global(html.night) .profileSign {
+  color: #999;
+}
+
+:global(html.night) .profileArrow {
+  color: #5f5f68;
+}
+
+:global(html.night) .entries {
+  background: #1a1a1a;
 }
 
 /* ---- Round 23: partners / badges / lucky char / novel creature / DNA ---- */
@@ -343,7 +258,7 @@ html.night .search {
   grid-template-columns: repeat(4, 1fr);
 }
 
-html.night .partners {
+:global(html.night) .partners {
   background: linear-gradient(135deg, #3d3a55 0%, #333a52 100%);
 }
 
@@ -384,7 +299,7 @@ html.night .partners {
   -webkit-tap-highlight-color: transparent;
 }
 
-html.night .partnerAdd {
+:global(html.night) .partnerAdd {
   background: #6b6fd0;
 }
 
@@ -588,35 +503,29 @@ html.night .partnerAdd {
   display: flex;
   align-items: center;
   gap: 12px;
-  width: auto;
-  margin: 12px 12px 0;
-  padding: 12px 14px;
+  width: 100%;
+  margin: 0;
+  padding: 10px 16px;
   border: none;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #eaf6ff 0%, #f3efff 100%);
+  border-radius: 0;
+  background: #f2f2f2;
   color: var(--tq-text-primary);
   cursor: pointer;
   text-align: left;
 
-  html.night & {
-    background: linear-gradient(135deg, #1d2b3f 0%, #26213d 100%);
+  :global(html.night) & {
+    background: #1b1b1e;
   }
 }
 
 .weatherIcon {
-  width: 38px;
-  height: 38px;
+  width: 30px;
+  height: 30px;
   flex: none;
-  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.65);
-  color: #f5a623;
-
-  html.night & {
-    background: rgba(255, 255, 255, 0.08);
-  }
+  color: #a5a5ad;
 }
 
 .weatherMeta {
@@ -628,19 +537,20 @@ html.night .partnerAdd {
 }
 
 .weatherTitle {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.2;
+  color: #8a8a92;
 }
 
 .weatherSub {
   font-size: 12px;
-  color: var(--tq-text-secondary);
+  color: #b0b0b6;
 }
 
 .weatherArrow {
   margin-inline-start: auto;
-  color: var(--tq-text-quaternary);
+  color: #c4c4ca;
   font-size: 18px;
   line-height: 1;
 }
@@ -652,15 +562,19 @@ html.night .partnerAdd {
   width: auto;
   margin: 12px 12px 0;
   padding: 12px 14px;
-  border: 1px solid var(--tq-border-light);
+  border: none;
   border-radius: 12px;
-  background: var(--tq-surface-primary);
+  background: #f6f6f6;
   color: var(--tq-text-primary);
   cursor: pointer;
   text-align: left;
 
   &:hover {
-    background: var(--tq-interactive-hover);
+    background: #f0f0f2;
+  }
+
+  :global(html.night) & {
+    background: #1e1e21;
   }
 }
 
@@ -668,12 +582,10 @@ html.night .partnerAdd {
   width: 38px;
   height: 38px;
   flex: none;
-  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #ff9ecb, #c98aff);
-  color: #fff;
+  color: #d29095;
 }
 
 .coupleMeta {

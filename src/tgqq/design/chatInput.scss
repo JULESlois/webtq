@@ -4,8 +4,8 @@
   .chat-input-wrapper {
     --padding-vertical: 0.375rem;
     --padding-horizontal: 0.5rem;
-    border-radius: var(--tq-radius-xl);
-    background: #f7f8fa;
+    border-radius: 0;
+    background: var(--tq-chat-page, #edecf1);
     border: none;
     box-shadow: none;
     min-height: 3rem;
@@ -55,16 +55,17 @@
     }
   }
 
-  // Send button - QQ9: circular blue button with a white up-arrow
-  // (tweb's default is a Telegram-logo paper plane; hide it and draw the
-  // arrow with a CSS mask so no renderer change is needed).
+  // Send button - QQ9 9.1.65: blue rounded capsule with white "发送" text
+  // (ref qq9-mobile3/006-chat-input-panel.jpg: right-side blue pill beside
+  // the white input box; tweb's default is a Telegram-logo paper plane —
+  // hide it and draw text via ::after so no renderer change is needed).
   .btn-send {
     position: relative !important;
-    background-color: var(--tq-accent-primary) !important;
-    border-radius: 50% !important;
-    height: 2.25rem !important;
-    min-width: 2.25rem !important;
-    width: 2.25rem !important;
+    background: linear-gradient(135deg, #5aa7f7 0%, #4596f4 100%) !important;
+    border-radius: 12px !important;
+    height: 2.5rem !important;
+    min-width: 0 !important;
+    width: 100% !important;
     padding: 0 !important;
     transition: background-color var(--tq-transition-fast);
 
@@ -73,25 +74,20 @@
       display: none !important;
     }
 
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      margin: auto;
-      width: 1.125rem;
-      height: 1.125rem;
-      flex: none;
-      background-color: currentColor;
-      -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 19V5M5 12l7-7 7 7' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center / contain;
-      mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 19V5M5 12l7-7 7 7' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center / contain;
+    &::after {
+      content: '发送';
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: 2px;
     }
 
     &:hover {
-      background-color: var(--tq-accent-primary-hover) !important;
+      background: linear-gradient(135deg, #4d9ef5 0%, #3b8af0 100%) !important;
     }
 
     &.disabled {
-      background-color: var(--tq-interactive-disabled) !important;
+      background: var(--tq-interactive-disabled) !important;
       opacity: 0.5;
     }
   }
@@ -200,41 +196,41 @@
 body.is-tgqq.tq-chat-composer .new-message-wrapper {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: auto;
+  grid-template-rows: auto auto;
   column-gap: 2px;
+  row-gap: 6px;
   align-items: center;
-  padding: 4px 8px 6px;
-  background: #f7f8fa;
+  padding: 6px 8px 8px;
+  background: var(--tq-chat-page, #edecf1);
   border-radius: var(--tq-radius-xl);
   border: none;
   box-shadow: none;
 
-  // QQ9 composer is a single row: [emoji] [input] [+ attach] [send]
-  // (reference group-chat-view.jpg: yellow smiley at x29-46, input text
-  // x70-129, plus at x290-329, blue send circle x336-371). Voice / gallery /
-  // camera / file are hidden — QQ9 keeps them inside the "+" attach menu.
-  .tq-quick-voice,
-  .tq-quick-gallery,
-  .tq-quick-camera,
-  .tq-quick-file {
-    display: none;
-  }
-
-  // Row 1: emoji (col 1), input (cols 2-3), attach (col 5), send (col 6)
+  // QQ9 9.1.65 输入面板（ref qq9-mobile3/006-chat-input-panel.jpg）：
+  // Row 1 = 白色圆角输入框 + 右侧蓝色发送胶囊；Row 2 = 6 工具图标行
+  // （语音/相册/相机/文件/表情/+）。
   .input-message-container {
-    grid-column: 2 / 4;
+    grid-column: 1 / 5;
     grid-row: 1;
-    // tweb's flex-oriented `width: 1%` would collapse the input inside a grid
     width: auto !important;
     min-width: 0;
-    min-height: 2.25rem;
+    min-height: 2.5rem;
+    background: #fff;
+    border-radius: 12px;
   }
 
   .btn-send-container {
-    grid-column: 6;
+    grid-column: 5 / 7;
     grid-row: 1;
-    justify-self: end;
+    justify-self: stretch;
   }
+
+  .toggle-emoticons { grid-column: 5; grid-row: 2; }
+  .attach-file { grid-column: 6; grid-row: 2; }
+  .tq-quick-voice { grid-column: 1; grid-row: 2; }
+  .tq-quick-gallery { grid-column: 2; grid-row: 2; }
+  .tq-quick-camera { grid-column: 3; grid-row: 2; }
+  .tq-quick-file { grid-column: 4; grid-row: 2; }
 
   .tq-quick-btn,
   .toggle-emoticons,
@@ -253,19 +249,17 @@ body.is-tgqq.tq-chat-composer .new-message-wrapper {
     }
   }
 
-  .toggle-emoticons { grid-column: 1; grid-row: 1; }
-  .attach-file { grid-column: 5; grid-row: 1; }
-
   // Bot commands toggle: span the full width rather than landing in a stray cell
   .new-message-bot-commands {
     grid-column: 1 / -1;
+    grid-row: 2;
   }
 
   // Recording panel must overlay/span both rows
   .voice-recording-panel {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    background-color: #f7f8fa;
+    background-color: var(--tq-chat-page, #edecf1);
   }
 
   // QQ9 recording chip: tinted pill with red dot + timer. tweb paints these
@@ -290,10 +284,14 @@ body.is-tgqq.tq-chat-composer .new-message-wrapper {
 }
 
 html.night body.is-tgqq.tq-chat-composer .new-message-wrapper {
-  background: #2f2f2f;
+  background: #17181b;
+
+  .input-message-container {
+    background: #2f2f2f;
+  }
 
   .voice-recording-panel {
-    background-color: #2f2f2f;
+    background-color: #17181b;
   }
 
   .voice-recording-pill {

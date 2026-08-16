@@ -4,26 +4,26 @@ import TqChannelsPage from '@/tgqq/pages/Channels';
 import TqContactsPage from '@/tgqq/pages/Contacts';
 import TqDynamicsPage from '@/tgqq/pages/Dynamics';
 import TqSettingsPage from '@/tgqq/pages/Settings';
+import TqProfileDrawer from '@/tgqq/components/ProfileDrawer';
 import styles from './TqMobileShell.module.scss';
 
 const [selectedTab, setSelectedTab] = createRoot(() => createSignal<TqHomeTab | 'settings'>('messages'));
+const [profileOpen, setProfileOpen] = createRoot(() => createSignal(false));
 
-// QQ9 设置入口：左栏个人卡片（头像行）右侧的齿轮按钮。侧栏是上游 DOM，
-// 由 shell 挂载时注入按钮，点击切到设置页。
-function injectProfileGear() {
-  const profile = document.querySelector('#column-left .tgqq-profile');
-  if(!profile || profile.querySelector('.tq-profile-gear')) return;
-  const btn = document.createElement('button');
-  btn.type = 'button';
-  btn.className = 'tq-profile-gear';
-  btn.setAttribute('aria-label', '设置');
-  btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5"/></svg>';
-  btn.addEventListener('click', () => setSelectedTab('settings'));
-  profile.append(btn);
+// QQ9 设置入口：左栏个人卡片（头像行）。点击头像打开 QQ 样式的左滑抽屉，
+// 抽屉底部「设置」切到设置页（真机 9.1.65 消息列表顶栏只有加号，无齿轮）。
+function injectProfileClick() {
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement | null;
+    if(!target) return;
+    if(target.closest('.tgqq-profile') && !target.closest('.tgqq-profile-add')) {
+      setProfileOpen(true);
+    }
+  });
 }
 
 export default function TqMobileShell() {
-  onMount(injectProfileGear);
+  onMount(injectProfileClick);
 
   const isMessagesTab = () => selectedTab() === 'messages';
 
@@ -50,6 +50,14 @@ export default function TqMobileShell() {
       <Show when={selectedTab() !== 'settings'}>
         <TqBottomNavigation selected={selectedTab()} onSelect={setSelectedTab}/>
       </Show>
+      <TqProfileDrawer
+        open={profileOpen()}
+        onClose={() => setProfileOpen(false)}
+        onSettings={() => {
+          setProfileOpen(false);
+          setSelectedTab('settings');
+        }}
+      />
     </div>
   );
 }

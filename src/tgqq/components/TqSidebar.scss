@@ -1,4 +1,5 @@
-// QQ9 sidebar header: profile row (avatar + name + online status + "+")
+// QQ9 sidebar header: profile row (avatar + name + status + "+")
+// 真机 9.1.65 (ref qq9-mobile3/000-msglist.jpg)：大头像 + 两行文字 + 右侧仅一个加号。
 body.is-tgqq.tq-shell-on {
   // QQ9: bottom nav blends into the page background (no white bar/border)
   .tq-shell nav {
@@ -21,22 +22,41 @@ body.is-tgqq.tq-shell-on {
     display: flex;
     align-items: center;
     gap: 10px;
-    min-height: 40px;
+    min-height: 44px;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 2px 4px;
+    margin: -2px -4px;
+
+    &:hover {
+      background: var(--tq-interactive-hover);
+    }
   }
 
   .tgqq-profile-avatar {
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
     flex: none;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
-    font-size: 17px;
-    font-weight: 600;
-    background: radial-gradient(circle at 32% 28%, #ffb3bb 0%, #f04a3e 46%, #e00000 100%);
+    color: transparent;
+    font-size: 0;
+    background: var(--tq-avatar-bg);
+    position: relative;
     user-select: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 9%;
+      left: 22%;
+      width: 56%;
+      height: 70%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Ccircle cx='32' cy='27' r='15' fill='%23909092'/%3E%3Cpath d='M32 46C25 46 14 55 8 70l48 0C74 55 63 46 56 46 45 46 39 46 32 46z' fill='%23909092'/%3E%3C/svg%3E") center / contain no-repeat;
+      pointer-events: none;
+    }
   }
 
   .tgqq-profile-meta {
@@ -63,6 +83,14 @@ body.is-tgqq.tq-shell-on {
     font-size: 11px;
     line-height: 1.2;
     color: var(--tq-text-secondary);
+
+    &::after {
+      content: "›";
+      margin-inline-start: 2px;
+      font-size: 13px;
+      line-height: 1;
+      color: var(--tq-text-tertiary);
+    }
   }
 
   .tgqq-profile-dot {
@@ -107,22 +135,12 @@ body.is-tgqq.tq-shell-on {
   }
 }
 
-  // QQ9 settings entry: gear button appended next to the "+" add button
-  .tgqq-profile .tq-profile-gear {
-    width: 32px;
-    height: 32px;
-    flex: none;
-    border: none;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--tq-surface-secondary);
-    color: var(--tq-text-secondary);
-    cursor: pointer;
-    transition: background-color var(--tq-transition-fast);
+html.night body.is-tgqq.tq-shell-on {
+  .tgqq-profile-avatar {
+    background: var(--tq-avatar-bg);
 
-    &:hover {
-      background: var(--tq-interactive-hover);
+    &::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Ccircle cx='32' cy='27' r='15' fill='%23ffffff'/%3E%3Cpath d='M32 46C25 46 14 55 8 70l48 0C74 55 63 46 56 46 45 46 39 46 32 46z' fill='%23ffffff'/%3E%3C/svg%3E") center / contain no-repeat;
     }
   }
+}
