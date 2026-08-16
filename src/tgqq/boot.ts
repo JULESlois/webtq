@@ -15,12 +15,9 @@ import './design/TqGlobal.scss';
 const APP_TITLE = 'WebQQ';
 const APP_DESCRIPTION = 'QQ 风格的消息应用 · 基于 Telegram Web';
 
+// Single SVG icon — vector favicon + manifest icon. Vite inlines it as a
+// data URI (<4 KB), so no separate raster assets are shipped.
 const QQ_ICON_SVG = new URL('./assets/qq-icon.svg', import.meta.url).href;
-const QQ_ICON_16 = new URL('./assets/qq-icon-16.png', import.meta.url).href;
-const QQ_ICON_32 = new URL('./assets/qq-icon-32.png', import.meta.url).href;
-const QQ_ICON_180 = new URL('./assets/qq-icon-180.png', import.meta.url).href;
-const QQ_ICON_192 = new URL('./assets/qq-icon-192.png', import.meta.url).href;
-const QQ_ICON_512 = new URL('./assets/qq-icon-512.png', import.meta.url).href;
 
 document.documentElement.classList.add('tq-app');
 
@@ -40,25 +37,15 @@ function applyBranding() {
   }
   document.querySelector('meta[name="description"]')?.setAttribute('content', APP_DESCRIPTION);
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#1296db');
-  document.querySelector('meta[property="og:image"]')?.setAttribute('content', QQ_ICON_512);
-  document.querySelector('meta[property="twitter:image"]')?.setAttribute('content', QQ_ICON_512);
-  document.querySelector('meta[name="msapplication-TileImage"]')?.setAttribute('content', QQ_ICON_192);
+  document.querySelector('meta[property="og:image"]')?.setAttribute('content', QQ_ICON_SVG);
+  document.querySelector('meta[property="twitter:image"]')?.setAttribute('content', QQ_ICON_SVG);
+  document.querySelector('meta[name="msapplication-TileImage"]')?.setAttribute('content', QQ_ICON_SVG);
 
   for(const link of Array.from(document.querySelectorAll<HTMLLinkElement>('link[rel~="icon"], link[rel="alternate icon"], link[rel="apple-touch-icon"]'))) {
-    if(link.rel.includes('apple')) {
-      link.href = QQ_ICON_180;
-      link.setAttribute('sizes', '180x180');
-      link.type = 'image/png';
-      continue;
-    }
-    const sizes = link.getAttribute('sizes') || '';
-    if(sizes === '16x16' || sizes === '32x32' || sizes === '192x192') {
-      link.href = sizes === '16x16' ? QQ_ICON_16 : sizes === '32x32' ? QQ_ICON_32 : QQ_ICON_192;
-      link.type = 'image/png';
-    } else {
-      link.href = QQ_ICON_SVG;
-      link.type = 'image/svg+xml';
-    }
+    link.href = QQ_ICON_SVG;
+    link.type = 'image/svg+xml';
+    // Vector icon is resolution-independent; drop the fixed PNG sizes.
+    if(link.getAttribute('sizes')) link.setAttribute('sizes', 'any');
   }
 }
 
@@ -93,8 +80,7 @@ async function applyManifest() {
   manifest.theme_color = '#1296db';
   manifest.background_color = '#f3f2f7';
   manifest.icons = [
-    {src: QQ_ICON_192, sizes: '192x192', type: 'image/png'},
-    {src: QQ_ICON_512, sizes: '512x512', type: 'image/png'}
+    {src: QQ_ICON_SVG, sizes: 'any', type: 'image/svg+xml'}
   ];
   manifestLink.href = URL.createObjectURL(new Blob([JSON.stringify(manifest)], {type: 'application/manifest+json'}));
 }

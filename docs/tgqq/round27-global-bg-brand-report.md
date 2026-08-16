@@ -6,11 +6,11 @@
 ## 结论
 
 - 全局 Telegram 壁纸层已从**所有视图**移除：登录页、聊天列表、聊天页、平板双栏一律换为 QQ9 扁平底色（浅色 `#f3f2f7` 页面 / `#f0f4f8` 聊天区，深色 `#1a1a1a` / `#191919`）。
-- 站点品牌改为 WebQQ：`<title>`、各 `meta`（application-name / og / twitter / 移动端标题）、favicon 全套（16/32/180/192/512 + SVG）、`site.webmanifest` 运行时重写（name / short_name / icons / theme_color / background_color）。
+- 站点品牌改为 WebQQ：`<title>`、各 `meta`（application-name / og / twitter / 移动端标题）、SVG favicon 全套替换（矢量、vite 内联 data URI）、`site.webmanifest` 运行时重写（name / short_name / icons / theme_color / background_color）。
 - 验证（puppeteer 真实 dist 登录页）：
   - `html` 带 `tq-app`，`document.title === 'WebQQ'`；
   - body 背景 `rgb(243,242,247)`；body 首子元素壁纸层被标记 `tq-bg-layer` 且 `display:none`（含 canvas，识别准确）；
-  - 图标链接全部指向 qq-icon 资源（16/32 由 vite 内联为 data URI，180/192/512 为产物文件，alternate icon → SVG）；
+  - 全部图标链接（icon 16/32/192、alternate icon、apple-touch-icon）统一指向同一份 `qq-icon.svg`（<4 KB，vite 内联为 data URI），manifest icons 为 `sizes:any` 的 SVG；
   - `#manifest` href 已变为 blob URL（重写后的清单）；
   - 登录页截图像素统计：QQ 灰白占绝对主导，无 Telegram 蓝紫渐变残留。
 
@@ -34,8 +34,9 @@ Telegram 壁纸层来源：`src/components/chat/bubbles/chatBackground.tsx` 的 
 - 标题：`WebQQ`；同步 `application-name` / `mobile-web-app-title` /
   `apple-mobile-web-app-title` / `og:*` / `twitter:*` / description。
 - 图标：新建 `src/tgqq/assets/qq-icon.svg`（QQ 蓝渐变圆角方块 + 白色企鹅，
-  与现有 QQ 蓝 `#12b7f5→#1296db` 一致），`rsvg-convert` 生成 16/32/180/192/512
-  PNG；`boot.ts` 按 `sizes` 替换全部 icon 链接（apple-touch → 180 PNG）。
+  与现有 QQ 蓝 `#12b7f5→#1296db` 一致），为唯一图标资源；`boot.ts` 把全部
+  icon 链接（含 apple-touch-icon）指向该 SVG，`type=image/svg+xml`、
+  `sizes=any`，manifest icons 同用 SVG。
 - 清单：DOMContentLoaded 后（等上游 `setManifest` 先指好目标）fetch
   `site.webmanifest` → 改品牌字段与图标 → blob URL 重设；fetch 失败（本地
   `copyPublicDir:false` 构建无 public 文件）时兜底自建清单。
@@ -45,7 +46,7 @@ Telegram 壁纸层来源：`src/components/chat/bubbles/chatBackground.tsx` 的 
 ## 文件清单
 
 - 新增 `src/tgqq/boot.ts`、`src/tgqq/design/TqGlobal.scss`、
-  `src/tgqq/assets/qq-icon.svg` + `qq-icon-{16,32,180,192,512}.png`
+  `src/tgqq/assets/qq-icon.svg`（唯一图标资源，无 PNG）
 - 上游一行：`src/index.ts`（`import '@/tgqq/boot';`）
 - 文档：`docs/tgqq/upstream-patches.md`（TW-UP-014）
 
