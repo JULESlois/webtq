@@ -2342,3 +2342,30 @@ html.night .tq-about-card {
   vertical-align: -3px;
   margin: 0 3px;
 }
+
+/* ============ QQ9 message-home invite card (ref qq9_000_full.png y226-320) ============
+   Full-bleed white card between the search capsule and the chat list: phonebook
+   icon + single gray text line. Fixture-only reference element for now (real-app
+   injection needs a product decision, see round29 report). */
+.tq-invite-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: none;
+  height: 92px;
+  padding: 0 16px;
+  background: var(--tq-surface-primary);
+  color: var(--tq-text-secondary);
+  font-size: 15px;
+  line-height: 1.4;
+  border-bottom: 1px solid var(--tq-divider);
+}
+
+.tq-invite-row .tq-invite-icon {
+  flex: none;
+  color: var(--tq-text-tertiary);
+}
+
+html.night .tq-invite-row {
+  background: var(--tq-surface-primary);
+}

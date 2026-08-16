@@ -18,6 +18,32 @@ body.is-tgqq.tq-tablet {
   --left-column-visual-width: 400px;
 }
 
+// ---- Tablet home-column header ---------------------------------------------
+// QQ9 tablet (ref qq9-tablet/001.png) drops the mobile avatar+name row: the
+// column starts with a slim status line (left) and the action buttons (right),
+// then the search capsule. Hide the phone-style identity block, keep the
+// online status text as the slim row.
+body.is-tgqq.tq-tablet {
+  .tgqq-profile-avatar,
+  .tgqq-profile-name {
+    display: none !important;
+  }
+
+  .tgqq-profile {
+    min-height: 28px;
+    gap: 8px;
+  }
+
+  .tgqq-profile-meta {
+    gap: 0;
+  }
+
+  .tgqq-profile-status {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+}
+
 // Folders sidebar has no QQ-tablet equivalent — hide it and zero the offset
 // the left column / chat use to reserve its space.
 body.is-tgqq.tq-tablet #page-chats {

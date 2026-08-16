@@ -208,6 +208,10 @@ body.is-tgqq.tq-chat-bubbles {
     color: rgba(0, 0, 0, 0.6);
   }
 
+  html.night .bubble.is-out .reply-subtitle {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
   html.night .bubble .reply {
     background-color: rgba(255, 255, 255, 0.08);
   }
@@ -222,6 +226,10 @@ body.is-tgqq.tq-chat-bubbles {
 
   .bubble.is-out .forward {
     color: rgba(0, 0, 0, 0.6);
+  }
+
+  html.night .bubble.is-out .forward {
+    color: rgba(255, 255, 255, 0.55);
   }
 
   // Link styling in bubbles
@@ -239,6 +247,10 @@ body.is-tgqq.tq-chat-bubbles {
 
   .bubble.is-out .bubble-content a {
     color: #0066cc;
+  }
+
+  html.night .bubble.is-out .bubble-content a {
+    color: #4cb3f7;
   }
 
   // Media messages

@@ -37,6 +37,21 @@
   color: var(--tq-accent-primary);
 }
 
+// QQ9 tablet (ref qq9-tablet/001.png): the selected tab's icon sits in a
+// light-blue rounded capsule with a white glyph; mobile keeps plain blue
+// icon + text (ref qq9_000_full.png bottom nav).
+:global(body.is-tgqq.tq-tablet) .itemSelected .iconWrap {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--tq-nav-capsule, #46b5fa);
+  color: #fff;
+}
+
+:global(html.night body.is-tgqq.tq-tablet) .itemSelected .iconWrap {
+  background: var(--tq-nav-capsule-night, #3b95d2);
+}
+
 .icon {
   font-size: 22px;
   line-height: 1;
