@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="tq-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12B7F5"/>
+      <stop offset="1" stop-color="#1296DB"/>
+    </linearGradient>
+    <linearGradient id="tq-shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#tq-bg)"/>
+  <rect width="512" height="240" rx="116" fill="url(#tq-shine)"/>
+  <g>
+    <ellipse cx="256" cy="296" rx="118" ry="122" fill="#ffffff"/>
+    <circle cx="198" cy="178" r="42" fill="#ffffff"/>
+    <circle cx="314" cy="178" r="42" fill="#ffffff"/>
+    <circle cx="224" cy="268" r="11.5" fill="#0E5A8A"/>
+    <circle cx="288" cy="268" r="11.5" fill="#0E5A8A"/>
+    <circle cx="227.5" cy="264.5" r="3.8" fill="#ffffff"/>
+    <circle cx="291.5" cy="264.5" r="3.8" fill="#ffffff"/>
+    <path d="M246 286h20l-10 20z" fill="#FFB84D" stroke="#F5A623" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M236 392q20 26 40 0l-6-22q-14 12-28 0z" fill="#F5A623"/>
+  </g>
+</svg>

@@ -6,6 +6,8 @@
 // a non-painting tab still boots
 import '@helpers/dom/previewUnfreeze';
 import '@helpers/dom/previewRaf';
+// TGQQ global boot: QQ surface/branding from the very first load (login page included).
+import '@/tgqq/boot';
 import App from '@config/app';
 import blurActiveElement from '@helpers/dom/blurActiveElement';
 import {IS_STICKY_INPUT_BUGGED} from '@helpers/dom/fixSafariStickyInputFocusing';

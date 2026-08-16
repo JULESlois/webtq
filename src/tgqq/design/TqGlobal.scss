@@ -1,0 +1,42 @@
+// TGQQ global surface — imported by boot.ts, so it applies from the very first
+// page load (login/auth pages included), before the signed-in `.is-tgqq` set
+// in light.scss / dark.scss takes over.
+//
+// Kills Telegram's page-wide wallpaper layer and gives every view the flat QQ
+// page background: login page, chat list, chat pane, tablet panes.
+
+html.tq-app {
+  // Minimal surface tokens for pre-login pages; the full `.is-tgqq` token set
+  // (tokens.scss + light.scss + dark.scss) still wins after sign-in.
+  --tq-surface-page: #f3f2f7;
+  --tq-chat-page: #f0f4f8;
+  --tq-text-primary: #000000;
+  --tq-text-secondary: #5a5a5a;
+  --tq-text-tertiary: #999999;
+  --tq-accent-primary: #1296db;
+  --tq-border-light: #ebebeb;
+  --tq-divider: #e5e5e5;
+}
+
+html.night.tq-app {
+  --tq-surface-page: #1a1a1a;
+  --tq-chat-page: #191919;
+  --tq-text-primary: #e5e5e5;
+  --tq-text-secondary: #b3b3b3;
+  --tq-text-tertiary: #808080;
+  --tq-accent-primary: #4eb0f5;
+  --tq-border-light: #3a3a3a;
+  --tq-divider: #2f2f2f;
+}
+
+// Flat QQ page surface everywhere (overrides tweb's theme body background).
+html.tq-app body {
+  background-color: var(--tq-surface-page) !important;
+}
+
+// Telegram's page-wide wallpaper layer (chatBackground.tsx singleton,
+// marked by boot.ts). The inline ChatBackground components (wallpaper
+// previews, passcode lock) are NOT body-level and stay untouched.
+html.tq-app body > .tq-bg-layer {
+  display: none !important;
+}

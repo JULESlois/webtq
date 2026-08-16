@@ -277,3 +277,36 @@ TGQQ fallback:
 Risk:
 Low-Medium（录音/附件行为均走既有入口；grid 仅作用于 TGQQ 作用域；
 fixture 三页已按真机 DOM 重构并自验两行几何）
+
+## TW-UP-014（Round 27：TGQQ 全局 boot 注入）
+
+Files:
+- src/index.ts（模块顶部、`previewUnfreeze`/`previewRaf` 之后新增一行
+  `import '@/tgqq/boot';`——其余所有逻辑零改动）
+- src/tgqq/boot.ts（新建，side-effect 模块）
+- src/tgqq/design/TqGlobal.scss（新建）
+
+Purpose:
+全局 Telegram 壁纸层（`chatBackground.tsx` 的 `appChatBackground` 单例在
+`src/index.ts` 启动时就把渐变/图案 canvas 挂到 body 首子元素，登录页也可见）
+需要从**首次加载**起就被隐藏，并换成 QQ 扁平底色；站点标题/图标/清单也要在
+任何页面（含登录页）生效。`@/tgqq` 仅在登录后经 `bootstrapIm` 加载，覆盖不到
+登录页，因此需要入口模块在应用最早期执行。
+
+Type:
+Yellow（一行 import + 全新 tgqq 模块；boot 只做标记 class / 品牌注入，不碰
+任何 tweb 逻辑）
+
+Why upstream modification is necessary:
+TGQQ 皮肤需要覆盖登录页 → 必须在 `src/index.ts`（唯一始终最先执行的入口）
+引入 boot；CSS 中 `html.tq-app body > .tq-bg-layer { display:none }` 只作用于
+boot.ts 通过「body 直接子元素 + 无 id/class + 含 canvas」识别并打标的层，
+内联 `<ChatBackground>`（壁纸预览、锁屏）不受影响。
+
+TGQQ fallback:
+`html.tq-app` 由 boot 无条件添加，但规则仅改变 body 背景色与隐藏壁纸层；
+不破坏任何原生结构。品牌注入（标题/图标/manifest）为纯增益。
+
+Risk:
+Low（识别条件严格：无 id、无 class、body 直接子元素、含 canvas——tweb 其余
+body 级容器均有 id/class；passcode 锁屏挂 overlay root 且有 class，不会误伤）
