@@ -34,21 +34,17 @@
 
   <div class="tq-shell _root_10x2p_1 tq-shell-active">
     <div class="tq-pages" id="tq-pages"></div>
-    <nav class="_root_1wwo7_1" aria-label="TGQQ home">
-      <button class="_item_1wwo7_14" type="button" data-tab="messages">
-        <svg class="_icon_1wwo7_40" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H11l-4.6 3.6V17.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z"/></svg>
+    <nav class="_root_1j3bc_1" aria-label="TGQQ home">
+      <button class="_item_1j3bc_13" type="button" data-tab="messages">
+        <svg class="_icon_1j3bc_39" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H11l-4.6 3.6V17.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z"/></svg>
         <span>消息</span>
       </button>
-      <button class="_item_1wwo7_14" type="button" data-tab="channels">
-        <svg class="_icon_1wwo7_40" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3.5 6.5 20.5"/><path d="M17.5 3.5 15 20.5"/><path d="M4 9h17"/><path d="M3 15h17"/></svg>
-        <span>频道</span>
-      </button>
-      <button class="_item_1wwo7_14" type="button" data-tab="contacts">
-        <svg class="_icon_1wwo7_40" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.8"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>
+      <button class="_item_1j3bc_13" type="button" data-tab="contacts">
+        <svg class="_icon_1j3bc_39" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.8"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>
         <span>联系人</span>
       </button>
-      <button class="_item_1wwo7_14" type="button" data-tab="dynamics">
-        <svg class="_icon_1wwo7_40" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 21V3.5"/><path d="M5.5 4.5c3.5-1.8 7 1.6 11-.2v8.4c-4 1.8-7.5-1.6-11 .2z"/></svg>
+      <button class="_item_1j3bc_13" type="button" data-tab="dynamics">
+        <svg class="_icon_1j3bc_39" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 21V3.5"/><path d="M5.5 4.5c3.5-1.8 7 1.6 11-.2v8.4c-4 1.8-7.5-1.6-11 .2z"/></svg>
         <span>动态</span>
       </button>
     </nav>
@@ -228,6 +224,11 @@ const PAGES = {
         <div class="tq-quicknav-item"><span class="tq-quicknav-text">新朋友</span><span class="tq-quicknav-right"><span class="tq-quicknav-badge">1</span><span class="tq-quicknav-arrow">›</span></span></div>
         <div class="tq-quicknav-item"><span class="tq-quicknav-text">群通知</span><span class="tq-quicknav-arrow">›</span></div>
       </div>
+      <button type="button" class="tq-channels-entry">
+        <span class="tq-channels-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M9 3.5 6.5 20.5"/><path d="M17.5 3.5 15 20.5"/><path d="M4 9h17"/><path d="M3 15h17"/></svg></span>
+        <span class="tq-channels-meta"><span class="tq-channels-name">我的频道</span><span class="tq-channels-sub">进入频道广场</span></span>
+        <span class="tq-channels-arrow">›</span>
+      </button>
       <div class="tq-tabs" id="tq-contacts-tabs">
         <button type="button" class="tq-tab" data-tq-tab="recommend">推荐</button>
         <button type="button" class="tq-tab" data-tq-tab="friends">好友</button>
@@ -274,6 +275,13 @@ const PAGES = {
     </div>`,
 dynamics: `
     <div class="tq-page">
+      <header class="tq-dyn-header">
+        <span class="tq-dyn-title">动态</span>
+        <div class="tq-dyn-actions">
+          <button type="button" class="tq-dyn-icon" aria-label="通知"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9.5a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10 19a2.2 2.2 0 0 0 4 0"/></svg></button>
+          <button type="button" class="tq-dyn-icon" aria-label="设置"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5"/></svg></button>
+        </div>
+      </header>
       <div class="tq-cover">
         <div class="tq-cover-menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h.01M12 12h.01M19 12h.01"/></svg></div>
         <div class="tq-cover-avatar">我</div>
@@ -294,12 +302,22 @@ dynamics: `
           <div class="tq-entry"><div class="tq-entry-icon" style="background:linear-gradient(135deg,#9b59b6,#8e44ad)">游</div><span class="tq-entry-label">游戏</span></div>
           <div class="tq-entry"><div class="tq-entry-icon" style="background:linear-gradient(135deg,#4dd0e1,#0097a7)">小</div><span class="tq-entry-label">小程序</span></div>
         </div>
+        <button type="button" class="tq-weather">
+          <span class="tq-weather-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6"/></svg></span>
+          <span class="tq-weather-meta"><span class="tq-weather-title">分享此刻天空</span><span class="tq-weather-sub">记录周末心情</span></span>
+          <span class="tq-weather-arrow">›</span>
+        </button>
         <div class="tq-feature-grid">
           <div class="tq-feature-card"><div class="tq-feature-top"><span class="tq-feature-title">直播</span><button type="button" class="tq-feature-add">+</button></div><div class="tq-feature-sub">和朋友一起看</div></div>
           <div class="tq-feature-card"><div class="tq-feature-top"><span class="tq-feature-title">小游戏</span><button type="button" class="tq-feature-add">+</button></div><div class="tq-feature-sub">开黑不孤单</div></div>
           <div class="tq-feature-card"><div class="tq-feature-top"><span class="tq-feature-title">小程序中心</span><button type="button" class="tq-feature-add">+</button></div><div class="tq-feature-sub">即点即用</div></div>
           <div class="tq-feature-card"><div class="tq-feature-top"><span class="tq-feature-title">我的收藏</span><button type="button" class="tq-feature-add">+</button></div><div class="tq-feature-sub">珍藏每一刻</div></div>
         </div>
+        <button type="button" class="tq-couple">
+          <span class="tq-couple-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M3.5 19c.7-2.9 2.6-4.3 5.5-4.3s4.8 1.4 5.5 4.3"/><path d="M15.8 14.9c2.4.2 4.1 1.4 4.7 3.6"/></svg></span>
+          <span class="tq-couple-meta"><span class="tq-couple-title">亲密空间</span><span class="tq-couple-sub">只属于两个人的小空间</span></span>
+          <span class="tq-couple-arrow">›</span>
+        </button>
         <div class="tq-partners">
           <div class="tq-partner-item"><div class="tq-partner-title">梦搭子</div><div class="tq-partner-sub">专属战绩</div><button type="button" class="tq-partner-add">+</button></div>
           <div class="tq-partner-item"><div class="tq-partner-title">王者搭子</div><div class="tq-partner-sub">同步王者战绩</div><button type="button" class="tq-partner-add">+</button></div>
@@ -495,8 +513,13 @@ if(TAB === 'channels') {
     switchTab('recommend');
   }
 }
+document.querySelector('.tq-channels-entry')?.addEventListener('click', () => {
+  const q = new URLSearchParams(location.search);
+  q.set('tab', 'channels');
+  location.search = q.toString();
+});
 document.querySelectorAll('nav button').forEach(b => {
-  b.classList.toggle('_itemSelected_1wwo7_36', b.dataset.tab === TAB);
+  b.classList.toggle('_itemSelected_1j3bc_35', b.dataset.tab === TAB);
   if(b.dataset.tab === 'dynamics') {
     const dot = document.createElement('i');
     dot.className = 'tq-nav-dot';

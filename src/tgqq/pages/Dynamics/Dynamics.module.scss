@@ -542,3 +542,162 @@ html.night .partnerAdd {
   height: 1px;
   background: var(--tq-border-light);
 }
+
+// Round 30: real QQ9 dynamics header (title + bell + settings), weather
+// banner and 亲密空间 entry (ref qq9-mobile3/010-dynamics.jpg).
+.header {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  padding: 0 16px;
+  background: var(--tq-surface-page);
+}
+
+.headerTitle {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--tq-text-primary);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.headerIcon {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--tq-text-primary);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--tq-interactive-hover);
+  }
+}
+
+.weather {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: auto;
+  margin: 12px 12px 0;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #eaf6ff 0%, #f3efff 100%);
+  color: var(--tq-text-primary);
+  cursor: pointer;
+  text-align: left;
+
+  html.night & {
+    background: linear-gradient(135deg, #1d2b3f 0%, #26213d 100%);
+  }
+}
+
+.weatherIcon {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.65);
+  color: #f5a623;
+
+  html.night & {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.weatherMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+}
+
+.weatherTitle {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.weatherSub {
+  font-size: 12px;
+  color: var(--tq-text-secondary);
+}
+
+.weatherArrow {
+  margin-inline-start: auto;
+  color: var(--tq-text-quaternary);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.couple {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: auto;
+  margin: 12px 12px 0;
+  padding: 12px 14px;
+  border: 1px solid var(--tq-border-light);
+  border-radius: 12px;
+  background: var(--tq-surface-primary);
+  color: var(--tq-text-primary);
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    background: var(--tq-interactive-hover);
+  }
+}
+
+.coupleIcon {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff9ecb, #c98aff);
+  color: #fff;
+}
+
+.coupleMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+}
+
+.coupleTitle {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.coupleSub {
+  font-size: 12px;
+  color: var(--tq-text-secondary);
+}
+
+.coupleArrow {
+  margin-inline-start: auto;
+  color: var(--tq-text-quaternary);
+  font-size: 18px;
+  line-height: 1;
+}

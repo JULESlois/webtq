@@ -6,8 +6,7 @@
   display: flex;
   height: calc(var(--tq-nav-height) + var(--tq-nav-safe-bottom));
   padding-bottom: var(--tq-nav-safe-bottom);
-  background: var(--tq-surface-primary);
-  border-top: 1px solid var(--tq-surface-secondary);
+  background: var(--tq-nav-bg, var(--tq-surface-primary));
   pointer-events: auto;
 }
 

@@ -43,6 +43,8 @@ html.night .is-tgqq {
 
   // Chat page background (QQ flat chat)
   --tq-chat-page: #191919;
+  --tq-nav-bg: #17181b;                 // Bottom nav strip (dark, slightly cooler than page)
+  --tq-chatlist-active-bg: rgba(78, 176, 245, 0.16); // Active row tint (dark, QQ blue at low alpha)
 
   // Interactive states
   --tq-interactive-hover: rgba(255, 255, 255, 0.08);
@@ -69,5 +71,5 @@ html.night .is-tgqq {
   --tq-avatar-bg: #565364;               // Default avatar circle (dark gray-purple)
   --tq-avatar-fg: #ffffff;               // Default avatar person (white)
   --tq-search-bg: #373737;               // Search capsule (dark)
-  --tq-header-bg: #2b3d63;               // Blue-tinted header strip (dark)
+  --tq-header-bg: #1a1a1a;               // Dark header = page color (real QQ9 dark: no blue tint)
 }

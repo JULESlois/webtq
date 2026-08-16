@@ -15,7 +15,7 @@ body.is-tgqq.tq-tablet {
   // QQ9 Android tablet keeps a wider home column than tweb's docked 360px
   // sidebar; widen it consistently for the column, the pinned shell and the
   // chat pane offset (all read this var from the body scope).
-  --left-column-visual-width: 400px;
+  --left-column-visual-width: clamp(340px, 38vw, 400px);
 }
 
 // ---- Tablet home-column header ---------------------------------------------

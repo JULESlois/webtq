@@ -189,7 +189,7 @@ body.is-tgqq.tq-chat-bubbles {
   }
 
   .bubble.is-out .reply {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.14);
   }
 
   .reply-title {
@@ -205,7 +205,11 @@ body.is-tgqq.tq-chat-bubbles {
   }
 
   .bubble.is-out .reply-subtitle {
-    color: rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .bubble.is-out .reply-title {
+    color: rgba(255, 255, 255, 0.95);
   }
 
   html.night .bubble.is-out .reply-subtitle {
@@ -225,7 +229,7 @@ body.is-tgqq.tq-chat-bubbles {
   }
 
   .bubble.is-out .forward {
-    color: rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.7);
   }
 
   html.night .bubble.is-out .forward {
@@ -246,7 +250,7 @@ body.is-tgqq.tq-chat-bubbles {
   }
 
   .bubble.is-out .bubble-content a {
-    color: #0066cc;
+    color: rgba(255, 255, 255, 0.95);
   }
 
   html.night .bubble.is-out .bubble-content a {

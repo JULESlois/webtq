@@ -36,7 +36,7 @@ export default function TqMobileShell() {
               <TqChannelsPage/>
             </Match>
             <Match when={selectedTab() === 'contacts'}>
-              <TqContactsPage/>
+              <TqContactsPage onOpenChannels={() => setSelectedTab('channels')}/>
             </Match>
             <Match when={selectedTab() === 'dynamics'}>
               <TqDynamicsPage/>

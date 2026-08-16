@@ -320,3 +320,60 @@ html.night .tabActive::after {
   font-size: 17px;
   line-height: 1;
 }
+
+.channelsRow {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  border: none;
+  border-bottom: 1px solid var(--tq-border-light);
+  background: var(--tq-surface-primary);
+  color: var(--tq-text-primary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background: var(--tq-interactive-hover);
+  }
+}
+
+.channelsIcon {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #12b7f5, #1296db);
+  color: #fff;
+}
+
+.channelsMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+}
+
+.channelsName {
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.channelsSub {
+  font-size: 12px;
+  color: var(--tq-text-secondary);
+}
+
+.channelsArrow {
+  margin-inline-start: auto;
+  color: var(--tq-text-quaternary);
+  font-size: 18px;
+  line-height: 1;
+}

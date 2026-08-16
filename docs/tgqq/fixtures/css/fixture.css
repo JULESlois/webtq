@@ -61,7 +61,7 @@ html, body {
 body {
   margin: 0;
   font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
-  background: #f3f2f7;
+  background: var(--tq-surface-page);
 }
 
 /* ---- fixture cosmetics (not part of the skins) ---- */
@@ -2368,4 +2368,249 @@ html.night .tq-about-card {
 
 html.night .tq-invite-row {
   background: var(--tq-surface-primary);
+}
+
+/* ---- Round 30: contacts 我的频道 entry + dynamics header/weather/couple ---- */
+.tq-channels-entry {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  border: none;
+  border-bottom: 1px solid #ebebeb;
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tq-channels-entry:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.tq-channels-icon {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #12b7f5, #1296db);
+  color: #fff;
+}
+
+.tq-channels-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tq-channels-name {
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.tq-channels-sub {
+  font-size: 12px;
+  color: #8a8a8a;
+}
+
+.tq-channels-arrow {
+  margin-inline-start: auto;
+  color: #ccc;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.tq-dyn-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  padding: 0 16px;
+  background: #f0f4ff;
+}
+
+.tq-dyn-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: #111;
+}
+
+.tq-dyn-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tq-dyn-icon {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #1f1f1f;
+  cursor: pointer;
+}
+
+.tq-dyn-icon:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.tq-weather {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: calc(100% - 24px);
+  margin: 12px 12px 0;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #eaf6ff 0%, #f3efff 100%);
+  color: #111;
+  cursor: pointer;
+  text-align: left;
+}
+
+.tq-weather-icon {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.65);
+  color: #f5a623;
+}
+
+.tq-weather-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tq-weather-title {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.tq-weather-sub {
+  font-size: 12px;
+  color: #8a8a8a;
+}
+
+.tq-weather-arrow {
+  margin-inline-start: auto;
+  color: #ccc;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.tq-couple {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: calc(100% - 24px);
+  margin: 12px 12px 0;
+  padding: 12px 14px;
+  border: 1px solid #ebebeb;
+  border-radius: 12px;
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+  text-align: left;
+}
+
+.tq-couple-icon {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff9ecb, #c98aff);
+  color: #fff;
+}
+
+.tq-couple-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tq-couple-title {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.tq-couple-sub {
+  font-size: 12px;
+  color: #8a8a8a;
+}
+
+.tq-couple-arrow {
+  margin-inline-start: auto;
+  color: #ccc;
+  font-size: 18px;
+  line-height: 1;
+}
+
+html.night .tq-channels-entry {
+  background: #2b2b2b;
+  border-bottom-color: #373737;
+  color: #e5e5e5;
+}
+
+html.night .tq-channels-sub,
+html.night .tq-weather-sub,
+html.night .tq-couple-sub {
+  color: #b3b3b3;
+}
+
+html.night .tq-dyn-header {
+  background: #1a1a1a;
+}
+
+html.night .tq-dyn-title {
+  color: #e5e5e5;
+}
+
+html.night .tq-dyn-icon {
+  color: #d6d6d6;
+}
+
+html.night .tq-dyn-icon:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html.night .tq-weather {
+  background: linear-gradient(135deg, #1d2b3f 0%, #26213d 100%);
+  color: #e5e5e5;
+}
+
+html.night .tq-weather-icon {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html.night .tq-couple {
+  background: #2b2b2b;
+  border-color: #373737;
+  color: #e5e5e5;
 }

@@ -140,7 +140,22 @@ function DeviceRow(props: {name: string, sub: string, icon: string}) {
   );
 }
 
-export default function TqContactsPage() {
+function ChannelsRow(props: {onOpen?: () => void}) {
+  return (
+    <button type="button" class={styles.channelsRow} onClick={props.onOpen}>
+      <span class={styles.channelsIcon}>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M9 3.5 6.5 20.5"/><path d="M17.5 3.5 15 20.5"/><path d="M4 9h17"/><path d="M3 15h17"/></svg>
+      </span>
+      <span class={styles.channelsMeta}>
+        <span class={styles.channelsName}>我的频道</span>
+        <span class={styles.channelsSub}>进入频道广场</span>
+      </span>
+      <span class={styles.channelsArrow}>›</span>
+    </button>
+  );
+}
+
+export default function TqContactsPage(props: {onOpenChannels?: () => void}) {
   const [activeTab, setActiveTab] = createSignal<TabKey>('group');
   const [collapsed, setCollapsed] = createSignal<Set<number>>(new Set([0]));
 
@@ -171,6 +186,8 @@ export default function TqContactsPage() {
           <span class={styles.quickNavArrow}>›</span>
         </div>
       </div>
+
+      <ChannelsRow onOpen={props.onOpenChannels}/>
 
       <div class={styles.tabs} role="tablist">
         <For each={tabs}>

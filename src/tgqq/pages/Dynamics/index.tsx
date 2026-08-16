@@ -242,6 +242,52 @@ function DnaSection() {
   );
 }
 
+function DynamicsHeader() {
+  return (
+    <header class={styles.header}>
+      <span class={styles.headerTitle}>动态</span>
+      <div class={styles.headerActions}>
+        <button type="button" class={styles.headerIcon} aria-label="通知">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9.5a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10 19a2.2 2.2 0 0 0 4 0"/></svg>
+        </button>
+        <button type="button" class={styles.headerIcon} aria-label="设置">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5"/></svg>
+        </button>
+      </div>
+    </header>
+  );
+}
+
+function WeatherBanner() {
+  return (
+    <button type="button" class={styles.weather}>
+      <span class={styles.weatherIcon}>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6"/></svg>
+      </span>
+      <span class={styles.weatherMeta}>
+        <span class={styles.weatherTitle}>分享此刻天空</span>
+        <span class={styles.weatherSub}>记录周末心情</span>
+      </span>
+      <span class={styles.weatherArrow}>›</span>
+    </button>
+  );
+}
+
+function CoupleSpace() {
+  return (
+    <button type="button" class={styles.couple}>
+      <span class={styles.coupleIcon}>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M3.5 19c.7-2.9 2.6-4.3 5.5-4.3s4.8 1.4 5.5 4.3"/><path d="M15.8 14.9c2.4.2 4.1 1.4 4.7 3.6"/></svg>
+      </span>
+      <span class={styles.coupleMeta}>
+        <span class={styles.coupleTitle}>亲密空间</span>
+        <span class={styles.coupleSub}>只属于两个人的小空间</span>
+      </span>
+      <span class={styles.coupleArrow}>›</span>
+    </button>
+  );
+}
+
 function DynamicsCover() {
   return (
     <div class={styles.cover}>
@@ -293,6 +339,7 @@ function DynamicsCards() {
 export default function TqDynamicsPage() {
   return (
     <div class={styles.root}>
+      <DynamicsHeader/>
       <DynamicsCover/>
 
       <div class={styles.content}>
@@ -301,7 +348,9 @@ export default function TqDynamicsPage() {
           <span>{i18n('Tgqq.Dynamics.Search')}</span>
         </div>
         <DynamicsEntries/>
+        <WeatherBanner/>
         <DynamicsCards/>
+        <CoupleSpace/>
 
         <DynamicsPartners/>
         <DynamicsBadges/>

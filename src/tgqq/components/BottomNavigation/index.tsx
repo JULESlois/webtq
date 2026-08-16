@@ -23,10 +23,6 @@ function TqNavIcon({kind}: {kind: TqHomeTab}) {
       return (
         <svg {...common}><path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H11l-4.6 3.6V17.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z"/></svg>
       );
-    case 'channels':
-      return (
-        <svg {...common}><path d="M9 3.5 6.5 20.5"/><path d="M17.5 3.5 15 20.5"/><path d="M4 9h17"/><path d="M3 15h17"/></svg>
-      );
     case 'contacts':
       return (
         <svg {...common}><circle cx="12" cy="7.5" r="3.8"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>
@@ -38,9 +34,10 @@ function TqNavIcon({kind}: {kind: TqHomeTab}) {
   }
 }
 
+// QQ9.1.65 real bottom nav has exactly three tabs (消息/联系人/动态);
+// Telegram channels are reached from the contacts page (我的频道 entry).
 const items: {tab: TqHomeTab, labelKey: keyof typeof lang}[] = [
   {tab: 'messages', labelKey: 'Tgqq.Tab.Messages'},
-  {tab: 'channels', labelKey: 'Tgqq.Tab.Channels'},
   {tab: 'contacts', labelKey: 'Tgqq.Tab.Contacts'},
   {tab: 'dynamics', labelKey: 'Tgqq.Tab.Dynamics'}
 ];

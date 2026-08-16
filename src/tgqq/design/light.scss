@@ -1,7 +1,7 @@
 // QQ 9.3 Light Theme
 .is-tgqq {
   // Surface colors
-  --tq-surface-page: #f3f2f7;           // Page background (QQ9 gray rgb(243,242,247))
+  --tq-surface-page: #f0f4ff;           // Page background (QQ9 cold light blue rgb(240,244,255))
   --tq-surface-primary: #ffffff;         // Cards, panels
   --tq-surface-secondary: #f0f0f0;       // Subtle backgrounds
   --tq-surface-tertiary: #e8e8e8;        // Dividers, borders
@@ -35,17 +35,18 @@
   --tq-bubble-incoming-bg: #ffffff;
   --tq-bubble-incoming-text: #000000;
   --tq-bubble-incoming-border: #e5e5e5;
-  --tq-bubble-outgoing-bg: #95ecff;      // QQ blue bubble (sender side)
-  --tq-bubble-outgoing-text: #000000;
+  --tq-bubble-outgoing-bg: #4596f4;      // QQ blue bubble (sender side, real QQ9 #4596F4)
+  --tq-bubble-outgoing-text: #ffffff;
   --tq-bubble-outgoing-border: transparent;
   --tq-bubble-incoming-meta: rgba(0, 0, 0, 0.45);
-  --tq-bubble-outgoing-meta: rgba(0, 0, 0, 0.45);
+  --tq-bubble-outgoing-meta: rgba(255, 255, 255, 0.75);
 
   // Chat page background (QQ flat chat)
-  --tq-chat-page: #f0f4f8;
+  --tq-chat-page: #edecf1;
 
   // Chat list active row (QQ9: light-blue tint + left accent bar)
   --tq-chatlist-active-bg: #e8f4ff;
+  --tq-nav-bg: #f3f2f7;                 // Bottom nav strip (real QQ9 rgb(243,242,247))
 
   // Interactive states
   --tq-interactive-hover: rgba(0, 0, 0, 0.05);

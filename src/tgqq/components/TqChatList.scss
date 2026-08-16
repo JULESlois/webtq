@@ -29,9 +29,8 @@ body.is-tgqq.tq-dialog-skin {
     border-radius: 0;
     // tweb paints rows via `background: var(--background) !important`;
     // drive that custom property so the QQ surfaces actually win.
-    --background: var(--tq-surface-primary);
-    background: var(--tq-surface-primary);
-    border-bottom: 1px solid var(--tq-divider);
+    --background: var(--tq-surface-page);
+    background: var(--tq-surface-page);
 
     // Remove default hover background, use QQ style
     &:hover {
@@ -341,12 +340,10 @@ body.is-tgqq.tq-dialog-skin {
     font-size: var(--tq-font-size-md);
   }
 
-  // Message status icons (read/unread checks)
+  // Message status icons (read/unread checks) — QQ9 shows no read ticks
+  // in the conversation list (time sits alone at the row right edge).
   .message-status {
-    color: var(--tq-text-tertiary);
-    width: 16px;
-    height: 16px;
-    font-size: 16px;
+    display: none !important;
   }
 
   // Draft label

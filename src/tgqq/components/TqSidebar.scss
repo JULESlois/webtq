@@ -2,7 +2,7 @@
 body.is-tgqq.tq-shell-on {
   // QQ9: bottom nav blends into the page background (no white bar/border)
   .tq-shell nav {
-    background: var(--tq-surface-page);
+    background: var(--tq-nav-bg, var(--tq-surface-page));
     border-top: none;
   }
 
