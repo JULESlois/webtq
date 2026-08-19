@@ -61,7 +61,8 @@
   // hide it and draw text via ::after so no renderer change is needed).
   .btn-send {
     position: relative !important;
-    background: linear-gradient(135deg, #5aa7f7 0%, #4596f4 100%) !important;
+    // QQ9 9.1.65: flat light-blue pill (#7BC9FA, pixel-verified 123,201,250)
+    background: #7BC9FA !important;
     border-radius: 12px !important;
     height: 2.5rem !important;
     min-width: 0 !important;
@@ -83,7 +84,7 @@
     }
 
     &:hover {
-      background: linear-gradient(135deg, #4d9ef5 0%, #3b8af0 100%) !important;
+      background: #6EB9F0 !important;
     }
 
     &.disabled {
@@ -338,8 +339,11 @@ html.night .is-tgqq.tq-chat-composer {
   }
 }
 
-// QQ9 attachment bottom sheet: the «+» button opens a 4×2 grid panel pinned
-// to the bottom (TW-UP-011 adds the .tq-attach-menu marker to the .btn-menu).
+// QQ9 attachment panel: the «+» button opens a 4-column grid of white
+// rounded squares with dark icons (ref qq9-mobile3/006-chat-input-panel.jpg:
+// y327-465 four 138px squares: 位置/文件/收藏/戳一戳, icons #3A3A3A solid,
+// labels #505050). No pastel circles, no full-screen dim — the sheet blends
+// with the chat page background.
 body.is-tgqq.tq-chat-composer .btn-menu.tq-attach-menu {
   position: fixed !important;
   top: auto !important;
@@ -350,49 +354,48 @@ body.is-tgqq.tq-chat-composer .btn-menu.tq-attach-menu {
   min-width: 0 !important;
   max-width: 100% !important;
   margin: 0 !important;
-  padding: 1.25rem 0.75rem calc(1rem + env(safe-area-inset-bottom, 0px));
-  border-radius: 16px 16px 0 0;
-  background: var(--tq-surface-primary);
-  // 100vmax spread = full-viewport dim behind the sheet; real clicks on the
-  // dim hit the page and close via tweb's outside-click handler.
-  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.12), 0 0 0 100vmax rgba(0, 0, 0, 0.35);
+  padding: 14px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+  border-radius: 0;
+  background: var(--tq-chat-page, #edecf1);
+  box-shadow: none;
   transform: none !important;
   z-index: var(--tq-z-popover);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px 12px;
   overflow-y: visible;
 
-  // 4 columns × N rows
+  // 4 per row: white rounded square (icon) + gray label below
   .btn-menu-item {
-    width: 25%;
+    width: auto;
     height: auto;
     margin-inline: 0;
-    padding: 0.5rem 0;
+    padding: 0;
     border-radius: 0;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 0;
+    gap: 8px;
     transform: none !important;
   }
 
   .btn-menu-item-icon {
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 3.75rem;
+    height: 3.75rem;
     margin: 0;
-    border-radius: 50%;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    background: var(--tq-surface-secondary);
-    color: var(--tq-text-primary);
+    background: #fff;
+    color: #3A3A3A;
+    box-shadow: none;
 
     svg {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 1.6rem;
+      height: 1.6rem;
     }
   }
 
@@ -400,30 +403,41 @@ body.is-tgqq.tq-chat-composer .btn-menu.tq-attach-menu {
     order: 2;
     flex: none;
     width: 100%;
-    margin: 0.5rem 0 0;
+    margin: 0;
     padding: 0;
     overflow: visible;
     white-space: nowrap;
     font-size: 12px;
-    color: var(--tq-text-secondary);
+    color: #505050;
     line-height: 1.2;
     text-align: center;
   }
+}
 
-  // QQ9 pastel icon circles (cycle every 8 items so bot entries keep colors)
-  .btn-menu-item:nth-child(8n + 1) .btn-menu-item-icon { background: #E8F2FF; color: #2F6FE4; }
-  .btn-menu-item:nth-child(8n + 2) .btn-menu-item-icon { background: #FFF1E6; color: #F27A2A; }
-  .btn-menu-item:nth-child(8n + 3) .btn-menu-item-icon { background: #EAF7EF; color: #2BAE63; }
-  .btn-menu-item:nth-child(8n + 4) .btn-menu-item-icon { background: #F3EDFF; color: #8B5CF6; }
-  .btn-menu-item:nth-child(8n + 5) .btn-menu-item-icon { background: #FFECEF; color: #E5484D; }
-  .btn-menu-item:nth-child(8n + 6) .btn-menu-item-icon { background: #E6F7FA; color: #12A5C2; }
-  .btn-menu-item:nth-child(8n + 7) .btn-menu-item-icon { background: #FFE9B8; color: #D98E04; }
-  .btn-menu-item:nth-child(8n + 8) .btn-menu-item-icon { background: #E2EAF3; color: #4A5A70; }
+// Fixture inline variant: rendered as a third grid row inside the composer
+// so the panel sits directly under the toolbar (ref layout: input+send row,
+// 6-icon toolbar row, 4-grid panel). The real app keeps the fixed sheet.
+body.is-tgqq.tq-chat-composer .btn-menu.tq-attach-menu.tq-attach-menu-inline {
+  position: static !important;
+  grid-column: 1 / -1;
+  grid-row: 3;
+  padding: 2px 0 0;
+  background: transparent;
+  border-radius: 0;
+
+  .btn-menu-item-icon {
+    width: 4rem;
+    height: 4rem;
+  }
 }
 
 html.night body.is-tgqq.tq-chat-composer .btn-menu.tq-attach-menu {
-  background: #2F2F2F;
-  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.45), 0 0 0 100vmax rgba(0, 0, 0, 0.55);
+  background: #17181b;
+
+  .btn-menu-item-icon {
+    background: #2f2f2f;
+    color: #d8d8d8;
+  }
 
   .btn-menu-item-text {
     color: rgba(255, 255, 255, 0.7);
@@ -440,6 +454,6 @@ html.night body.is-tgqq.tq-chat-composer .btn-menu.tq-attach-menu {
     width: 26rem !important;
     transform: translateX(-50%) !important;
     border-radius: 16px;
-    padding: 1.25rem 0.75rem 1.25rem;
+    padding: 1rem 1rem 1rem;
   }
 }

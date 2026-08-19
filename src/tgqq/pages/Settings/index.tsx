@@ -48,57 +48,21 @@ const svgIcons: Record<string, JSXElement> = {
   menu: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><path d="M4 6.5h16"/><path d="M4 12h16"/><path d="M4 17.5h16"/></svg>,
   wave: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><path d="M4 12h2l2-6 3 12 2.5-9 1.5 3h3"/></svg>,
   grid: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><circle cx="5" cy="5" r="1.8"/><circle cx="12" cy="5" r="1.8"/><circle cx="19" cy="5" r="1.8"/><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/><circle cx="5" cy="19" r="1.8"/><circle cx="12" cy="19" r="1.8"/><circle cx="19" cy="19" r="1.8"/></svg>,
+  bell: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><path d="M18 9.5a6 6 0 0 0-12 0c0 5-2.2 6.5-2.2 6.5h16.4S18 14.5 18 9.5Z"/><path d="M10.5 19.5a1.8 1.8 0 0 0 3 0"/></svg>,
+  shirt: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><path d="M8 3.5h3l1 2 1-2h3l3.5 3.5-2.5 2-1-1v11.5h-10V10l-1 1-2.5-2z"/></svg>,
+  lock: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2"/></svg>,
+  file: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/></svg>,
+  share: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><circle cx="6" cy="12" r="2.6"/><circle cx="17.5" cy="6" r="2.6"/><circle cx="17.5" cy="18" r="2.6"/><path d="m8.4 10.8 6.8-3.6M8.4 13.2l6.8 3.6"/></svg>,
+  shield: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><path d="M12 3 5 5.8v5.4c0 4.4 3 8 7 9.8 4-1.8 7-5.4 7-9.8V5.8z"/><path d="m9 11.8 2.2 2.2L15.5 9.5"/></svg>,
+  help: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.2a2.6 2.6 0 0 1 5 .9c0 1.6-2.6 2.2-2.6 3.6"/><path d="M12 16.6h.01"/></svg>,
   info: <svg width="22" height="22" viewBox="0 0 24 24" {...ICON}><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><path d="M12 7.8h.01"/></svg>
 };
 
-function RowItem(props: {row: Row}) {
-  const r = props.row;
-  return (
-    <div class={styles.row} onClick={r.onClick}>
-      <span class={styles.rowIcon}>{svgIcons[r.icon]}</span>
-      <span class={styles.rowLabel}>
-        {r.label}
-        <Show when={r.badge}><em class={styles.badge}>{r.badge}</em></Show>
-      </span>
-      <Show when={r.value}><span class={styles.rowValue}>{r.value}</span></Show>
-      <Show when={r.toggle}>
-        <button
-          type="button"
-          class={classNames(styles.toggle, r.toggleOn && styles.toggleOn)}
-          aria-pressed={!!r.toggleOn}
-          aria-label={r.label}
-        ><i/></button>
-      </Show>
-      <Show when={r.chevron}>
-        <svg class={styles.rowArrow} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg>
-      </Show>
-    </div>
-  );
-}
-
 const GENERAL: Group[] = [
   {
-    head: '模式选择',
-    rows: []
-  },
-  {
     rows: [
-      {icon: 'moon', label: '夜间模式跟随系统', toggle: true, toggleOn: true}
-    ]
-  },
-  {
-    rows: [
-      {icon: 'tower', label: '使用移动网络改善语音质量', toggle: true, toggleOn: true}
-    ],
-    desc: 'Wi-Fi下通话效果不佳时，使用移动网络改善语音质量，每分钟流量消耗约1MB。'
-  },
-  {
-    rows: [
-      {icon: 'fontA', label: '字体大小', chevron: true}
-    ]
-  },
-  {
-    rows: [
+      {icon: 'bell', label: '消息通知', chevron: true},
+      {icon: 'fontA', label: '辅助功能', chevron: true},
       {icon: 'storage', label: '存储空间', value: '聊天记录、文件清理', chevron: true},
       {icon: 'clock', label: '聊天记录设置', chevron: true},
       {icon: 'download', label: '自动下载与保存', chevron: true}
@@ -140,13 +104,33 @@ const ACCESSIBILITY: Group[] = [
 ];
 
 export default function TqSettingsPage(props: {sub?: 'general' | 'accessibility' | 'about', onBack?: () => void}) {
-  const [screen, setScreen] = createSignal<'general' | 'accessibility' | 'about'>(props.sub === 'about' ? 'about' : props.sub === 'accessibility' ? 'accessibility' : 'general');
+  const [screen, setScreen] = createSignal<'general' | 'generalSub' | 'accessibility' | 'about'>(props.sub === 'about' ? 'about' : props.sub === 'accessibility' ? 'accessibility' : 'general');
+  const isOverview = () => screen() === 'general';
+  const isGeneralSub = () => screen() === 'generalSub';
   const isAccessibility = () => screen() === 'accessibility';
   const isAbout = () => screen() === 'about';
   const groups = () => isAccessibility()
     ? ACCESSIBILITY
     : [...GENERAL, {rows: [{icon: 'info', label: '关于QQ', chevron: true, onClick: () => setScreen('about')}]}];
-  const back = () => isAbout() ? setScreen('general') : props.onBack?.();
+  const back = () => isAbout() || isGeneralSub() || isAccessibility() ? setScreen('general') : props.onBack?.();
+
+  // QQ9 设置首页分组（ref 009-settings.jpg）：账号与安全 / 功能 / 隐私 / 关于QQ与帮助
+  const featureRows: Row[] = [
+    {icon: 'bell', label: '消息通知', chevron: true},
+    {icon: 'moon', label: '模式选择', value: '普通模式', chevron: true},
+    {icon: 'shirt', label: '个性装扮', chevron: true},
+    {icon: 'grid', label: '通用', chevron: true, onClick: () => setScreen('generalSub')}
+  ];
+  const privacyRows: Row[] = [
+    {icon: 'lock', label: '隐私设置', chevron: true},
+    {icon: 'file', label: '个人信息收集清单', chevron: true},
+    {icon: 'share', label: '第三方共享清单', chevron: true},
+    {icon: 'shield', label: '个人信息保护设置', chevron: true}
+  ];
+  const aboutRows: Row[] = [
+    {icon: 'info', label: '关于QQ与帮助', chevron: true, onClick: () => setScreen('about')},
+    {icon: 'help', label: '帮助与反馈', chevron: true}
+  ];
 
   return (
     <div class={styles.root}>
@@ -158,51 +142,55 @@ export default function TqSettingsPage(props: {sub?: 'general' | 'accessibility'
         <button type="button" class={styles.back} aria-label="返回" onClick={back}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5 8 12l6.5 7"/></svg>
         </button>
-        <h1 class={styles.title}>{isAccessibility() ? '辅助功能' : '设置'}</h1>
+        <h1 class={styles.title}>{isAccessibility() ? '辅助功能' : isGeneralSub() ? '通用' : '设置'}</h1>
       </header>
       <div class={styles.content}>
-        <Show when={!isAccessibility()}>
+        <Show when={isOverview()}>
+          <div class={styles.searchBox}>
+            <span class={styles.searchIcon}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+            </span>
+            <span class={styles.searchPlaceholder}>搜索设置项</span>
+          </div>
           <section class={styles.card}>
-            <div class={styles.modeHead}>
-              <span class={styles.rowIcon}>{svgIcons.monitor}</span>
-              <span class={styles.modeTitle}>模式选择</span>
-              <span class={styles.modeMore}>更多模式
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg>
-              </span>
-            </div>
-            <div class={styles.modeGrid}>
-              <div class={`${styles.modeCard} ${styles.modeCardSelected}`}>
-                <span class={styles.modeCardTitle}>普通模式</span>
-                <span class={styles.modeCardSub}>随心使用，畅享装扮。</span>
-                <i class={styles.radio} aria-hidden="true">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7.5"/></svg>
-                </i>
-              </div>
-              <div class={styles.modeCard}>
-                <span class={styles.modeCardTitle}>体验模式</span>
-                <span class={styles.modeCardSub}>全新设计，全新体验。</span>
-                <i class={styles.radio} aria-hidden="true"/>
-              </div>
-              <div class={styles.modeCard}>
-                <span class={styles.modeCardTitle}>青少年模式</span>
-                <span class={styles.modeCardSub}>功能管控，守护成长。</span>
-                <i class={styles.radio} aria-hidden="true"/>
-              </div>
+            <div class={`${styles.row} ${styles.accountRow}`}>
+              <span class={styles.accountAvatar}>我</span>
+              <span class={styles.rowLabel}>账号与安全</span>
+              <span class={styles.rowValue}>已保护</span>
+              <span class={styles.rowArrow}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></span>
             </div>
           </section>
+          <section class={styles.card}>
+            <For each={featureRows}>
+              {(row) => <RowItem row={row}/>}
+            </For>
+          </section>
+          <section class={styles.card}>
+            <For each={privacyRows}>
+              {(row) => <RowItem row={row}/>}
+            </For>
+          </section>
+          <section class={styles.card}>
+            <For each={aboutRows}>
+              {(row) => <RowItem row={row}/>}
+            </For>
+          </section>
         </Show>
-        <For each={groups()}>
-          {(group) => (
-            <>
-              <section class={styles.card}>
-                <For each={group.rows}>
-                  {(row) => <RowItem row={row}/>}
-                </For>
-              </section>
-              <Show when={group.desc}><p class={styles.desc}>{group.desc}</p></Show>
-            </>
-          )}
-        </For>
+        <Show when={isGeneralSub() || isAccessibility()}>
+          <For each={groups()}>
+            {(group) => (
+              <>
+                <section class={styles.card}>
+                  <For each={group.rows}>
+                    {(row) => <RowItem row={row}/>}
+                  </For>
+                </section>
+                <Show when={group.desc}><p class={styles.desc}>{group.desc}</p></Show>
+              </>
+            )}
+          </For>
+        </Show>
+        
       </div>
       </Show>
     </div>

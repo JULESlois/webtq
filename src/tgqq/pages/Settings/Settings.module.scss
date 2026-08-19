@@ -78,7 +78,51 @@
   overflow: hidden;
 }
 
+/* ---- search capsule (ref 009: rounded pill at page top) ---- */
+.searchBox {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--tq-search-bg, #fff);
+  color: var(--tq-text-tertiary);
+  cursor: pointer;
+}
+
+.searchIcon {
+  flex: none;
+  display: inline-flex;
+  color: var(--tq-text-tertiary);
+}
+
+.searchPlaceholder {
+  font-size: 14px;
+  color: var(--tq-text-tertiary);
+}
+
+/* ---- account & security row: avatar + label (ref 009) ---- */
+.accountRow {
+  min-height: 60px;
+}
+
+.accountAvatar {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #12b7f5, #1296db);
+  color: #fff;
+  font-size: 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* ---- list row ---- */
+
 .row {
   position: relative;
   display: flex;

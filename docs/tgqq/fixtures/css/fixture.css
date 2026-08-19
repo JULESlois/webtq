@@ -1803,6 +1803,13 @@ html.night .tq-device-icon {
 }
 
 /* ---- tab fixture: QQ9 settings page (mirrors pages/Settings) ---- */
+/* attach-panel fixture: composer sits at the bottom and paints over the
+   absolute bubbles viewport (which is sized by --chat-input-height) */
+.is-tgqq-chat .chat-input {
+  position: relative;
+  z-index: 2;
+}
+
 .tq-settings {
   display: flex;
   flex-direction: column;
@@ -1934,6 +1941,60 @@ html.night .tq-settings {
   flex: none;
   display: inline-flex;
   color: var(--tq-settings-arrow);
+}
+
+/* QQ9 设置首页（ref 009-settings.jpg）：搜索胶囊 + 账号与安全行 */
+.tq-settings-search {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--tq-surface-primary, #fff);
+  color: var(--tq-text-tertiary, #999);
+}
+
+.tq-settings-search-icon {
+  flex: none;
+  display: inline-flex;
+  color: var(--tq-text-tertiary, #999);
+}
+
+.tq-settings-search-text {
+  font-size: 14px;
+  color: var(--tq-text-tertiary, #999);
+}
+
+.tq-settings-account {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 62px;
+  padding: 0 16px;
+}
+
+.tq-settings-account-avatar {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #12b7f5, #1296db);
+  color: #fff;
+  font-size: 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tq-settings-account-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .tq-settings-badge {

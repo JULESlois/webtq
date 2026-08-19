@@ -86,12 +86,15 @@ body.is-tgqq.tq-dialog-skin {
     height: var(--tq-chatlist-avatar-size) !important;
     flex-shrink: 0;
 
-    // QQ9 default avatar: flat gray circle + person silhouette
-    // (fixture avatars are plain .dialog-avatar with inline gradients)
-    background: var(--tq-avatar-bg) !important;
-    color: transparent !important;
+    // QQ9 default avatar: flat gray circle + person silhouette, shown only
+    // when the avatar has no photo/gradient (fixture rows carry inline
+    // gradients, the real app renders .avatar-gradient/.avatar img inside).
+    // No !important so inline gradients / real app photos keep their colors.
+    background: var(--tq-avatar-bg);
     border: none;
 
+    // Person-silhouette default: skipped when the avatar is a real peer
+    // (gradient wrapper / photo) or a fixture row with an inline background.
     &::before {
       content: "";
       position: absolute;
@@ -103,44 +106,30 @@ body.is-tgqq.tq-dialog-skin {
       pointer-events: none;
     }
 
+    &:has(.avatar-gradient)::before,
+    &:has(img)::before,
+    &[style*="background"]::before {
+      display: none;
+    }
+
     .avatar {
       width: var(--tq-chatlist-avatar-size);
       height: var(--tq-chatlist-avatar-size);
     }
 
-    // Real app avatars use .avatar-gradient inside .dialog-avatar
+    // Real app avatars use .avatar-gradient inside .dialog-avatar; keep
+    // tweb's own gradient + letter (QQ9 shows colored gradient avatars).
     .avatar-gradient {
       position: relative;
-      background: var(--tq-avatar-bg) !important;
-      color: transparent !important;
-
-      &::before {
-        content: "";
-        position: absolute;
-        top: 8%;
-        left: 21%;
-        width: 58%;
-        height: 72%;
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Ccircle cx='32' cy='27' r='15' fill='%23909092'/%3E%3Cpath d='M32 46C25 46 14 55 8 70l48 0C74 55 63 46 56 46 45 46 39 46 32 46z' fill='%23909092'/%3E%3C/svg%3E") center / contain no-repeat;
-        pointer-events: none;
-      }
     }
   }
 
   html.night & {
     .dialog-avatar {
-      background: var(--tq-avatar-bg) !important;
+      background: var(--tq-avatar-bg);
 
       &::before {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Ccircle cx='32' cy='27' r='15' fill='%23ffffff'/%3E%3Cpath d='M32 46C25 46 14 55 8 70l48 0C74 55 63 46 56 46 45 46 39 46 32 46z' fill='%23ffffff'/%3E%3C/svg%3E");
-      }
-
-      .avatar-gradient {
-        background: var(--tq-avatar-bg) !important;
-
-        &::before {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Ccircle cx='32' cy='27' r='15' fill='%23ffffff'/%3E%3Cpath d='M32 46C25 46 14 55 8 70l48 0C74 55 63 46 56 46 45 46 39 46 32 46z' fill='%23ffffff'/%3E%3C/svg%3E");
-        }
       }
     }
   }
@@ -278,7 +267,7 @@ body.is-tgqq.tq-dialog-skin {
   .dialog-subtitle-badge-pinned {
     position: absolute !important;
     top: 8px;
-    inset-inline-start: calc(var(--tq-chatlist-padding) + var(--tq-chatlist-avatar-size) - 10px);
+    inset-inline-start: calc(var(--tq-chatlist-padding) + var(--tq-chatlist-avatar-size) - 2px);
     margin: 0 !important;
     z-index: 3;
   }
@@ -286,28 +275,67 @@ body.is-tgqq.tq-dialog-skin {
   .dialog-subtitle-badge-unread {
     background-color: var(--tq-badge-bg) !important;
     color: var(--tq-badge-text) !important;
-    min-width: 16px;
-    height: 16px;
-    border-radius: var(--tq-radius-full);
-    font-size: 10px;
-    font-weight: 500;
-    padding: 0 4px;
+    min-width: 20px;
+    height: 18px;
+    border-radius: 9px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 0 5px;
     display: flex !important;
     align-items: center;
     justify-content: center;
     line-height: 1 !important;
+    // ref 002: pill hugs the avatar's top-right corner and sticks out right
+    inset-inline-start: calc(var(--tq-chatlist-padding) + var(--tq-chatlist-avatar-size) - 2px);
+  }
+
+  // QQ9 system rows (我的电脑/我的手机, ref 001/004): blue circle avatar
+  // (0,133,254) + solid white monitor icon. Fixture marks the row with
+  // .tq-avatar-device; real app peers (myComputer/device) can reuse it.
+  .dialog-avatar.tq-avatar-device {
+    background: #0085FE !important;
+    color: transparent !important;
+
+    &::before,
+    .avatar-gradient::before {
+      display: none !important;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      // ref 004: big rounded screen + short neck + wide base, ~29px on a 52px circle
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M2 3.5A1.5 1.5 0 0 1 3.5 2h17A1.5 1.5 0 0 1 22 3.5V15a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 15V3.5Zm6 13.5h8v2H8v-2Zm-1.8 3h11.6a1 1 0 0 1 1 1v.5a1 1 0 0 1-1 1H6.2a1 1 0 0 1-1-1V21a1 1 0 0 1 1-1Z'/%3E%3C/svg%3E") center / 64% no-repeat;
+      pointer-events: none;
+    }
+
+    .avatar-gradient {
+      background: #0085FE !important;
+      color: transparent !important;
+    }
   }
 
   // Muted-chat unread: tweb draws it on the avatar bottom-right; QQ9 keeps
   // the count pill at the avatar top-right too.
   .dialog-subtitle-badge.avatar-badge {
     position: absolute !important;
-    top: 6px;
-    inset-inline-start: calc(var(--tq-chatlist-padding) + var(--tq-chatlist-avatar-size) - 12px);
+    top: 5px;
+    inset-inline-start: calc(var(--tq-chatlist-padding) + var(--tq-chatlist-avatar-size) - 2px);
     inset-inline-end: auto;
+    min-width: 20px;
+    height: 18px;
+    border-radius: 9px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 0 5px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    line-height: 1 !important;
     background-color: var(--tq-badge-bg) !important;
     color: var(--tq-badge-text) !important;
-    border-color: var(--tq-surface-primary) !important;
+    border: 2px solid var(--tq-surface-primary) !important;
   }
 
   // Mention badge - QQ @ style (.mention alone is also used for @mentions
@@ -334,10 +362,17 @@ body.is-tgqq.tq-dialog-skin {
     top: 6px;
   }
 
-  // Muted icon
+  // Muted icon: QQ9 gray line-art bell with slash (ref 003) at the row end
   .dialog-muted-icon {
-    color: var(--tq-text-tertiary);
-    font-size: var(--tq-font-size-md);
+    color: #999;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    flex: none;
+
+    svg {
+      display: block;
+    }
   }
 
   // Message status icons (read/unread checks) — QQ9 shows no read ticks
@@ -425,7 +460,7 @@ body.is-tgqq.tq-dialog-skin {
   // Search in chat list - QQ9 light capsule, centered placeholder
   .input-search {
     background: var(--tq-search-bg);
-    border-radius: var(--tq-radius-xl);
+    border-radius: var(--tq-radius-full);
     border: none;
     color: var(--tq-text-tertiary);
     justify-content: center;

@@ -90,14 +90,28 @@
 .header {
   position: relative;
   flex: none;
-  padding: 60px 20px 64px;
+  padding: 60px 16px 34px;
   background: linear-gradient(180deg, #e9f2ff 0%, #e1edfd 55%, #dcebfc 100%);
   color: #1f1f1f;
 }
 
+.userCard {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 46px;
+  padding: 14px 12px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
 .avatar {
-  width: 64px;
-  height: 64px;
+  flex: none;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
@@ -111,7 +125,9 @@
 }
 
 .meta {
-  margin-top: 12px;
+  flex: 1;
+  min-width: 0;
+  margin-top: 0;
 }
 
 .nameRow {
@@ -140,16 +156,50 @@
   cursor: pointer;
 }
 
-.qq {
+.vipRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin-top: 3px;
-  font-size: 12px;
-  color: #666;
+}
+
+.vipStars {
+  color: #f5a623;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.vipLabel {
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #f7ba2a, #f59a1e);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.qrBtn {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: #f3f4f6;
+  color: #555;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .sign {
   margin-top: 3px;
   font-size: 12px;
   color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .chevron {
@@ -269,9 +319,15 @@
   color: #5f5f68;
 }
 
-:global(html.night) .card {
+:global(html.night) .card,
+:global(html.night) .userCard {
   background: #2b2b2b;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+:global(html.night) .qrBtn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ccc;
 }
 
 :global(html.night) .row:hover {
